@@ -125,8 +125,6 @@ Le projet couvre :
 
 </div>
 
-> Remplace le schéma ASCII par le vrai screenshot une fois le projet compilé :
-
 ![Preview](imortel.png)
 
 ---
@@ -224,8 +222,6 @@ g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.x.x
 
 ### Étape 3 — Se placer dans le bon répertoire
 
-Dans **VS Code → Terminal → Nouveau Terminal** :
-
 ```powershell
 cd C:\Users\TonNom\Desktop\IMORTEL
 ```
@@ -267,8 +263,6 @@ g++ -o imortel.exe imortel.cpp -m32 -luser32 -lgdi32 -lshell32 -lwinmm -lole32 -
   └─────────────────────┴──────────────────────────────────────────────────────┘
 ```
 
-> Utilise cette version pour cibler une machine **x86 32 bits** ou produire un **exécutable universel** sans dépendances DLL C++ runtime.
-
 ### ✅ VERSION 2 — x64 · Task Scheduler
 
 ```bash
@@ -286,24 +280,6 @@ g++ imortel.cpp -o imortel.exe -luser32 -lgdi32 -lshell32 -lwinmm -lole32 -lolea
   └─────────────────────┴──────────────────────────────────────────────────────┘
 ```
 
-> Utilise cette version si ton code utilise `taskschd.h` pour créer des **tâches planifiées Windows** via l'interface COM `ITaskService`.
-
-### Résultat attendu
-
-```powershell
-PS C:\Users\TonNom\Desktop\IMORTEL> g++ -o imortel.exe imortel.cpp -m32 -luser32 -lgdi32 -lshell32 -lwinmm -lole32 -loleaut32 -static
-
-# Aucune sortie = compilation réussie ✓
-
-PS C:\Users\TonNom\Desktop\IMORTEL> dir
-
-    imortel.cpp
-    imortel.exe    ← généré ici
-    imortel.ico
-    imortel.png
-    README.md
-```
-
 ---
 
 ## 07 — ANALYSE DÉTAILLÉE DU CODE C++
@@ -311,159 +287,288 @@ PS C:\Users\TonNom\Desktop\IMORTEL> dir
 <div align="center">
 
 ```
-  ╔══════════════════════════════════════════════════════════════════╗
-  ║              > CODE SOURCE  //  imortel.cpp                      ║
-  ║              > DÉCOMPOSITION COMPLÈTE SECTION PAR SECTION        ║
-  ╚══════════════════════════════════════════════════════════════════╝
+  ╔══════════════════════════════════════════════════════════════════════╗
+  ║                                                                      ║
+  ║              > CODE SOURCE  //  imortel.cpp                          ║
+  ║              > DÉCOMPOSITION COMPLÈTE — SECTION PAR SECTION          ║
+  ║              > [ REMPLACER CHAQUE BLOC PAR TON VRAI CODE ]           ║
+  ║                                                                      ║
+  ╚══════════════════════════════════════════════════════════════════════╝
 ```
 
 </div>
-
-> 📌 **Cette section sera complétée progressivement** au fur et à mesure que le code source est finalisé.
 
 ### Structure générale
 
 ```
   imortel.cpp
   │
-  ├── [01]  INCLUDES & HEADERS       ── Déclaration des bibliothèques
-  ├── [02]  CONSTANTES & MACROS      ── Définitions globales
-  ├── [03]  DÉCLARATIONS GLOBALES    ── Variables et handles
-  ├── [04]  WinMain()                ── Point d'entrée du programme
-  ├── [05]  Création de la fenêtre   ── RegisterClassEx + CreateWindowEx
-  ├── [06]  Boucle de messages       ── GetMessage / DispatchMessage
-  └── [07]  WindowProc()             ── Gestionnaire d'événements Win32
+  ├── [BLOC 01]  INCLUDES & HEADERS
+  ├── [BLOC 02]  CONSTANTES & MACROS
+  ├── [BLOC 03]  DÉCLARATIONS GLOBALES
+  ├── [BLOC 04]  WinMain() — point d'entrée
+  ├── [BLOC 05]  RegisterClassEx() — enregistrement fenêtre
+  ├── [BLOC 06]  CreateWindowEx() — création fenêtre
+  ├── [BLOC 07]  GetMessage() — boucle de messages
+  ├── [BLOC 08]  WindowProc() — gestionnaire d'événements
+  ├── [BLOC 09]  GDI / Rendu graphique
+  └── [BLOC 10]  Fonctions utilitaires / logique métier
 ```
 
-### [01] INCLUDES & HEADERS
+---
+
+### ▸ BLOC 01 — INCLUDES & HEADERS
+
+> 📌 **Remplace le code ci-dessous par la vraie section `#include` de ton `imortel.cpp`**
 
 ```cpp
+// ============================================================
+//  BLOC 01 — INCLUDES & HEADERS
+//  Déclare toutes les bibliothèques système utilisées
+// ============================================================
+
 #include <windows.h>      // API Win32 principale — fenêtres, GDI, types fondamentaux
 #include <shellapi.h>     // ShellExecute, SHGetSpecialFolderPath
 #include <winuser.h>      // Constantes UI : WM_*, VK_*, MB_*, DialogBox
-#include <mmsystem.h>     // PlaySound, timeGetTime, waveOut (lié avec -lwinmm)
+#include <mmsystem.h>     // PlaySound, timeGetTime, waveOut
 #include <ole2.h>         // CoInitialize, CoCreateInstance, OLE Automation
 #include <taskschd.h>     // ITaskService, ITaskFolder (version 2 seulement)
 #include <comdef.h>       // _com_ptr_t, smart pointers COM, _bstr_t
 ```
 
-> `windows.h` est le noyau — il inclut lui-même `wingdi.h`, `winbase.h`, `winnt.h` et définit tous les types fondamentaux Win32 : `HWND`, `HINSTANCE`, `DWORD`, `LPSTR`, `WPARAM`, `LPARAM`.
+> **Explication à remplacer** — `windows.h` est le noyau de la WinAPI. Il inclut `wingdi.h`, `winbase.h`, `winnt.h` et définit tous les types fondamentaux : `HWND`, `HINSTANCE`, `DWORD`, `LPSTR`, `WPARAM`, `LPARAM`. Chaque `#include` supplémentaire déverrouille une couche spécifique du système Windows.
 
-### [02] POINT D'ENTRÉE — `WinMain()`
+---
+
+### ▸ BLOC 02 — CONSTANTES & MACROS
+
+> 📌 **Remplace le code ci-dessous par tes vraies définitions de constantes**
 
 ```cpp
+// ============================================================
+//  BLOC 02 — CONSTANTES & MACROS
+//  Centralise toutes les valeurs fixes du programme
+// ============================================================
+
+#define APP_NAME       TEXT("IMORTEL")
+#define APP_VERSION    TEXT("v1.0")
+#define WINDOW_WIDTH   800
+#define WINDOW_HEIGHT  600
+#define TIMER_ID       1
+#define TIMER_INTERVAL 1000    // millisecondes
+
+// Couleurs RGB personnalisées
+#define COLOR_BG       RGB(0,   0,   0  )   // Fond noir
+#define COLOR_RED      RGB(220, 20,  20 )   // Rouge signature IMORTEL
+#define COLOR_WHITE    RGB(255, 255, 255)   // Texte clair
+```
+
+> **Explication à remplacer** — Les `#define` permettent de centraliser les valeurs fixes pour éviter les "magic numbers" dans le code. Modifier `WINDOW_WIDTH` ici suffit à changer toutes les occurrences. `RGB(r, g, b)` est une macro WinAPI qui encode les trois canaux couleur dans un entier 32 bits de type `COLORREF`.
+
+---
+
+### ▸ BLOC 03 — DÉCLARATIONS GLOBALES
+
+> 📌 **Remplace le code ci-dessous par tes vraies variables globales**
+
+```cpp
+// ============================================================
+//  BLOC 03 — DÉCLARATIONS GLOBALES
+//  Variables et handles accessibles depuis toutes les fonctions
+// ============================================================
+
+HWND   g_hwnd       = NULL;    // Handle de la fenêtre principale
+HINSTANCE g_hInst   = NULL;    // Instance du processus
+BOOL   g_bRunning   = TRUE;    // Flag d'état — FALSE = arrêt propre
+int    g_iCounter   = 0;       // Compteur exemple (timer, frames...)
+TCHAR  g_szBuffer[256];        // Buffer texte réutilisable
+```
+
+> **Explication à remplacer** — Le préfixe `g_` est une convention C++ Win32 pour identifier les variables globales (scope = fichier entier). `HWND` est un "Handle to WiNDow" — un identifiant opaque que Windows utilise en interne pour référencer chaque fenêtre. `HINSTANCE` identifie le processus courant auprès du système.
+
+---
+
+### ▸ BLOC 04 — `WinMain()` — POINT D'ENTRÉE
+
+> 📌 **Remplace le code ci-dessous par ton vrai `WinMain()`**
+
+```cpp
+// ============================================================
+//  BLOC 04 — WinMain() — POINT D'ENTRÉE DU PROGRAMME
+//  Équivalent de main() pour les applications Windows GUI
+// ============================================================
+
 int WINAPI WinMain(
-    HINSTANCE hInstance,      // Handle de l'instance courante du processus
-    HINSTANCE hPrevInstance,  // Toujours NULL en Win32 moderne (obsolète)
+    HINSTANCE hInstance,      // Handle de l'instance courante
+    HINSTANCE hPrevInstance,  // Toujours NULL en Win32 moderne
     LPSTR     lpCmdLine,      // Arguments de la ligne de commande
-    int       nCmdShow        // État initial : SW_SHOW, SW_HIDE, SW_MAXIMIZE...
+    int       nCmdShow        // État initial : SW_SHOW, SW_HIDE...
 ) {
-    CoInitialize(NULL);
-    // ... corps du programme
-    CoUninitialize();
+    g_hInst = hInstance;
+
+    CoInitialize(NULL);          // Initialise COM (nécessaire pour OLE / TaskSchd)
+
+    // ... enregistrement classe, création fenêtre, boucle messages
+
+    CoUninitialize();            // Libère COM proprement
     return 0;
 }
 ```
 
-| Paramètre | Type | Description |
-|-----------|------|-------------|
-| `hInstance` | `HINSTANCE` | Identifiant du processus — sert à charger des ressources (icônes, menus) |
-| `hPrevInstance` | `HINSTANCE` | Toujours `NULL` depuis Win32 |
-| `lpCmdLine` | `LPSTR` | Arguments passés au lancement de l'exe |
-| `nCmdShow` | `int` | Constante `SW_*` définissant l'affichage initial de la fenêtre |
+> **Explication à remplacer** — `WinMain` remplace `main()` dans les applications Windows sans console. `WINAPI` est une macro qui définit la convention d'appel `__stdcall` — obligatoire pour que Windows puisse invoquer la fonction correctement. `CoInitialize(NULL)` initialise le sous-système COM, requis dès qu'on utilise `ole32` ou `taskschd`.
 
-### [03] ENREGISTREMENT DE CLASSE — `RegisterClassEx()`
+---
+
+### ▸ BLOC 05 — `RegisterClassEx()` — ENREGISTREMENT DE LA FENÊTRE
+
+> 📌 **Remplace le code ci-dessous par ton vrai enregistrement de classe**
 
 ```cpp
+// ============================================================
+//  BLOC 05 — RegisterClassEx() — ENREGISTREMENT DE CLASSE
+//  Définit le "modèle" de toutes les fenêtres de ce type
+// ============================================================
+
 WNDCLASSEX wc    = { 0 };
 wc.cbSize        = sizeof(WNDCLASSEX);
 wc.style         = CS_HREDRAW | CS_VREDRAW;
 wc.lpfnWndProc   = WindowProc;
 wc.hInstance     = hInstance;
 wc.hIcon         = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_IMORTEL));
+wc.hIconSm       = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_IMORTEL));
 wc.hCursor       = LoadCursor(NULL, IDC_ARROW);
-wc.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
+wc.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
 wc.lpszClassName = TEXT("ImortelClass");
-RegisterClassEx(&wc);
+
+if (!RegisterClassEx(&wc)) {
+    MessageBox(NULL, TEXT("Échec RegisterClassEx"), TEXT("Erreur"), MB_ICONERROR);
+    return 1;
+}
 ```
 
-| Champ | Rôle |
-|-------|------|
-| `cbSize` | Taille de la structure — obligatoire pour `RegisterClassEx` |
-| `style` | `CS_HREDRAW` = redessine si largeur change / `CS_VREDRAW` = si hauteur change |
-| `lpfnWndProc` | Callback — fonction qui reçoit tous les messages Windows |
-| `hIcon` | Icône chargée depuis les ressources — utilise `imortel.ico` |
-| `hbrBackground` | Couleur de fond — `COLOR_WINDOW+1` = blanc standard |
-| `lpszClassName` | Nom unique de la classe, réutilisé dans `CreateWindowEx` |
+> **Explication à remplacer** — `WNDCLASSEX` est la structure qui décrit le comportement visuel et fonctionnel d'un type de fenêtre. `lpfnWndProc` est le champ le plus important : il pointe vers la fonction `WindowProc` qui recevra tous les messages Windows pour cette classe. `GetStockObject(BLACK_BRUSH)` utilise un pinceau système noir préexistant — plus efficace que d'en créer un avec `CreateSolidBrush`.
 
-### [04] CRÉATION DE FENÊTRE — `CreateWindowEx()`
+---
+
+### ▸ BLOC 06 — `CreateWindowEx()` — CRÉATION DE LA FENÊTRE
+
+> 📌 **Remplace le code ci-dessous par ton vrai `CreateWindowEx()`**
 
 ```cpp
+// ============================================================
+//  BLOC 06 — CreateWindowEx() — CRÉATION DE LA FENÊTRE
+//  Instancie une fenêtre à partir de la classe enregistrée
+// ============================================================
+
 HWND hwnd = CreateWindowEx(
-    WS_EX_CLIENTEDGE,
-    TEXT("ImortelClass"),
-    TEXT("IMORTEL — System v1.0"),
-    WS_OVERLAPPEDWINDOW,
-    CW_USEDEFAULT, CW_USEDEFAULT,
-    800, 600,
+    WS_EX_CLIENTEDGE,               // Style étendu : bordure enfoncée
+    TEXT("ImortelClass"),            // Classe enregistrée à l'étape 05
+    TEXT("IMORTEL — System v1.0"),   // Titre affiché dans la barre
+    WS_OVERLAPPEDWINDOW,             // Barre titre + bordures + min/max/close
+    CW_USEDEFAULT, CW_USEDEFAULT,    // Position x, y auto
+    WINDOW_WIDTH,                    // Largeur
+    WINDOW_HEIGHT,                   // Hauteur
     NULL, NULL, hInstance, NULL
 );
+
+if (!hwnd) {
+    MessageBox(NULL, TEXT("Échec CreateWindowEx"), TEXT("Erreur"), MB_ICONERROR);
+    return 1;
+}
+
 ShowWindow(hwnd, nCmdShow);
 UpdateWindow(hwnd);
+g_hwnd = hwnd;
 ```
 
-### [05] BOUCLE DE MESSAGES — `GetMessage()`
+> **Explication à remplacer** — `CreateWindowEx` alloue en mémoire une nouvelle instance de fenêtre à partir de la classe "ImortelClass". Elle retourne un `HWND` (handle), qui sera utilisé dans toutes les opérations suivantes. `WS_OVERLAPPEDWINDOW` est le style composite standard : il combine `WS_CAPTION`, `WS_SYSMENU`, `WS_THICKFRAME`, `WS_MINIMIZEBOX` et `WS_MAXIMIZEBOX`.
+
+---
+
+### ▸ BLOC 07 — `GetMessage()` — BOUCLE DE MESSAGES
+
+> 📌 **Remplace le code ci-dessous par ta vraie boucle de messages**
 
 ```cpp
+// ============================================================
+//  BLOC 07 — Boucle de messages — CŒUR DE L'APPLICATION
+//  Windows est event-driven : tout passe par cette boucle
+// ============================================================
+
 MSG msg = { 0 };
-while (GetMessage(&msg, NULL, 0, 0)) {
-    TranslateMessage(&msg);
-    DispatchMessage(&msg);
+
+while (GetMessage(&msg, NULL, 0, 0) > 0) {
+    TranslateMessage(&msg);   // Convertit WM_KEYDOWN → WM_CHAR si applicable
+    DispatchMessage(&msg);    // Envoie le message à WindowProc()
 }
-return (int)msg.wParam;
+
+return (int)msg.wParam;       // Code de retour du processus
 ```
 
 ```
-  ┌─────────────────────────────────────────────────────┐
-  │   [File d'attente Windows]                          │
-  │          │                                          │
-  │          ▼                                          │
-  │   GetMessage()       ── récupère le prochain msg    │
-  │          │                                          │
-  │   TranslateMessage() ── traduit les touches clavier │
-  │          │                                          │
-  │   DispatchMessage()  ── route vers WindowProc()     │
-  │          │                                          │
-  │   [Répète en boucle jusqu'à WM_QUIT]                │
-  └─────────────────────────────────────────────────────┘
+  ┌──────────────────────────────────────────────────────────────┐
+  │                                                              │
+  │   [OS Windows — File d'attente de messages]                 │
+  │          │                                                   │
+  │          ▼                                                   │
+  │   GetMessage() ────── récupère le prochain message           │
+  │          │            retourne FALSE sur WM_QUIT             │
+  │          ▼                                                   │
+  │   TranslateMessage() ─ traduit touches → caractères         │
+  │          │                                                   │
+  │          ▼                                                   │
+  │   DispatchMessage() ── route vers WindowProc()               │
+  │          │                                                   │
+  │          └─────────────── [ boucle infinie ]                 │
+  │                                                              │
+  └──────────────────────────────────────────────────────────────┘
 ```
 
-### [06] GESTIONNAIRE D'ÉVÉNEMENTS — `WindowProc()`
+> **Explication à remplacer** — Cette boucle est le cœur de toute application Win32. `GetMessage` bloque jusqu'à ce qu'un message arrive dans la file du thread. Elle retourne `0` uniquement sur `WM_QUIT`, ce qui rompt la boucle et termine l'application proprement. `TranslateMessage` est requis pour que les appuis sur les touches de caractères génèrent des événements `WM_CHAR` en plus de `WM_KEYDOWN`.
+
+---
+
+### ▸ BLOC 08 — `WindowProc()` — GESTIONNAIRE D'ÉVÉNEMENTS
+
+> 📌 **Remplace le code ci-dessous par ton vrai `WindowProc()`**
 
 ```cpp
+// ============================================================
+//  BLOC 08 — WindowProc() — GESTIONNAIRE D'ÉVÉNEMENTS
+//  Reçoit et traite chaque message Windows pour la fenêtre
+// ============================================================
+
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
     switch (uMsg) {
 
-        case WM_PAINT: {
-            PAINTSTRUCT ps;
-            HDC hdc = BeginPaint(hwnd, &ps);
-            // ── rendu GDI ici ──
-            EndPaint(hwnd, &ps);
-            break;
-        }
+        case WM_CREATE:
+            // Initialisation au moment de la création de la fenêtre
+            // Ex : SetTimer(hwnd, TIMER_ID, TIMER_INTERVAL, NULL);
+            return 0;
+
+        case WM_TIMER:
+            // Déclenché à chaque tick du timer
+            // wParam == TIMER_ID pour identifier quel timer
+            g_iCounter++;
+            InvalidateRect(hwnd, NULL, TRUE);   // Force un redraw WM_PAINT
+            return 0;
 
         case WM_KEYDOWN:
-            // wParam = code de la touche (VK_ESCAPE, VK_RETURN...)
-            break;
+            if (wParam == VK_ESCAPE) PostQuitMessage(0);
+            return 0;
+
+        case WM_PAINT:
+            // → voir BLOC 09
+            return 0;
 
         case WM_DESTROY:
+            KillTimer(hwnd, TIMER_ID);
             PostQuitMessage(0);
-            break;
+            return 0;
 
         default:
             return DefWindowProc(hwnd, uMsg, wParam, lParam);
     }
-    return 0;
 }
 ```
 
@@ -473,56 +578,123 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) 
   ├────────────────────┼───────────────────────────────────────────┤
   │  WM_CREATE         │  La fenêtre vient d'être créée            │
   │  WM_PAINT          │  La fenêtre doit être redessinée          │
+  │  WM_TIMER          │  Timer SetTimer() écoulé                  │
   │  WM_KEYDOWN        │  Touche du clavier enfoncée               │
   │  WM_LBUTTONDOWN    │  Clic gauche souris                       │
-  │  WM_RBUTTONDOWN    │  Clic droit souris                        │
   │  WM_MOUSEMOVE      │  Déplacement du curseur                   │
-  │  WM_TIMER          │  Timer SetTimer() écoulé                  │
   │  WM_SIZE           │  Fenêtre redimensionnée                   │
   │  WM_CLOSE          │  Croix de fermeture cliquée               │
   │  WM_DESTROY        │  Fenêtre détruite → PostQuitMessage(0)    │
   └────────────────────┴───────────────────────────────────────────┘
 ```
 
-### [07] RENDU GDI — Dessin dans la fenêtre
+> **Explication à remplacer** — `WindowProc` est la callback centrale : Windows l'appelle automatiquement pour chaque événement. Le `switch(uMsg)` filtre les messages qui t'intéressent. Tout message non géré **doit** être passé à `DefWindowProc` — sinon le comportement par défaut (déplacer la fenêtre, redimensionner...) est cassé.
+
+---
+
+### ▸ BLOC 09 — GDI — RENDU GRAPHIQUE
+
+> 📌 **Remplace le code ci-dessous par ton vrai rendu GDI dans `WM_PAINT`**
 
 ```cpp
+// ============================================================
+//  BLOC 09 — GDI — RENDU GRAPHIQUE
+//  Tout le dessin se fait dans le handler WM_PAINT
+// ============================================================
+
 case WM_PAINT: {
     PAINTSTRUCT ps;
     HDC hdc = BeginPaint(hwnd, &ps);
 
-    HBRUSH hBlack = CreateSolidBrush(RGB(0, 0, 0));
-    FillRect(hdc, &ps.rcPaint, hBlack);
-    DeleteObject(hBlack);
+    // ── Fond noir ──────────────────────────────────────────
+    HBRUSH hBrushBg = CreateSolidBrush(COLOR_BG);
+    FillRect(hdc, &ps.rcPaint, hBrushBg);
+    DeleteObject(hBrushBg);
 
-    SetTextColor(hdc, RGB(220, 20, 20));
+    // ── Police Courier New, bold, 24px ─────────────────────
+    HFONT hFont = CreateFont(
+        24, 0, 0, 0,
+        FW_BOLD,                  // Gras
+        FALSE, FALSE, FALSE,
+        DEFAULT_CHARSET,
+        OUT_DEFAULT_PRECIS,
+        CLIP_DEFAULT_PRECIS,
+        CLEARTYPE_QUALITY,        // Anti-aliasing ClearType
+        DEFAULT_PITCH,
+        TEXT("Courier New")       // Police monospace — style terminal
+    );
+    HFONT hOldFont = (HFONT)SelectObject(hdc, hFont);
+
+    // ── Texte rouge sur fond noir ───────────────────────────
+    SetTextColor(hdc, COLOR_RED);
     SetBkMode(hdc, TRANSPARENT);
 
-    HFONT hFont = CreateFont(24, 0, 0, 0, FW_BOLD, FALSE, FALSE, FALSE,
-                             DEFAULT_CHARSET, OUT_DEFAULT_PRECIS,
-                             CLIP_DEFAULT_PRECIS, CLEARTYPE_QUALITY,
-                             DEFAULT_PITCH, TEXT("Courier New"));
-    SelectObject(hdc, hFont);
     TextOut(hdc, 50, 50, TEXT("IMORTEL — SYSTEM v1.0"), 21);
 
+    // ── Nettoyage obligatoire des ressources GDI ───────────
+    SelectObject(hdc, hOldFont);
     DeleteObject(hFont);
+
     EndPaint(hwnd, &ps);
-    break;
+    return 0;
 }
 ```
 
 | Fonction GDI | Rôle |
 |-------------|------|
-| `BeginPaint` | Initialise le HDC (contexte de dessin) |
-| `CreateSolidBrush` | Crée un pinceau de couleur unie RGB |
+| `BeginPaint / EndPaint` | Délimite la zone de dessin — obligatoire en paire |
+| `CreateSolidBrush` | Crée un pinceau couleur unie RGB |
 | `FillRect` | Remplit un rectangle avec un pinceau |
-| `SetTextColor` | Définit la couleur du texte — `RGB(r, g, b)` |
-| `SetBkMode(TRANSPARENT)` | Fond du texte transparent |
-| `CreateFont` | Crée une police personnalisée (taille, poids, famille) |
-| `SelectObject` | Sélectionne la police dans le HDC courant |
-| `TextOut` | Affiche une chaîne à la position `(x, y)` |
-| `DeleteObject` | ⚠️ Obligatoire — libère les ressources GDI créées |
-| `EndPaint` | Libère le HDC |
+| `CreateFont` | Crée une police avec taille, poids, famille, rendu |
+| `SelectObject` | Active un objet GDI (police, pinceau, plume) dans le HDC |
+| `SetTextColor` | Couleur du texte suivant — `COLORREF` = `RGB(r,g,b)` |
+| `SetBkMode(TRANSPARENT)` | Fond du texte transparent (pas de rectangle blanc) |
+| `TextOut` | Dessine une chaîne à la position `(x, y)` |
+| `DeleteObject` | ⚠️ Libère la mémoire — fuite GDI si oublié |
+
+> **Explication à remplacer** — Le `HDC` (Handle to Device Context) est un contexte de rendu abstrait — il peut cibler une fenêtre, une imprimante ou un bitmap en mémoire. `BeginPaint` valide la "dirty region" (zone invalide) et retourne un HDC prêt à l'emploi. Chaque objet GDI créé (`CreateSolidBrush`, `CreateFont`...) **doit** être libéré avec `DeleteObject` après usage, sous peine de fuites mémoire GDI accumulées.
+
+---
+
+### ▸ BLOC 10 — FONCTIONS UTILITAIRES
+
+> 📌 **Remplace le code ci-dessous par tes vraies fonctions utilitaires**
+
+```cpp
+// ============================================================
+//  BLOC 10 — FONCTIONS UTILITAIRES / LOGIQUE MÉTIER
+//  Fonctions auxiliaires appelées depuis WindowProc ou WinMain
+// ============================================================
+
+// ── Ouvre un fichier avec l'application par défaut ──────────
+void OpenFile(LPCTSTR szPath) {
+    ShellExecute(
+        NULL,           // Fenêtre parente
+        TEXT("open"),   // Verbe : "open", "runas", "print"
+        szPath,         // Chemin du fichier
+        NULL,           // Paramètres (NULL = aucun)
+        NULL,           // Répertoire de travail
+        SW_SHOWNORMAL   // Mode d'affichage
+    );
+}
+
+// ── Affiche une boîte de dialogue d'erreur ──────────────────
+void ShowError(LPCTSTR szMsg) {
+    MessageBox(
+        g_hwnd,
+        szMsg,
+        TEXT("IMORTEL — Erreur"),
+        MB_ICONERROR | MB_OK
+    );
+}
+
+// ── Joue un son système ─────────────────────────────────────
+void PlayBeep(DWORD dwFreq, DWORD dwDuration) {
+    Beep(dwFreq, dwDuration);   // Fréquence Hz, durée ms
+}
+```
+
+> **Explication à remplacer** — `ShellExecute` est la fonction la plus polyvalente de `shell32` : elle ouvre n'importe quel fichier avec l'application associée par Windows (comme un double-clic). Le verbe `"runas"` permet de demander une élévation UAC. `MessageBox` est la boîte de dialogue synchrone la plus simple — elle bloque le thread jusqu'à ce que l'utilisateur clique.
 
 ---
 
@@ -553,15 +725,15 @@ case WM_PAINT: {
   ║                                                                       ║
   ║    ██████████████████████████████████████████████████████████████    ║
   ║    █                                                            █    ║
-  ║    █    ██╗███╗   ███╗ ██████╗ ██████╗ ████████╗███████╗██╗   █    ║
-  ║    █    ██║████╗ ████║██╔═══██╗██╔══██╗╚══██╔══╝██╔════╝██║   █    ║
-  ║    █    ██║██╔████╔██║██║   ██║██████╔╝   ██║   █████╗  ██║   █    ║
-  ║    █    ██║██║╚██╔╝██║██║   ██║██╔══██╗   ██║   ██╔══╝  ██║   █    ║
-  ║    █    ██║██║ ╚═╝ ██║╚██████╔╝██║  ██║   ██║   ███████╗███████╗  █    ║
-  ║    █    ╚═╝╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝╚══════╝  █    ║
+  ║    █    ██╗███╗   ███╗ ██████╗ ██████╗ ████████╗███████╗██╗     █    ║
+  ║    █    ██║████╗ ████║██╔═══██╗██╔══██╗╚══██╔══╝██╔════╝██║     █    ║
+  ║    █    ██║██╔████╔██║██║   ██║██████╔╝   ██║   █████╗  ██║     █    ║
+  ║    █    ██║██║╚██╔╝██║██║   ██║██╔══██╗   ██║   ██╔══╝  ██║     █    ║
+  ║    █    ██║██║ ╚═╝ ██║╚██████╔╝██║  ██║   ██║   ███████╗███████╗█    ║
+  ║    █    ╚═╝╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝╚══════╝█    ║
   ║    █                                                            █    ║
-  ║    █    Marwan Alazzaoui  ──  BTS SIO SISR  ──  Lyon, France   █    ║
-  ║    █    Objectif : Bac+3 AIS  //  Septembre 2026               █    ║
+  ║    █    Marwan ──  BTS SIO SISR  ──  Lyon, France               █    ║
+  ║    █    Objectif : Bac+3 AIS  //  Septembre 2026                █    ║
   ║    █                                                            █    ║
   ║    █    GitHub  :  github.com/TON_USERNAME                      █    ║
   ║    █    Email   :  ton@email.com                                █    ║
