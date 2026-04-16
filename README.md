@@ -1,47 +1,38 @@
-<!-- IMORTEL — README.md -->
-<!-- ============================================================ -->
-<!--   ██╗███╗   ███╗ ██████╗ ██████╗ ████████╗███████╗██╗       -->
-<!--   ██║████╗ ████║██╔═══██╗██╔══██╗╚══██╔══╝██╔════╝██║       -->
-<!--   ██║██╔████╔██║██║   ██║██████╔╝   ██║   █████╗  ██║       -->
-<!--   ██║██║╚██╔╝██║██║   ██║██╔══██╗   ██║   ██╔══╝  ██║       -->
-<!--   ██║██║ ╚═╝ ██║╚██████╔╝██║  ██║   ██║   ███████╗███████╗  -->
-<!--   ╚═╝╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝╚══════╝  -->
-<!-- ============================================================ -->
-
 <div align="center">
 
 ```
-██████╗ ███████╗  ██████╗██╗   ██╗██████╗ ███████╗██╗  ██╗
-██╔══██╗██╔════╝ ██╔════╝╚██╗ ██╔╝██╔══██╗██╔════╝╚██╗██╔╝
-██║  ██║█████╗   ██║      ╚████╔╝ ██████╔╝█████╗   ╚███╔╝ 
-██║  ██║██╔══╝   ██║       ╚██╔╝  ██╔═══╝ ██╔══╝   ██╔██╗ 
-██████╔╝███████╗ ╚██████╗   ██║   ██║     ███████╗██╔╝ ██╗
-╚═════╝ ╚══════╝  ╚═════╝   ╚═╝   ╚═╝     ╚══════╝╚═╝  ╚═╝
-
-        [ S Y S T E M   I N F I L T R A T I O N   v1.0 ]
-        [ A U T H O R : I M O R T E L  |  L Y O N , F R ]
+ ██████████████████████████████████████████████████████████████████████████████
+ █                                                                            █
+ █    ██╗███╗   ███╗ ██████╗ ██████╗ ████████╗███████╗██╗                   █
+ █    ██║████╗ ████║██╔═══██╗██╔══██╗╚══██╔══╝██╔════╝██║                   █
+ █    ██║██╔████╔██║██║   ██║██████╔╝   ██║   █████╗  ██║                   █
+ █    ██║██║╚██╔╝██║██║   ██║██╔══██╗   ██║   ██╔══╝  ██║                   █
+ █    ██║██║ ╚═╝ ██║╚██████╔╝██║  ██║   ██║   ███████╗███████╗              █
+ █    ╚═╝╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝╚══════╝              █
+ █                                                                            █
+ █         ·  S Y S T E M   I N F I L T R A T I O N   v 1 . 0  ·            █
+ █                                                                            █
+ █   ┌──────────────────────────────────────────────────────────────────┐    █
+ █   │  AUTH   ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  [ 100% ] ✓   │    █
+ █   │  LOAD   ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  [ 100% ] ✓   │    █
+ █   │  EXEC   ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  [ 100% ] ✓   │    █
+ █   └──────────────────────────────────────────────────────────────────┘    █
+ █                                                                            █
+ █              > ACCÈS AUTORISÉ  //  BIENVENUE DANS LE SYSTÈME              █
+ █              > OPÉRATEUR : I M O R T E L  //  LYON, FR                    █
+ █                                                                            █
+ ██████████████████████████████████████████████████████████████████████████████
 ```
 
 <br/>
 
-<!-- BADGES -->
 ![Language](https://img.shields.io/badge/LANGUAGE-C%2B%2B-red?style=for-the-badge&logo=cplusplus&logoColor=white&labelColor=0d0d0d)
-![Platform](https://img.shields.io/badge/PLATFORM-WINDOWS%20x86%2Fx64-red?style=for-the-badge&logo=windows&logoColor=white&labelColor=0d0d0d)
+![Platform](https://img.shields.io/badge/PLATFORM-WINDOWS-red?style=for-the-badge&logo=windows&logoColor=white&labelColor=0d0d0d)
 ![Build](https://img.shields.io/badge/BUILD-g%2B%2B%20MinGW-brightgreen?style=for-the-badge&logo=gnu&logoColor=white&labelColor=0d0d0d)
-![Status](https://img.shields.io/badge/STATUS-OPERATIONAL-red?style=for-the-badge&labelColor=0d0d0d)
-![License](https://img.shields.io/badge/LICENSE-MIT-gray?style=for-the-badge&labelColor=0d0d0d)
+![Arch](https://img.shields.io/badge/ARCH-x86%20%7C%20x64-red?style=for-the-badge&labelColor=0d0d0d)
+![Status](https://img.shields.io/badge/STATUS-OPERATIONAL-brightgreen?style=for-the-badge&labelColor=0d0d0d)
 ![Author](https://img.shields.io/badge/AUTHOR-IMORTEL-red?style=for-the-badge&labelColor=0d0d0d)
-
-<br/>
-
-```
-╔══════════════════════════════════════════════════════════════╗
-║  > CONNEXION ÉTABLIE...                                      ║
-║  > AUTHENTIFICATION : [████████████████████] 100%           ║
-║  > ACCÈS AUTORISÉ — BIENVENUE DANS LE SYSTÈME               ║
-║  > LOCALISATION : LYON, FRANCE // CIBLE : INCONNU           ║
-╚══════════════════════════════════════════════════════════════╝
-```
+![License](https://img.shields.io/badge/LICENSE-MIT-gray?style=for-the-badge&labelColor=0d0d0d)
 
 </div>
 
@@ -50,15 +41,19 @@
 ## 🗂️ TABLE DES MATIÈRES
 
 ```
-01 ── PRÉSENTATION DU PROJET
-02 ── DÉMO & APERÇU
-03 ── ARCHITECTURE DU PROJET
-04 ── TÉLÉCHARGEMENTS
-05 ── ENVIRONNEMENT & DÉPENDANCES
-06 ── COMPILATION — GUIDE COMPLET
-07 ── ANALYSE DÉTAILLÉE DU CODE C++
-08 ── BIBLIOTHÈQUES WINDOWS UTILISÉES
-09 ── AUTEUR
+  ┌─────────────────────────────────────────────────────────────────┐
+  │                                                                 │
+  │   01  ──  PRÉSENTATION DU PROJET                               │
+  │   02  ──  APERÇU & SCREENSHOT                                  │
+  │   03  ──  ARCHITECTURE DU PROJET                               │
+  │   04  ──  TÉLÉCHARGEMENTS                                      │
+  │   05  ──  ENVIRONNEMENT & INSTALLATION                         │
+  │   06  ──  COMPILATION — GUIDE COMPLET                          │
+  │   07  ──  ANALYSE DÉTAILLÉE DU CODE C++                        │
+  │   08  ──  BIBLIOTHÈQUES WINDOWS UTILISÉES                      │
+  │   09  ──  AUTEUR                                               │
+  │                                                                 │
+  └─────────────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -68,50 +63,69 @@
 <div align="center">
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                                                             │
-│   IMORTEL.CPP — APPLICATION WINDOWS EN C++ PUR             │
-│   Compilation cross : x86 / x64                            │
-│   Win32 API natif — aucune dépendance externe               │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
+  ╔═══════════════════════════════════════════════════════════════════╗
+  ║                                                                   ║
+  ║   ██████╗ ██████╗  ██████╗      ██╗███████╗ ██████╗████████╗    ║
+  ║   ██╔══██╗██╔══██╗██╔═══██╗     ██║██╔════╝██╔════╝╚══██╔══╝    ║
+  ║   ██████╔╝██████╔╝██║   ██║     ██║█████╗  ██║        ██║       ║
+  ║   ██╔═══╝ ██╔══██╗██║   ██║██   ██║██╔══╝  ██║        ██║       ║
+  ║   ██║     ██║  ██║╚██████╔╝╚█████╔╝███████╗╚██████╗   ██║       ║
+  ║   ╚═╝     ╚═╝  ╚═╝ ╚═════╝  ╚════╝ ╚══════╝ ╚═════╝   ╚═╝       ║
+  ║                                                                   ║
+  ║   Application Windows native — C++ pur  //  Win32 API            ║
+  ║   Compilation : g++ MinGW  //  x86 & x64                         ║
+  ║   Aucune dépendance externe — linkage statique disponible         ║
+  ║                                                                   ║
+  ╚═══════════════════════════════════════════════════════════════════╝
 ```
 
 </div>
 
-**IMORTEL** est une application Windows développée en **C++ natif** utilisant l'API Win32 de Microsoft. Le projet illustre la maîtrise de :
+**IMORTEL** est une application **Windows native** développée en **C++ pur** utilisant l'API Win32 de Microsoft. Zéro framework, zéro surcouche — uniquement du code système bas niveau.
 
-- La programmation système Windows bas niveau (`WinAPI`)
-- La gestion des fenêtres, des événements et du GDI (rendu graphique)
-- L'interaction avec le shell Windows (`ShellExecute`, `ShellAPI`)
-- La compilation avec **g++ / MinGW** en mode 32 et 64 bits
-- Le linkage statique pour produire un exécutable standalone
+Le projet couvre :
 
-> Ce projet est réalisé dans un cadre **pédagogique et personnel**, dans le cadre du cursus **BTS SIO SISR** et de la progression vers le **Bac+3 AIS (Administrateur d'Infrastructures Sécurisées)**.
+- Programmation **Win32 API** — fenêtres, messages, événements
+- Rendu graphique via **GDI32** — formes, texte, bitmaps
+- Interaction **Shell32** — `ShellExecute`, gestion fichiers système
+- Audio **WinMM** — sons, timers multimédias
+- Architecture **COM / OLE** — `ole32`, `oleaut32`
+- Planification système via **TaskSchd** (version 2)
+- Compilation **g++ MinGW** — linkage statique et dynamique
+
+> Projet réalisé dans le cadre du **BTS SIO SISR** — progression vers le **Bac+3 AIS (Administrateur d'Infrastructures Sécurisées)**, septembre 2026.
 
 ---
 
-## 02 — DÉMO & APERÇU
+## 02 — APERÇU & SCREENSHOT
 
 <div align="center">
 
 ```
-╔═══════════════════════════════════════╗
-║   IMORTEL.EXE — INTERFACE             ║
-║                                       ║
-║   ██████████████████████████████      ║
-║   █                              █    ║
-║   █    [ IMORTEL SYSTEM v1.0 ]   █    ║
-║   █                              █    ║
-║   █    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓    █    ║
-║   █                              █    ║
-║   ██████████████████████████████      ║
-╚═══════════════════════════════════════╝
+  ┌──────────────────────────────────────────────────────────────┐
+  │                                                              │
+  │        ╔════════════════════════════════════════╗           │
+  │        ║   IMORTEL — System v1.0         _ □ ✕ ║           │
+  │        ╠════════════════════════════════════════╣           │
+  │        ║                                        ║           │
+  │        ║     ██████████████████████████████     ║           │
+  │        ║     █                            █     ║           │
+  │        ║     █   [ IMORTEL  v 1 . 0 ]    █     ║           │
+  │        ║     █                            █     ║           │
+  │        ║     █   > SYSTÈME  OPÉRATIONNEL  █     ║           │
+  │        ║     █   > AUTEUR   : IMORTEL     █     ║           │
+  │        ║     █   > STATUT  : ACTIF  ✓    █     ║           │
+  │        ║     █                            █     ║           │
+  │        ║     ██████████████████████████████     ║           │
+  │        ║                                        ║           │
+  │        ╚════════════════════════════════════════╝           │
+  │                                                              │
+  └──────────────────────────────────────────────────────────────┘
 ```
 
 </div>
 
-> 📌 Remplace cette section par une capture d'écran réelle de ton app : `![Preview](imortel.png)`
+> Remplace le schéma ASCII par le vrai screenshot une fois le projet compilé :
 
 ![Preview](imortel.png)
 
@@ -120,15 +134,19 @@
 ## 03 — ARCHITECTURE DU PROJET
 
 ```
-📁 IMORTEL/
-│
-├── 📄 imortel.cpp          ← Code source principal (C++ Win32)
-├── 💻 imortel.exe          ← Exécutable compilé (Windows x86/x64)
-├── 🖼️  imortel.png          ← Aperçu / screenshot de l'application
-├── 🎨 imortel.ico          ← Icône de l'application
-├── 📦 imortel.rar          ← Archive du projet complet (WinRAR)
-├── 📄 imortel.pdf          ← Documentation technique détaillée
-└── 📖 README.md            ← Ce fichier
+  ┌─────────────────────────────────────────────────────────────────────┐
+  │                                                                     │
+  │   📁  IMORTEL/                                                      │
+  │   │                                                                 │
+  │   ├── 📄  imortel.cpp     ←  Code source principal  (C++ Win32)    │
+  │   ├── 💻  imortel.exe     ←  Exécutable compilé  (Windows x86/x64) │
+  │   ├── 🖼️   imortel.png     ←  Screenshot de l'application           │
+  │   ├── 🎨  imortel.ico     ←  Icône de l'application (.ico)         │
+  │   ├── 📦  imortel.rar     ←  Archive complète du projet (WinRAR)   │
+  │   ├── 📄  imortel.pdf     ←  Documentation technique               │
+  │   └── 📖  README.md       ←  Ce fichier                            │
+  │                                                                     │
+  └─────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -137,65 +155,78 @@
 
 <div align="center">
 
-| Fichier | Description | Lien |
-|--------|-------------|------|
-| `imortel.cpp` | Code source complet C++ | [⬇ Télécharger](./imortel.cpp) |
-| `imortel.exe` | Exécutable Windows compilé | [⬇ Télécharger](./imortel.exe) |
-| `imortel.rar` | Archive complète du projet | [⬇ Télécharger](./imortel.rar) |
-| `imortel.pdf` | Documentation PDF technique | [⬇ Télécharger](./imortel.pdf) |
-| `imortel.png` | Aperçu de l'interface | [⬇ Voir](./imortel.png) |
-| `imortel.ico` | Icône de l'application | [⬇ Télécharger](./imortel.ico) |
+```
+  ╔══════════════════════════════════════════════════════════════════╗
+  ║              > FICHIERS DISPONIBLES AU TÉLÉCHARGEMENT            ║
+  ╚══════════════════════════════════════════════════════════════════╝
+```
+
+| Fichier | Type | Description | Lien |
+|:--------|:----:|:------------|:----:|
+| `imortel.cpp` | SOURCE | Code source complet C++ Win32 | [⬇ Télécharger](./imortel.cpp) |
+| `imortel.exe` | BINARY | Exécutable Windows compilé | [⬇ Télécharger](./imortel.exe) |
+| `imortel.rar` | ARCHIVE | Projet complet empaqueté | [⬇ Télécharger](./imortel.rar) |
+| `imortel.pdf` | DOC | Documentation technique PDF | [⬇ Télécharger](./imortel.pdf) |
+| `imortel.png` | IMAGE | Screenshot de l'interface | [👁 Voir](./imortel.png) |
+| `imortel.ico` | ICON | Icône de l'application | [⬇ Télécharger](./imortel.ico) |
 
 </div>
 
-> ⚠️ **Avertissement** : L'exécutable est fourni à des fins éducatives. Toujours analyser un `.exe` dans un environnement isolé avant exécution.
+> ⚠️ L'exécutable est fourni à titre éducatif. Toujours exécuter dans un environnement isolé si tu ne connais pas la source.
 
 ---
 
-## 05 — ENVIRONNEMENT & DÉPENDANCES
+## 05 — ENVIRONNEMENT & INSTALLATION
 
-### Système requis
-
-```
-OS       : Windows 7 / 8 / 10 / 11 (32 ou 64 bits)
-Compiler : g++ (MinGW-w64) ≥ 8.0
-IDE      : Visual Studio Code (recommandé)
-Shell    : PowerShell / CMD / Git Bash
-```
-
-### Installation de l'environnement dans VS Code
-
-#### Étape 1 — Installer MinGW-w64
-
-1. Télécharger **MinGW-w64** depuis [winlibs.com](https://winlibs.com/) ou [MSYS2](https://www.msys2.org/)
-2. Extraire dans `C:\mingw64\`
-3. Ajouter `C:\mingw64\bin` à la variable d'environnement **PATH** :
-   ```
-   Panneau de configuration → Système → Variables d'environnement → PATH → Modifier → Nouveau
-   Ajouter : C:\mingw64\bin
-   ```
-4. Vérifier dans un terminal :
-   ```bash
-   g++ --version
-   ```
-   Résultat attendu :
-   ```
-   g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.x.x
-   ```
-
-#### Étape 2 — Extensions VS Code recommandées
+### Prérequis système
 
 ```
-C/C++ (Microsoft)           — ms-vscode.cpptools
-C/C++ Extension Pack        — ms-vscode.cpptools-extension-pack
-Code Runner                 — formulahendry.code-runner
+  ┌───────────────────────────────────────────────────────────┐
+  │   OS          Windows 7 / 8 / 10 / 11  (32 ou 64 bits)   │
+  │   Compilateur g++ (MinGW-w64)  ≥  8.0                    │
+  │   IDE         Visual Studio Code  (recommandé)            │
+  │   Shell       PowerShell  /  CMD  /  Git Bash             │
+  └───────────────────────────────────────────────────────────┘
 ```
 
-#### Étape 3 — Ouvrir le bon répertoire dans le terminal
+### Étape 1 — Installer MinGW-w64
+
+Télécharge MinGW-w64 depuis [winlibs.com](https://winlibs.com) ou [MSYS2](https://www.msys2.org), extrais dans `C:\mingw64\`, puis ajoute au PATH :
+
+```
+Panneau de configuration
+  └── Système
+        └── Paramètres système avancés
+              └── Variables d'environnement
+                    └── PATH → Modifier → Nouveau
+                          └── C:\mingw64\bin
+```
+
+Vérification dans le terminal :
+
+```bash
+g++ --version
+```
+
+Résultat attendu :
+
+```
+g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.x.x
+```
+
+### Étape 2 — Extensions VS Code recommandées
+
+```
+  C/C++                ── ms-vscode.cpptools
+  C/C++ Extension Pack ── ms-vscode.cpptools-extension-pack
+  Code Runner          ── formulahendry.code-runner
+```
+
+### Étape 3 — Se placer dans le bon répertoire
+
+Dans **VS Code → Terminal → Nouveau Terminal** :
 
 ```powershell
-# Dans VS Code → Terminal → Nouveau Terminal
-# Naviguer jusqu'au dossier du projet :
 cd C:\Users\TonNom\Desktop\IMORTEL
 ```
 
@@ -203,231 +234,230 @@ cd C:\Users\TonNom\Desktop\IMORTEL
 
 ## 06 — COMPILATION — GUIDE COMPLET
 
-### Commandes de compilation
+<div align="center">
 
-Il existe deux variantes selon les fonctionnalités utilisées. Copie-colle la commande correspondante **directement dans le terminal VS Code** depuis le répertoire du projet.
+```
+  ╔══════════════════════════════════════════════════════════════════╗
+  ║                   > DEUX VARIANTES DE BUILD                      ║
+  ╚══════════════════════════════════════════════════════════════════╝
+```
 
----
+</div>
 
-#### ✅ VERSION 1 — Compilation standard x32 avec linkage statique
+### ✅ VERSION 1 — x32 · Linkage statique
 
 ```bash
 g++ -o imortel.exe imortel.cpp -m32 -luser32 -lgdi32 -lshell32 -lwinmm -lole32 -loleaut32 -static
 ```
 
-**Détail de chaque flag :**
+```
+  ┌─────────────────────┬──────────────────────────────────────────────────────┐
+  │  FLAG               │  RÔLE                                                │
+  ├─────────────────────┼──────────────────────────────────────────────────────┤
+  │  -o imortel.exe     │  Nom du fichier de sortie                            │
+  │  imortel.cpp        │  Fichier source à compiler                           │
+  │  -m32               │  Force la compilation en mode 32 bits (x86)          │
+  │  -luser32           │  User32  — fenêtres, messages, clavier, souris       │
+  │  -lgdi32            │  GDI32   — rendu graphique, formes, texte, bitmap    │
+  │  -lshell32          │  Shell32 — ShellExecute, gestion fichiers, icônes    │
+  │  -lwinmm            │  WinMM   — son, timers multimédias                   │
+  │  -lole32            │  OLE32   — COM, interfaces objets                    │
+  │  -loleaut32         │  OleAut32 — automatisation OLE, VARIANT, BSTR        │
+  │  -static            │  Intègre les runtimes → exe standalone sans DLL      │
+  └─────────────────────┴──────────────────────────────────────────────────────┘
+```
 
-| Flag | Rôle |
-|------|------|
-| `-o imortel.exe` | Spécifie le nom du fichier de sortie |
-| `imortel.cpp` | Fichier source à compiler |
-| `-m32` | Force la compilation en mode **32 bits** (x86) |
-| `-luser32` | Lie la bibliothèque User32 (fenêtres, messages, clavier/souris) |
-| `-lgdi32` | Lie GDI32 (rendu graphique : formes, texte, bitmap) |
-| `-lshell32` | Lie Shell32 (ShellExecute, gestion fichiers, icônes) |
-| `-lwinmm` | Lie WinMM (Windows Multimedia : son, timers) |
-| `-lole32` | Lie OLE32 (COM, objets, interfaces) |
-| `-loleaut32` | Lie OleAut32 (automatisation OLE, VARIANT, BSTR) |
-| `-static` | **Linkage statique** : intègre les runtimes dans l'exe (pas de DLL manquante) |
+> Utilise cette version pour cibler une machine **x86 32 bits** ou produire un **exécutable universel** sans dépendances DLL C++ runtime.
 
-> 💡 **Quand utiliser cette version ?** Quand tu cibles une machine 32 bits ou veux un exe universel sans dépendances DLL C++ runtime.
-
----
-
-#### ✅ VERSION 2 — Compilation avec planificateur de tâches Windows
+### ✅ VERSION 2 — x64 · Task Scheduler
 
 ```bash
 g++ imortel.cpp -o imortel.exe -luser32 -lgdi32 -lshell32 -lwinmm -lole32 -loleaut32 -ltaskschd
 ```
 
-**Différence clé :**
-
-| Flag | Rôle |
-|------|------|
-| `-ltaskschd` | Lie **TaskSchd** (Windows Task Scheduler) : permet de créer/gérer des tâches planifiées via l'API COM `ITaskScheduler`) |
-| *(pas de `-m32`)* | Compilation en **64 bits** (défaut de MinGW-w64) |
-| *(pas de `-static`)* | Linkage dynamique : plus léger, mais requiert les DLLs sur la machine cible |
-
-> 💡 **Quand utiliser cette version ?** Quand ton code utilise le planificateur de tâches Windows (`taskschd.h`, `ITaskService`, `ITaskFolder`) pour programmer des exécutions automatiques.
-
----
-
-### Résultat attendu après compilation
-
 ```
-> g++ -o imortel.exe imortel.cpp -m32 -luser32 -lgdi32 -lshell32 -lwinmm -lole32 -loleaut32 -static
+  ┌─────────────────────┬──────────────────────────────────────────────────────┐
+  │  FLAG               │  RÔLE                                                │
+  ├─────────────────────┼──────────────────────────────────────────────────────┤
+  │  -ltaskschd         │  TaskSchd — Windows Task Scheduler via COM           │
+  │                     │  (ITaskService, ITaskFolder, IRegisteredTask)        │
+  │  (sans -m32)        │  Compilation en 64 bits (défaut MinGW-w64)           │
+  │  (sans -static)     │  Linkage dynamique — exe plus léger                  │
+  └─────────────────────┴──────────────────────────────────────────────────────┘
+```
 
-(aucune sortie = succès)
+> Utilise cette version si ton code utilise `taskschd.h` pour créer des **tâches planifiées Windows** via l'interface COM `ITaskService`.
 
-> ls
-imortel.cpp   imortel.exe   imortel.ico   imortel.png   README.md
+### Résultat attendu
+
+```powershell
+PS C:\Users\TonNom\Desktop\IMORTEL> g++ -o imortel.exe imortel.cpp -m32 -luser32 -lgdi32 -lshell32 -lwinmm -lole32 -loleaut32 -static
+
+# Aucune sortie = compilation réussie ✓
+
+PS C:\Users\TonNom\Desktop\IMORTEL> dir
+
+    imortel.cpp
+    imortel.exe    ← généré ici
+    imortel.ico
+    imortel.png
+    README.md
 ```
 
 ---
 
 ## 07 — ANALYSE DÉTAILLÉE DU CODE C++
 
-> 📌 **Note** : Remplace les sections ci-dessous par ton code réel une fois collé. La structure d'explication est déjà en place.
-
-### Structure générale du fichier `imortel.cpp`
+<div align="center">
 
 ```
-imortel.cpp
-│
-├── [01] INCLUDES & HEADERS         — Déclaration des bibliothèques
-├── [02] CONSTANTES & MACROS        — Définitions globales
-├── [03] DÉCLARATIONS GLOBALES      — Variables et handles
-├── [04] WinMain()                  — Point d'entrée du programme
-├── [05] Création de la fenêtre     — RegisterClass + CreateWindow
-├── [06] Boucle de messages         — GetMessage / DispatchMessage
-└── [07] WindowProc()               — Gestionnaire d'événements
+  ╔══════════════════════════════════════════════════════════════════╗
+  ║              > CODE SOURCE  //  imortel.cpp                      ║
+  ║              > DÉCOMPOSITION COMPLÈTE SECTION PAR SECTION        ║
+  ╚══════════════════════════════════════════════════════════════════╝
 ```
 
----
+</div>
+
+> 📌 **Cette section sera complétée progressivement** au fur et à mesure que le code source est finalisé.
+
+### Structure générale
+
+```
+  imortel.cpp
+  │
+  ├── [01]  INCLUDES & HEADERS       ── Déclaration des bibliothèques
+  ├── [02]  CONSTANTES & MACROS      ── Définitions globales
+  ├── [03]  DÉCLARATIONS GLOBALES    ── Variables et handles
+  ├── [04]  WinMain()                ── Point d'entrée du programme
+  ├── [05]  Création de la fenêtre   ── RegisterClassEx + CreateWindowEx
+  ├── [06]  Boucle de messages       ── GetMessage / DispatchMessage
+  └── [07]  WindowProc()             ── Gestionnaire d'événements Win32
+```
 
 ### [01] INCLUDES & HEADERS
 
 ```cpp
-#include <windows.h>      // API Win32 principale (fenêtres, messages, GDI)
+#include <windows.h>      // API Win32 principale — fenêtres, GDI, types fondamentaux
 #include <shellapi.h>     // ShellExecute, SHGetSpecialFolderPath
-#include <winuser.h>      // Constantes UI : WM_*, VK_*, MB_*
-#include <mmsystem.h>     // PlaySound, timeGetTime, waveOut
-#include <ole2.h>         // CoInitialize, OLE Automation
-#include <taskschd.h>     // ITaskService (version 2 seulement)
-#include <comdef.h>       // _com_ptr_t, smart pointers COM
+#include <winuser.h>      // Constantes UI : WM_*, VK_*, MB_*, DialogBox
+#include <mmsystem.h>     // PlaySound, timeGetTime, waveOut (lié avec -lwinmm)
+#include <ole2.h>         // CoInitialize, CoCreateInstance, OLE Automation
+#include <taskschd.h>     // ITaskService, ITaskFolder (version 2 seulement)
+#include <comdef.h>       // _com_ptr_t, smart pointers COM, _bstr_t
 ```
 
-**Pourquoi `#include <windows.h>` en premier ?**
-Ce header est le noyau de la WinAPI. Il inclut lui-même `wingdi.h`, `winbase.h`, `winnt.h` et définit les types fondamentaux : `HWND`, `HINSTANCE`, `DWORD`, `LPSTR`, `WPARAM`, `LPARAM`.
-
----
+> `windows.h` est le noyau — il inclut lui-même `wingdi.h`, `winbase.h`, `winnt.h` et définit tous les types fondamentaux Win32 : `HWND`, `HINSTANCE`, `DWORD`, `LPSTR`, `WPARAM`, `LPARAM`.
 
 ### [02] POINT D'ENTRÉE — `WinMain()`
 
 ```cpp
-// Remplace ton WinMain ici — exemple de structure :
 int WINAPI WinMain(
-    HINSTANCE hInstance,      // Handle de l'instance courante
-    HINSTANCE hPrevInstance,  // Toujours NULL en Win32 moderne
+    HINSTANCE hInstance,      // Handle de l'instance courante du processus
+    HINSTANCE hPrevInstance,  // Toujours NULL en Win32 moderne (obsolète)
     LPSTR     lpCmdLine,      // Arguments de la ligne de commande
-    int       nCmdShow        // État initial de la fenêtre (SW_SHOW, SW_HIDE...)
+    int       nCmdShow        // État initial : SW_SHOW, SW_HIDE, SW_MAXIMIZE...
 ) {
+    CoInitialize(NULL);
     // ... corps du programme
+    CoUninitialize();
+    return 0;
 }
 ```
 
-**Explication des paramètres :**
-
 | Paramètre | Type | Description |
 |-----------|------|-------------|
-| `hInstance` | `HINSTANCE` | Identifiant unique du processus — sert à charger des ressources (icônes, menus) |
-| `hPrevInstance` | `HINSTANCE` | Obsolète depuis Win32, toujours `NULL` |
-| `lpCmdLine` | `LPSTR` | Chaîne des arguments passés au lancement |
-| `nCmdShow` | `int` | Constante `SW_*` : `SW_SHOW`, `SW_HIDE`, `SW_MAXIMIZE`... |
-
----
+| `hInstance` | `HINSTANCE` | Identifiant du processus — sert à charger des ressources (icônes, menus) |
+| `hPrevInstance` | `HINSTANCE` | Toujours `NULL` depuis Win32 |
+| `lpCmdLine` | `LPSTR` | Arguments passés au lancement de l'exe |
+| `nCmdShow` | `int` | Constante `SW_*` définissant l'affichage initial de la fenêtre |
 
 ### [03] ENREGISTREMENT DE CLASSE — `RegisterClassEx()`
 
 ```cpp
-WNDCLASSEX wc = { 0 };
+WNDCLASSEX wc    = { 0 };
 wc.cbSize        = sizeof(WNDCLASSEX);
-wc.style         = CS_HREDRAW | CS_VREDRAW;  // Redessine si redimensionné
-wc.lpfnWndProc   = WindowProc;               // Pointeur vers le gestionnaire d'événements
+wc.style         = CS_HREDRAW | CS_VREDRAW;
+wc.lpfnWndProc   = WindowProc;
 wc.hInstance     = hInstance;
 wc.hIcon         = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_IMORTEL));
 wc.hCursor       = LoadCursor(NULL, IDC_ARROW);
 wc.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
 wc.lpszClassName = TEXT("ImortelClass");
-
 RegisterClassEx(&wc);
 ```
-
-**Champ par champ :**
 
 | Champ | Rôle |
 |-------|------|
 | `cbSize` | Taille de la structure — obligatoire pour `RegisterClassEx` |
-| `style` | Comportement de la fenêtre : `CS_HREDRAW` = redessine sur resize horizontal |
-| `lpfnWndProc` | **Callback** : fonction qui recevra tous les messages Windows (WM_PAINT, WM_CLOSE...) |
-| `hIcon` | Icône du programme (chargée depuis les ressources ou un fichier `.ico`) |
-| `hbrBackground` | Couleur de fond : `COLOR_WINDOW+1` = blanc standard |
-| `lpszClassName` | Nom unique de la classe — utilisé dans `CreateWindowEx` |
-
----
+| `style` | `CS_HREDRAW` = redessine si largeur change / `CS_VREDRAW` = si hauteur change |
+| `lpfnWndProc` | Callback — fonction qui reçoit tous les messages Windows |
+| `hIcon` | Icône chargée depuis les ressources — utilise `imortel.ico` |
+| `hbrBackground` | Couleur de fond — `COLOR_WINDOW+1` = blanc standard |
+| `lpszClassName` | Nom unique de la classe, réutilisé dans `CreateWindowEx` |
 
 ### [04] CRÉATION DE FENÊTRE — `CreateWindowEx()`
 
 ```cpp
 HWND hwnd = CreateWindowEx(
-    WS_EX_CLIENTEDGE,              // Style étendu : bordure avec ombre
-    TEXT("ImortelClass"),          // Nom de classe enregistré
-    TEXT("IMORTEL — System v1.0"), // Titre de la barre
-    WS_OVERLAPPEDWINDOW,           // Style : barre titre + bordures + min/max
-    CW_USEDEFAULT, CW_USEDEFAULT,  // Position x, y (auto)
-    800, 600,                      // Largeur, hauteur en pixels
-    NULL,                          // Pas de fenêtre parente
-    NULL,                          // Pas de menu
-    hInstance,
-    NULL
+    WS_EX_CLIENTEDGE,
+    TEXT("ImortelClass"),
+    TEXT("IMORTEL — System v1.0"),
+    WS_OVERLAPPEDWINDOW,
+    CW_USEDEFAULT, CW_USEDEFAULT,
+    800, 600,
+    NULL, NULL, hInstance, NULL
 );
-
 ShowWindow(hwnd, nCmdShow);
 UpdateWindow(hwnd);
 ```
-
----
 
 ### [05] BOUCLE DE MESSAGES — `GetMessage()`
 
 ```cpp
 MSG msg = { 0 };
 while (GetMessage(&msg, NULL, 0, 0)) {
-    TranslateMessage(&msg);   // Convertit WM_KEYDOWN en WM_CHAR si applicable
-    DispatchMessage(&msg);    // Envoie le message à WindowProc
+    TranslateMessage(&msg);
+    DispatchMessage(&msg);
 }
 return (int)msg.wParam;
 ```
 
-**Fonctionnement :**
-
 ```
-[File d'attente Windows]
-        │
-        ▼
-  GetMessage()  ─── récupère le prochain message
-        │
-  TranslateMessage()  ─── traduit les touches clavier
-        │
-  DispatchMessage()   ─── appelle WindowProc avec le message
-        │
-  [Répète]  ─── jusqu'à WM_QUIT
+  ┌─────────────────────────────────────────────────────┐
+  │   [File d'attente Windows]                          │
+  │          │                                          │
+  │          ▼                                          │
+  │   GetMessage()       ── récupère le prochain msg    │
+  │          │                                          │
+  │   TranslateMessage() ── traduit les touches clavier │
+  │          │                                          │
+  │   DispatchMessage()  ── route vers WindowProc()     │
+  │          │                                          │
+  │   [Répète en boucle jusqu'à WM_QUIT]                │
+  └─────────────────────────────────────────────────────┘
 ```
-
----
 
 ### [06] GESTIONNAIRE D'ÉVÉNEMENTS — `WindowProc()`
 
 ```cpp
-LRESULT CALLBACK WindowProc(
-    HWND   hwnd,    // Handle de la fenêtre concernée
-    UINT   uMsg,    // Identifiant du message (WM_PAINT, WM_CLOSE...)
-    WPARAM wParam,  // Paramètre 1 du message (dépend du message)
-    LPARAM lParam   // Paramètre 2 du message (dépend du message)
-) {
+LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
     switch (uMsg) {
 
         case WM_PAINT: {
-            // Code de rendu graphique GDI
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hwnd, &ps);
-            // ... dessin
+            // ── rendu GDI ici ──
             EndPaint(hwnd, &ps);
             break;
         }
 
+        case WM_KEYDOWN:
+            // wParam = code de la touche (VK_ESCAPE, VK_RETURN...)
+            break;
+
         case WM_DESTROY:
-            PostQuitMessage(0);   // Envoie WM_QUIT → termine la boucle
+            PostQuitMessage(0);
             break;
 
         default:
@@ -437,39 +467,45 @@ LRESULT CALLBACK WindowProc(
 }
 ```
 
-**Messages Windows les plus courants :**
-
-| Message | Déclenché quand |
-|---------|----------------|
-| `WM_CREATE` | La fenêtre vient d'être créée |
-| `WM_PAINT` | La fenêtre doit être redessinée |
-| `WM_KEYDOWN` | Touche enfoncée |
-| `WM_LBUTTONDOWN` | Clic gauche souris |
-| `WM_CLOSE` | L'utilisateur clique sur la croix |
-| `WM_DESTROY` | La fenêtre est détruite — appeler `PostQuitMessage` |
-| `WM_TIMER` | Un timer configuré via `SetTimer` s'est déclenché |
-| `WM_SIZE` | La fenêtre a été redimensionnée |
-
----
+```
+  ┌────────────────────┬───────────────────────────────────────────┐
+  │  MESSAGE           │  DÉCLENCHÉ QUAND                          │
+  ├────────────────────┼───────────────────────────────────────────┤
+  │  WM_CREATE         │  La fenêtre vient d'être créée            │
+  │  WM_PAINT          │  La fenêtre doit être redessinée          │
+  │  WM_KEYDOWN        │  Touche du clavier enfoncée               │
+  │  WM_LBUTTONDOWN    │  Clic gauche souris                       │
+  │  WM_RBUTTONDOWN    │  Clic droit souris                        │
+  │  WM_MOUSEMOVE      │  Déplacement du curseur                   │
+  │  WM_TIMER          │  Timer SetTimer() écoulé                  │
+  │  WM_SIZE           │  Fenêtre redimensionnée                   │
+  │  WM_CLOSE          │  Croix de fermeture cliquée               │
+  │  WM_DESTROY        │  Fenêtre détruite → PostQuitMessage(0)    │
+  └────────────────────┴───────────────────────────────────────────┘
+```
 
 ### [07] RENDU GDI — Dessin dans la fenêtre
 
 ```cpp
-// Exemple de rendu texte + rectangle dans WM_PAINT :
 case WM_PAINT: {
     PAINTSTRUCT ps;
     HDC hdc = BeginPaint(hwnd, &ps);
 
-    // Fond noir
-    HBRUSH hBrush = CreateSolidBrush(RGB(0, 0, 0));
-    FillRect(hdc, &ps.rcPaint, hBrush);
-    DeleteObject(hBrush);
+    HBRUSH hBlack = CreateSolidBrush(RGB(0, 0, 0));
+    FillRect(hdc, &ps.rcPaint, hBlack);
+    DeleteObject(hBlack);
 
-    // Texte rouge
-    SetTextColor(hdc, RGB(255, 0, 0));
+    SetTextColor(hdc, RGB(220, 20, 20));
     SetBkMode(hdc, TRANSPARENT);
-    TextOut(hdc, 50, 50, TEXT("IMORTEL"), 7);
 
+    HFONT hFont = CreateFont(24, 0, 0, 0, FW_BOLD, FALSE, FALSE, FALSE,
+                             DEFAULT_CHARSET, OUT_DEFAULT_PRECIS,
+                             CLIP_DEFAULT_PRECIS, CLEARTYPE_QUALITY,
+                             DEFAULT_PITCH, TEXT("Courier New"));
+    SelectObject(hdc, hFont);
+    TextOut(hdc, 50, 50, TEXT("IMORTEL — SYSTEM v1.0"), 21);
+
+    DeleteObject(hFont);
     EndPaint(hwnd, &ps);
     break;
 }
@@ -477,31 +513,33 @@ case WM_PAINT: {
 
 | Fonction GDI | Rôle |
 |-------------|------|
-| `BeginPaint` | Initialise le contexte de dessin (HDC) |
-| `CreateSolidBrush` | Crée un pinceau de couleur unie |
+| `BeginPaint` | Initialise le HDC (contexte de dessin) |
+| `CreateSolidBrush` | Crée un pinceau de couleur unie RGB |
 | `FillRect` | Remplit un rectangle avec un pinceau |
-| `SetTextColor` | Définit la couleur du texte (RGB) |
+| `SetTextColor` | Définit la couleur du texte — `RGB(r, g, b)` |
 | `SetBkMode(TRANSPARENT)` | Fond du texte transparent |
-| `TextOut` | Affiche une chaîne à la position (x, y) |
+| `CreateFont` | Crée une police personnalisée (taille, poids, famille) |
+| `SelectObject` | Sélectionne la police dans le HDC courant |
+| `TextOut` | Affiche une chaîne à la position `(x, y)` |
+| `DeleteObject` | ⚠️ Obligatoire — libère les ressources GDI créées |
 | `EndPaint` | Libère le HDC |
-| `DeleteObject` | Libère les ressources GDI créées |
 
 ---
 
 ## 08 — BIBLIOTHÈQUES WINDOWS UTILISÉES
 
 ```
-┌──────────────────────────────────────────────────────────────┐
-│  BIBLIOTHÈQUE        │  FLAG        │  USAGE                  │
-├──────────────────────┼──────────────┼─────────────────────────┤
-│  User32.dll          │  -luser32    │  Fenêtres, messages UI   │
-│  Gdi32.dll           │  -lgdi32     │  Rendu graphique GDI     │
-│  Shell32.dll         │  -lshell32   │  ShellExecute, fichiers  │
-│  Winmm.dll           │  -lwinmm     │  Son, timers multimedia  │
-│  Ole32.dll           │  -lole32     │  COM, interfaces OLE     │
-│  OleAut32.dll        │  -loleaut32  │  Automatisation OLE      │
-│  TaskSchd.dll (v2)   │  -ltaskschd  │  Planificateur tâches    │
-└──────────────────────┴──────────────┴─────────────────────────┘
+  ┌──────────────────────────────────────────────────────────────────────┐
+  │   BIBLIOTHÈQUE       FLAG            RÔLE PRINCIPAL                  │
+  │   ─────────────────────────────────────────────────────────────────  │
+  │   User32.dll        -luser32        Fenêtres, messages, UI, clavier │
+  │   Gdi32.dll         -lgdi32         Rendu graphique GDI              │
+  │   Shell32.dll       -lshell32       ShellExecute, fichiers, icônes  │
+  │   Winmm.dll         -lwinmm         Son, timers multimédias          │
+  │   Ole32.dll         -lole32         COM, interfaces OLE              │
+  │   OleAut32.dll      -loleaut32      Automatisation OLE, VARIANT      │
+  │   TaskSchd.dll      -ltaskschd      Planificateur Windows (v2)       │
+  └──────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -511,27 +549,32 @@ case WM_PAINT: {
 <div align="center">
 
 ```
-╔══════════════════════════════════════════════════════╗
-║                                                      ║
-║   ██╗███╗   ███╗ ██████╗ ██████╗ ████████╗███████╗  ║
-║   ██║████╗ ████║██╔═══██╗██╔══██╗╚══██╔══╝██╔════╝  ║
-║   ██║██╔████╔██║██║   ██║██████╔╝   ██║   █████╗    ║
-║   ██║██║╚██╔╝██║██║   ██║██╔══██╗   ██║   ██╔══╝    ║
-║   ██║██║ ╚═╝ ██║╚██████╔╝██║  ██║   ██║   ███████╗  ║
-║   ╚═╝╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝  ║
-║                                                      ║
-║   Marwan Alazzaoui — BTS SIO SISR                    ║
-║   Lyon, France                                       ║
-║   Objectif : Bac+3 AIS — sept. 2026                  ║
-║                                                      ║
-║   GitHub  : github.com/TON_USERNAME                  ║
-║   Email   : ton@email.com                            ║
-╚══════════════════════════════════════════════════════╝
+  ╔═══════════════════════════════════════════════════════════════════════╗
+  ║                                                                       ║
+  ║    ██████████████████████████████████████████████████████████████    ║
+  ║    █                                                            █    ║
+  ║    █    ██╗███╗   ███╗ ██████╗ ██████╗ ████████╗███████╗██╗   █    ║
+  ║    █    ██║████╗ ████║██╔═══██╗██╔══██╗╚══██╔══╝██╔════╝██║   █    ║
+  ║    █    ██║██╔████╔██║██║   ██║██████╔╝   ██║   █████╗  ██║   █    ║
+  ║    █    ██║██║╚██╔╝██║██║   ██║██╔══██╗   ██║   ██╔══╝  ██║   █    ║
+  ║    █    ██║██║ ╚═╝ ██║╚██████╔╝██║  ██║   ██║   ███████╗███████╗  █    ║
+  ║    █    ╚═╝╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝╚══════╝  █    ║
+  ║    █                                                            █    ║
+  ║    █    Marwan Alazzaoui  ──  BTS SIO SISR  ──  Lyon, France   █    ║
+  ║    █    Objectif : Bac+3 AIS  //  Septembre 2026               █    ║
+  ║    █                                                            █    ║
+  ║    █    GitHub  :  github.com/TON_USERNAME                      █    ║
+  ║    █    Email   :  ton@email.com                                █    ║
+  ║    █                                                            █    ║
+  ║    ██████████████████████████████████████████████████████████████    ║
+  ║                                                                       ║
+  ╚═══════════════════════════════════════════════════════════════════════╝
 ```
 
-![Profile](https://img.shields.io/badge/BTS_SIO-SISR-red?style=for-the-badge&labelColor=0d0d0d)
-![Cyber](https://img.shields.io/badge/CYBERSECURITY-OFFENSIVE%20%7C%20DEFENSIVE-red?style=for-the-badge&labelColor=0d0d0d)
-![Target](https://img.shields.io/badge/TARGET-Bac%2B3%20AIS%202026-brightgreen?style=for-the-badge&labelColor=0d0d0d)
+![BTS](https://img.shields.io/badge/BTS_SIO-SISR-red?style=for-the-badge&labelColor=0d0d0d)
+![Cyber](https://img.shields.io/badge/CYBERSECURITY-OFFENSIVE_%7C_DEFENSIVE-red?style=for-the-badge&labelColor=0d0d0d)
+![Target](https://img.shields.io/badge/TARGET-Bac%2B3_AIS_2026-brightgreen?style=for-the-badge&labelColor=0d0d0d)
+![City](https://img.shields.io/badge/LOCATION-LYON_FR-gray?style=for-the-badge&labelColor=0d0d0d)
 
 </div>
 
@@ -540,11 +583,16 @@ case WM_PAINT: {
 <div align="center">
 
 ```
-[ SYSTÈME DÉCONNECTÉ ]
-[ SESSION TERMINÉE — TRACE EFFACÉE ]
-[ IMORTEL — 2025 ]
+  ██████████████████████████████████████████████████████████████████████████████
+  █                                                                            █
+  █              [ SESSION TERMINÉE  //  TRACE EFFACÉE ]                      █
+  █              [ DÉCONNEXION  //  IMORTEL  //  LYON, FR ]                   █
+  █                                                                            █
+  █          "The quieter you become, the more you can hear."                  █
+  █                                                                            █
+  █                        · IMORTEL · 2025 ·                                 █
+  █                                                                            █
+  ██████████████████████████████████████████████████████████████████████████████
 ```
-
-*"The quieter you become, the more you can hear."*
 
 </div>
