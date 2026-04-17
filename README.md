@@ -19,7 +19,7 @@
  █   └──────────────────────────────────────────────────────────────────┘    █
  █                                                                            █
  █              > ACCÈS AUTORISÉ  //  BIENVENUE DANS LE SYSTÈME              █
- █              > OPÉRATEUR : I M O R T E L  //  LYON, FR                    █
+ █              > OPÉRATEUR : I M O R T E L  // FR                           █
  █                                                                            █
  ██████████████████████████████████████████████████████████████████████████████
 ```
@@ -43,22 +43,22 @@
 ```
   ┌─────────────────────────────────────────────────────────────────┐
   │                                                                 │
-  │   01  ──  PRÉSENTATION DU PROJET                               │
-  │   02  ──  APERÇU & SCREENSHOT                                  │
-  │   03  ──  ARCHITECTURE DU PROJET                               │
-  │   04  ──  TÉLÉCHARGEMENTS                                      │
-  │   05  ──  ENVIRONNEMENT & INSTALLATION                         │
-  │   06  ──  COMPILATION — GUIDE COMPLET                          │
-  │   07  ──  ANALYSE DÉTAILLÉE DU CODE C++                        │
-  │   08  ──  BIBLIOTHÈQUES WINDOWS UTILISÉES                      │
-  │   09  ──  AUTEUR                                               │
+  │   01  ──  PRÉSENTATION DE SHADOWVORCS                           │
+  │   02  ──  APERÇU & SCREENSHOT                                   │
+  │   03  ──  ARCHITECTURE DU PROJET                                │
+  │   04  ──  TÉLÉCHARGEMENTS                                       │
+  │   05  ──  ENVIRONNEMENT & INSTALLATION                          │
+  │   06  ──  COMPILATION — GUIDE COMPLET                           │
+  │   07  ──  ANALYSE DÉTAILLÉE DU CODE C++                         │
+  │   08  ──  BIBLIOTHÈQUES WINDOWS UTILISÉES                       │
+  │   09  ──  AUTEUR                                                │
   │                                                                 │
   └─────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## 01 — PRÉSENTATION DU PROJET
+## 01 — PRÉSENTATION DE SHADOWVORCS
 
 <div align="center">
 
@@ -81,19 +81,46 @@
 
 </div>
 
-**IMORTEL** est une application **Windows native** développée en **C++ pur** utilisant l'API Win32 de Microsoft. Zéro framework, zéro surcouche — uniquement du code système bas niveau.
+**SHADOWVORCS** un ransomware de type "locker" avec capacités de persistance et d'évasion de défenses. Il est conçu pour prendre le contrôle total d'un système Windows, désactiver ses protectionsest, (possible d'exiger une rançon si code modifié) **Windows native** développée en **C++ pur** utilisant l'API Win32 de Microsoft. Zéro framework, zéro surcouche — uniquement du code système bas niveau.
 
-Le projet couvre :
+**Contournement de l'UAC (User Account Control)**
 
-- Programmation **Win32 API** — fenêtres, messages, événements
-- Rendu graphique via **GDI32** — formes, texte, bitmaps
-- Interaction **Shell32** — `ShellExecute`, gestion fichiers système
-- Audio **WinMM** — sons, timers multimédias
-- Architecture **COM / OLE** — `ole32`, `oleaut32`
-- Planification système via **TaskSchd** (version 2)
-- Compilation **g++ MinGW** — linkage statique et dynamique
+Le malware utilise une vulnérabilité COM spécifique (CMSTPLUA) pour contourner les mécanismes d'élévation de privilèges Windows. Cette technique permet d'exécuter des commandes avec des droits administratifs sans déclencher l'invite UAC standard, rendant l'infection plus discrète.
 
-> Projet réalisé dans le cadre du **BTS SIO SISR** — progression vers le **Bac+3 AIS (Administrateur d'Infrastructures Sécurisées)**, septembre 2026.
+**Désactivation des protections système**
+
+Une fois les privilèges élevés obtenus, le malware exécute des commandes PowerShell pour :
+
+- Désactiver le contrôle de compte d'utilisateur (UAC)
+- Désactiver la protection en temps réel de Windows Defender
+- Collecter des informations de configuration réseau
+
+**Blocage des interactions utilisateur**
+
+Une fois activé, le malware intercepte toutes les entrées clavier, empêchant l'utilisateur d'utiliser son système ou de fermer l'application malveillante.
+
+**Exécution de shellcode**
+
+Le programme injecte et exécute du code machine directement en mémoire, ce qui lui permet d'éventuellement télécharger des charges utiles supplémentaires, établir des connexions réseau distantes ou voler des données.
+
+Fonctionnalités principales :
+
+- **Prise de contrôle système** - Élévation silencieuse des privilèges et désactivation des défenses
+- **Blocage de l'accès** - Interface plein écran non fermable et blocage des entrées clavier
+- **Extorsion financière** - Message de rançon avec redirection vers un site de paiement
+- **Persistance** - Modifications système pour maintenir l'accès malgré les redémarrages
+- **Furtivité** - Utilisation de techniques COM pour éviter la détection par les solutions antivirus
+
+Mode opératoire : 
+
+- Exécution initiale (probablement via phishing ou exploit)
+- Contournement de l'UAC pour obtenir les droits administratifs
+- Désactivation des protections système
+- Affichage de l'interface de rançon
+- Blocage complet des interactions utilisateur
+- Exécution du shellcode pour des actions malveillantes additionnelles
+
+> Programmation **Win32 API** - Rendu graphique via **GDI32** - Architecture **COM / OLE** - Planification système via **TaskSchd** - Compilation **g++ MinGW**
 
 ---
 
@@ -134,11 +161,11 @@ Le projet couvre :
 ```
   ┌─────────────────────────────────────────────────────────────────────┐
   │                                                                     │
-  │   📁  IMORTEL/                                                      │
+  │   📁  IMORTEL/                                                     │
   │   │                                                                 │
   │   ├── 📄  imortel.cpp     ←  Code source principal  (C++ Win32)    │
   │   ├── 💻  imortel.exe     ←  Exécutable compilé  (Windows x86/x64) │
-  │   ├── 🖼️   imortel.png     ←  Screenshot de l'application           │
+  │   ├── 🖼️   imortel.png     ←  Screenshot de l'application          │
   │   ├── 🎨  imortel.ico     ←  Icône de l'application (.ico)         │
   │   ├── 📦  imortel.rar     ←  Archive complète du projet (WinRAR)   │
   │   ├── 📄  imortel.pdf     ←  Documentation technique               │
