@@ -141,7 +141,7 @@ Maintenant, appliquez la technique d'obfuscation avec le caractère Right-to-Lef
 - Le nom de fichier s'affichera alors comme : Shadowvorcs.pdf
 - Exactement similaire pour .png .jpg ...
 
---
+---
 
 **Fonctionnalités principales :**
 
