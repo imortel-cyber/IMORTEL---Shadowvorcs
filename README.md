@@ -139,6 +139,7 @@ Maintenant, appliquez la technique d'obfuscation avec le caractère Right-to-Lef
 - Renommez le fichier Imortel.scr en Shadowvofdp.scr
 - Insérez le caractère RLO (U+202E) juste avant le "f" de "fdp"
 - Le nom de fichier s'affichera alors comme : Shadowvorcs.pdf
+- Obtenez ce RLO depuis [Unicode Explorer](https://unicode-explorer.com/c/202E)
 - Même manipulation pour .png .jpg ou autre
 
 ---
