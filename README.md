@@ -44,7 +44,7 @@
   ┌─────────────────────────────────────────────────────────────────┐
   │                                                                 │
   │   01  ──  PRÉSENTATION DE SHADOWVORCS                           │
-  │   02  ──  APERÇU DU PAYLOAD                                   │
+  │   02  ──  APERÇU DU PAYLOAD                                     │
   │   03  ──  ARCHITECTURE DU PROJET                                │
   │   04  ──  TÉLÉCHARGEMENTS                                       │
   │   05  ──  ENVIRONNEMENT & INSTALLATION                          │
