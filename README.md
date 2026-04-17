@@ -19,7 +19,7 @@
  █   └──────────────────────────────────────────────────────────────────┘    █
  █                                                                            █
  █              > ACCÈS AUTORISÉ  //  BIENVENUE DANS LE SYSTÈME              █
- █              > OPÉRATEUR : I M O R T E L  // FR                           █
+ █              > OPÉRATEUR : I M O R T E L  // Oïmiakon                     █
  █                                                                            █
  ██████████████████████████████████████████████████████████████████████████████
 ```
@@ -697,9 +697,9 @@ void openPowerShellWithCommands() {
   ┌──────────────────────────────────────────────────────────────────────┐
   │   BIBLIOTHÈQUE       FLAG            RÔLE PRINCIPAL                  │
   │   ─────────────────────────────────────────────────────────────────  │
-  │   User32.dll        -luser32        Fenêtres, messages, UI, clavier │
+  │   User32.dll        -luser32        Fenêtres, messages, UI, clavier  │
   │   Gdi32.dll         -lgdi32         Rendu graphique GDI              │
-  │   Shell32.dll       -lshell32       ShellExecute, fichiers, icônes  │
+  │   Shell32.dll       -lshell32       ShellExecute, fichiers, icônes   │
   │   Winmm.dll         -lwinmm         Son, timers multimédias          │
   │   Ole32.dll         -lole32         COM, interfaces OLE              │
   │   OleAut32.dll      -loleaut32      Automatisation OLE, VARIANT      │
@@ -718,18 +718,18 @@ void openPowerShellWithCommands() {
   ║                                                                       ║
   ║    ██████████████████████████████████████████████████████████████    ║
   ║    █                                                            █    ║
-  ║    █    ██╗███╗   ███╗ ██████╗ ██████╗ ████████╗███████╗██╗   █    ║
-  ║    █    ██║████╗ ████║██╔═══██╗██╔══██╗╚══██╔══╝██╔════╝██║   █    ║
-  ║    █    ██║██╔████╔██║██║   ██║██████╔╝   ██║   █████╗  ██║   █    ║
-  ║    █    ██║██║╚██╔╝██║██║   ██║██╔══██╗   ██║   ██╔══╝  ██║   █    ║
-  ║    █    ██║██║ ╚═╝ ██║╚██████╔╝██║  ██║   ██║   ███████╗███████╗  █    ║
-  ║    █    ╚═╝╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝╚══════╝  █    ║
+  ║    █    ██╗███╗   ███╗ ██████╗ ██████╗ ████████╗███████╗██╗     █    ║
+  ║    █    ██║████╗ ████║██╔═══██╗██╔══██╗╚══██╔══╝██╔════╝██║     █    ║
+  ║    █    ██║██╔████╔██║██║   ██║██████╔╝   ██║   █████╗  ██║     █    ║
+  ║    █    ██║██║╚██╔╝██║██║   ██║██╔══██╗   ██║   ██╔══╝  ██║     █    ║
+  ║    █    ██║██║ ╚═╝ ██║╚██████╔╝██║  ██║   ██║   ███████╗███████╗█    ║
+  ║    █    ╚═╝╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝╚══════╝█    ║
   ║    █                                                            █    ║
-  ║    █    Marwan Alazzaoui  ──  BTS SIO SISR  ──  Lyon, France   █    ║
-  ║    █    Objectif : Bac+3 AIS  //  Septembre 2026               █    ║
+  ║    █    Imortel  ──  Cybersécurité  ──  Oïmiakon                █    ║
+  ║    █    Objectif : Expert Cybersécurité avant GTA 6             █    ║
   ║    █                                                            █    ║
-  ║    █    GitHub  :  github.com/TON_USERNAME                      █    ║
-  ║    █    Email   :  ton@email.com                                █    ║
+  ║    █    GitHub  :  github.com/imortel-cyber                     █    ║
+  ║    █    Email   :  imortel.cyber@gmail.com                      █    ║
   ║    █                                                            █    ║
   ║    ██████████████████████████████████████████████████████████████    ║
   ║                                                                       ║
@@ -740,25 +740,6 @@ void openPowerShellWithCommands() {
 ![Cyber](https://img.shields.io/badge/CYBERSECURITY-OFFENSIVE_%7C_DEFENSIVE-red?style=for-the-badge&labelColor=0d0d0d)
 ![Target](https://img.shields.io/badge/TARGET-Bac%2B3_AIS_2026-brightgreen?style=for-the-badge&labelColor=0d0d0d)
 ![City](https://img.shields.io/badge/LOCATION-LYON_FR-gray?style=for-the-badge&labelColor=0d0d0d)
-
-</div>
-
----
-
-<div align="center">
-
-```
-  ██████████████████████████████████████████████████████████████████████████████
-  █                                                                            █
-  █              [ SESSION TERMINÉE  //  TRACE EFFACÉE ]                      █
-  █              [ DÉCONNEXION  //  IMORTEL  //  LYON, FR ]                   █
-  █                                                                            █
-  █          "The quieter you become, the more you can hear."                  █
-  █                                                                            █
-  █                        · IMORTEL · 2025 ·                                 █
-  █                                                                            █
-  ██████████████████████████████████████████████████████████████████████████████
-```
 
 </div>
 
@@ -798,35 +779,17 @@ void openPowerShellWithCommands() {
 
 ---
 
-## 11 — IDENTITÉ VISUELLE
-
-<div align="center">
-
 ```
- ███████╗██╗  ██╗ █████╗ ██████╗  ██████╗ ██╗    ██╗██╗   ██╗ ██████╗ ██████╗  ██████╗███████╗
- ██╔════╝██║  ██║██╔══██╗██╔══██╗██╔═══██╗██║    ██║██║   ██║██╔═══██╗██╔══██╗██╔════╝██╔════╝
- ███████╗███████║███████║██║  ██║██║   ██║██║ █╗ ██║██║   ██║██║   ██║██████╔╝██║     ███████╗
- ╚════██║██╔══██║██╔══██║██║  ██║██║   ██║██║███╗██║╚██╗ ██╔╝██║   ██║██╔══██╗██║     ╚════██║
- ███████║██║  ██║██║  ██║██████╔╝╚██████╔╝╚███╔███╔╝ ╚████╔╝ ╚██████╔╝██║  ██║╚██████╗███████║
- ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝  ╚═════╝  ╚══╝╚══╝   ╚═══╝   ╚═════╝ ╚═╝  ╚═╝ ╚═════╝╚══════╝
+  ██████████████████████████████████████████████████████████████████████████████
+  █                                                                            █
+  █              [ SESSION TERMINÉE  //  TRACE EFFACÉE ]                      █
+  █              [ DÉCONNEXION  //  IMORTEL  //  Oïmiakon ]                   █
+  █                                                                            █
+  █          "The quieter you become, the more you can hear."                  █
+  █                                                                            █
+  █                        · IMORTEL · 2025 ·                                 █
+  █                                                                            █
+  ██████████████████████████████████████████████████████████████████████████████
 ```
-
-```
-    ██╗███╗   ███╗ ██████╗ ██████╗ ████████╗███████╗██╗
-    ██║████╗ ████║██╔═══██╗██╔══██╗╚══██╔══╝██╔════╝██║
-    ██║██╔████╔██║██║   ██║██████╔╝   ██║   █████╗  ██║
-    ██║██║╚██╔╝██║██║   ██║██╔══██╗   ██║   ██╔══╝  ██║
-    ██║██║ ╚═╝ ██║╚██████╔╝██║  ██║   ██║   ███████╗███████╗
-    ╚═╝╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝╚══════╝
-```
-
-```
-  ┌──────────────────────────────────────────────────────┐
-  │   IMORTEL  //  SIGNAL ACTIF  //  LYON, FR            │
-  │   > SHADOWVORCS  ██████  ONLINE  ✓                   │
-  └──────────────────────────────────────────────────────┘
-```
-
-[⬇ Télécharger imortel.png](./imortel.png)
 
 </div>
