@@ -767,10 +767,10 @@ void openPowerShellWithCommands() {
   │   > CONNEXION ÉTABLIE — BIENVENUE.........  [ ████████████████ ] ✓      │
   │   > SHADOWVORCS // SIGNAL ACTIF...........  [ ████████████████ ] ✓      │
   │                                                                          │
-  │   SYS  > ONLINE   │  AUTH  > GRANTED   │  TRACE  > EFFACÉE              │
-  │   LOC  > LYON, FR │  OPR   > IMORTEL   │  SIGNAL > ██████               │
+  │   SYS  > ONLINE   │  AUTH  > GRANTED   │  TRACE  > EFFACÉE               │
+  │   LOC  > LYON, FR │  OPR   > IMORTEL   │  SIGNAL > ██████                │
   │                                                                          │
-  │                 · S I G N A L   D É T E C T É ·                         │
+  │                 · S I G N A L   D É T E C T É ·                          │
   │                                                                          │
   └──────────────────────────────────────────────────────────────────────────┘
 ```
@@ -782,12 +782,12 @@ void openPowerShellWithCommands() {
 ```
   ██████████████████████████████████████████████████████████████████████████████
   █                                                                            █
-  █              [ SESSION TERMINÉE  //  TRACE EFFACÉE ]                      █
-  █              [ DÉCONNEXION  //  IMORTEL  //  Oïmiakon ]                   █
+  █              [ SESSION TERMINÉE  //  TRACE EFFACÉE ]                       █
+  █              [ DÉCONNEXION  //  IMORTEL  //  Oïmiakon ]                    █
   █                                                                            █
   █          "The quieter you become, the more you can hear."                  █
   █                                                                            █
-  █                        · IMORTEL · 2025 ·                                 █
+  █                        · IMORTEL · 2025 ·                                  █
   █                                                                            █
   ██████████████████████████████████████████████████████████████████████████████
 ```
