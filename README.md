@@ -103,7 +103,7 @@ Une fois activé, le malware intercepte toutes les entrées clavier, empêchant 
 
 Le programme injecte et exécute du code machine directement en mémoire, ce qui lui permet d'éventuellement télécharger des charges utiles supplémentaires, établir des connexions réseau distantes ou voler des données.
 
-**TECHNIQUE D'OBFUSCATION, D'EMBALLAGE ET DE STÉGANOGRAPHIE AVEC LE CARACTÈRE RLO**
+⚠️**TECHNIQUE D'OBFUSCATION, D'EMBALLAGE ET DE STÉGANOGRAPHIE AVEC LE CARACTÈRE RLO**⚠️
 
 **Étape 1** : Vous devez d'abord créer un fichier batch qui servira à exécuter les composants malveillants.
 Créez un fichier texte nommé **lance.bat** (clic droit -> Nouveau -> Document texte, puis renommez-le) 
