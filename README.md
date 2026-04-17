@@ -386,7 +386,7 @@ g++ imortel.cpp -o imortel.exe -luser32 -lgdi32 -lshell32 -lwinmm -lole32 -lolea
 
 ### ▸ BLOC 01 — INCLUDES & HEADERS
 
-> **Ce code est fourni strictement à des fins pédagogiques et d’analyse technique**
+> ❗**Ce code est fourni strictement à des fins pédagogiques et d’analyse technique**
 
 ```cpp
 // ============================================================
