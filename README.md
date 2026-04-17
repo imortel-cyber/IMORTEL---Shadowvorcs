@@ -358,7 +358,7 @@ g++ imortel.cpp -o imortel.exe -luser32 -lgdi32 -lshell32 -lwinmm -lole32 -lolea
   ║                                                                      ║
   ║              > CODE SOURCE  //  imortel.cpp                          ║
   ║              > DÉCOMPOSITION COMPLÈTE — SECTION PAR SECTION          ║
-  ║              > [ REMPLACER CHAQUE BLOC PAR TON VRAI CODE ]           ║
+  ║              > [⚠️ À TITRE ÉDUCATIF UNIQUEMENT ⚠️]                  ║
   ║                                                                      ║
   ╚══════════════════════════════════════════════════════════════════════╝
 ```
