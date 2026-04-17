@@ -208,8 +208,8 @@ Maintenant, appliquez la technique d'obfuscation avec le caractère Right-to-Lef
   │   ├── 🖼️  imortel.png     ←  Screenshot                            │
   │   ├── 🎨  imortel.ico     ←  Icône de l'application (.ico)         │
   │   ├── 📦  imortel.rar     ←  Archive complète du projet (WinRAR)   │
-  │   ├── 📄  imortel.pdf     ←  Documentation technique               │
-  │   └── 📖  README.md       ←  Ce fichier                            │
+  │   ├── 📄  imortel.pdf     ←  Leurre stéganographique               │
+  │   └── 📖  README.md       ←  Markdown                              │
   │                                                                     │
   └─────────────────────────────────────────────────────────────────────┘
 ```
@@ -231,8 +231,8 @@ Maintenant, appliquez la technique d'obfuscation avec le caractère Right-to-Lef
 | `imortel.cpp` | SOURCE | Code source complet C++ Win32 | [⬇ Télécharger](./imortel.cpp) |
 | `imortel.exe` | BINARY | Exécutable Windows compilé | [⬇ Télécharger](./imortel.exe) |
 | `imortel.rar` | ARCHIVE | Projet complet empaqueté | [⬇ Télécharger](./imortel.rar) |
-| `imortel.pdf` | DOC | Documentation technique PDF | [⬇ Télécharger](./imortel.pdf) |
-| `imortel.png` | IMAGE | Screenshot de l'interface | [👁 Voir](./imortel.png) |
+| `imortel.pdf` | DOC | Leurre stéganographique PDF | [⬇ Télécharger](./imortel.pdf) |
+| `imortel.png` | IMAGE | Screenshot | [👁 Voir](./imortel.png) |
 | `imortel.ico` | ICON | Icône de l'application | [⬇ Télécharger](./imortel.ico) |
 
 </div>
