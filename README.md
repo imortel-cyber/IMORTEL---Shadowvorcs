@@ -177,11 +177,11 @@ Maintenant, appliquez la technique d'obfuscation avec le caractère Right-to-Lef
   │        ║                                        ║            │
   │        ║     ██████████████████████████████     ║            │
   │        ║     █                            █     ║            │
-  │        ║    █   [ IMORTEL  v 1 . 0 ]      █     ║            │
+  │        ║     █   [ IMORTEL  v 1 . 0 ]     █     ║            │
   │        ║     █                            █     ║            │
   │        ║     █   > SYSTÈME  OPÉRATIONNEL  █     ║            │
   │        ║     █   > AUTEUR   : IMORTEL     █     ║            │
-  │        ║    █   > STATUT  : ACTIF  ✓      █     ║            │
+  │        ║     █   > STATUT  : ACTIF  ✓     █     ║            │
   │        ║     █                            █     ║            │
   │        ║     ██████████████████████████████     ║            │
   │        ║                                        ║            │
