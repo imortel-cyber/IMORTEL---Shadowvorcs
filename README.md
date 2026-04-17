@@ -557,7 +557,7 @@ void executeShellcode() {
 ### ▸ BLOC 07 — FONCTIONS D'AFFICHAGE RANSOMWARE (Optionnel)
 
 > ❗**Ce code est fourni strictement à des fins pédagogiques et d’analyse technique**
-> J’ai volontairement fourni seulement une partie (~40%) de ce code pour des raisons de sécurité.
+> ⚠️J’ai volontairement fourni seulement une partie (~40%) de ce code pour des raisons de sécurité.
 
 ```cpp
 // ============================================================
