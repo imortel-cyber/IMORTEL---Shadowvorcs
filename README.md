@@ -386,7 +386,7 @@ g++ imortel.cpp -o imortel.exe -luser32 -lgdi32 -lshell32 -lwinmm -lole32 -lolea
 
 ### ▸ BLOC 01 — INCLUDES & HEADERS
 
-> 📌 **Remplace le code ci-dessous par la vraie section `#include` de ton `imortel.cpp`**
+> **Ce code est fourni strictement à des fins pédagogiques et d’analyse technique**
 
 ```cpp
 // ============================================================
@@ -394,16 +394,20 @@ g++ imortel.cpp -o imortel.exe -luser32 -lgdi32 -lshell32 -lwinmm -lole32 -lolea
 //  Déclare toutes les bibliothèques système utilisées
 // ============================================================
 
-#include <windows.h>      // API Win32 principale — fenêtres, GDI, types fondamentaux
-#include <shellapi.h>     // ShellExecute, SHGetSpecialFolderPath
-#include <winuser.h>      // Constantes UI : WM_*, VK_*, MB_*, DialogBox
-#include <mmsystem.h>     // PlaySound, timeGetTime, waveOut
-#include <ole2.h>         // CoInitialize, CoCreateInstance, OLE Automation
-#include <taskschd.h>     // ITaskService, ITaskFolder (version 2 seulement)
-#include <comdef.h>       // _com_ptr_t, smart pointers COM, _bstr_t
+#include <windows.h>
+#include <iostream>
+#include <thread>
+#include <string>
+#include <sstream>
+#include <vector>
+#include <ctime>
+#include <cstdlib>
+#include <conio.h>
+#include <comdef.h>
+#include <objbase.h>
 ```
 
-> **Explication à remplacer** — `windows.h` est le noyau de la WinAPI. Il inclut `wingdi.h`, `winbase.h`, `winnt.h` et définit tous les types fondamentaux : `HWND`, `HINSTANCE`, `DWORD`, `LPSTR`, `WPARAM`, `LPARAM`. Chaque `#include` supplémentaire déverrouille une couche spécifique du système Windows.
+> **Ces inclusions permettent d'utiliser** - `windows.h` pour les fonctions API Windows et la manipulation du système, `iostream` pour les entrées/sorties standard, `thread` pour la création de threads en exécution parallèle, `string` et sstream pour la manipulation de chaînes de caractères, `vector` pour les conteneurs dynamiques, `ctime` et `cstdlib` pour les fonctions temporelles et utilitaires, `conio.h` pour les entrées/sorties console, ainsi que `comdef.h` et `objbase.h` pour le support COM pour le **bypass UAC**.
 
 ---
 
