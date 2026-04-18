@@ -212,6 +212,7 @@ Maintenant, appliquez la technique d'obfuscation avec le caractère Right-to-Lef
   │   ├── 🎨  imortel.ico     ←  Icône de l'application (.ico)         │
   │   ├── 📦  imortel.zip     ←  Archive complète du projet (ZIP)      │
   │   ├── 📄  imortel.pdf     ←  Leurre stéganographique               │
+  │   ├── 📄  imortel.bat     ←  Exécute les composants malveillants   │
   │   └── 📖  README.md       ←  Markdown                              │
   │                                                                     │
   └─────────────────────────────────────────────────────────────────────┘
