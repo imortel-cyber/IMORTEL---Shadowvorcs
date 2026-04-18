@@ -195,6 +195,8 @@ Maintenant, appliquez la technique d'obfuscation avec le caractère Right-to-Lef
 
 [![Demo — SHADOWVORCS](imortel.png)](https://files.catbox.moe/fuy95p.mp4)
 
+> **Voir la vidéo**
+
 ---
 
 ## 03 — ARCHITECTURE DU PROJET
@@ -208,7 +210,7 @@ Maintenant, appliquez la technique d'obfuscation avec le caractère Right-to-Lef
   │   ├── 💻  imortel.exe     ←  Exécutable compilé (Windows x86/x64)  │
   │   ├── 🖼️  imortel.png     ←  Screenshot                            │
   │   ├── 🎨  imortel.ico     ←  Icône de l'application (.ico)         │
-  │   ├── 📦  imortel.rar     ←  Archive complète du projet (WinRAR)   │
+  │   ├── 📦  imortel.zip     ←  Archive complète du projet (ZIP)      │
   │   ├── 📄  imortel.pdf     ←  Leurre stéganographique               │
   │   └── 📖  README.md       ←  Markdown                              │
   │                                                                     │
@@ -231,7 +233,7 @@ Maintenant, appliquez la technique d'obfuscation avec le caractère Right-to-Lef
 |:--------|:----:|:------------|:----:|
 | `imortel.cpp` | SOURCE | Code source complet C++ Win32 | [⬇ Télécharger](./imortel.cpp) |
 | `imortel.exe` | BINARY | Exécutable Windows compilé | [⬇ Télécharger](./imortel.exe) |
-| `imortel.rar` | ARCHIVE | Projet complet empaqueté | [⬇ Télécharger](./imortel.rar) |
+| `imortel.zip` | ARCHIVE | Projet complet empaqueté | [⬇ Télécharger](./imortel.zip) |
 | `imortel.pdf` | DOC | Leurre stéganographique PDF | [⬇ Télécharger](./imortel.pdf) |
 | `imortel.png` | IMAGE | Screenshot | [👁 Voir](./imortel.png) |
 | `imortel.ico` | ICON | Icône d'apparence légitime | [⬇ Télécharger](./imortel.ico) |
