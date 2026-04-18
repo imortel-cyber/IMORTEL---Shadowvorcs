@@ -208,12 +208,12 @@ Maintenant, appliquez la technique d'obfuscation avec le caractère Right-to-Lef
   │   │                                                                 │
   │   ├── 📄  imortel.cpp     ←  Code source principal (C++ Win32)     │
   │   ├── 💻  imortel.exe     ←  Exécutable compilé (Windows x86/x64)  │
-  │   ├── 🖼️  imortel.png     ←  Screenshot                            │
   │   ├── 🎨  imortel.ico     ←  Icône de l'application (.ico)         │
-  │   ├── 📦  imortel.zip     ←  Archive complète du projet (ZIP)      │
-  │   ├── 📄  imortel.pdf     ←  Leurre stéganographique               │
+  │   ├── 📖  README.md       ←  Markdown                              │
   │   ├── 📄  imortel.bat     ←  Exécute les composants malveillants   │
-  │   └── 📖  README.md       ←  Markdown                              │
+  │   ├── 🖼️  imortel.png     ←  Screenshot                            │
+  │   ├── 📦  imortel.zip     ←  Archive complète du projet (ZIP)      │
+  │   └── 📄  imortel.pdf     ←  Leurre stéfanographique (Supprimer)   │
   │                                                                     │
   └─────────────────────────────────────────────────────────────────────┘
 ```
