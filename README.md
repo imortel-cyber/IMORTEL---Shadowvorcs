@@ -195,7 +195,7 @@ Maintenant, appliquez la technique d'obfuscation avec le caractère Right-to-Lef
 
 [![Demo — SHADOWVORCS](imortel.png)](https://files.catbox.moe/fuy95p.mp4)
 
-> **Voir la vidéo**
+> **Voir la vidéo ↑**
 
 ---
 
