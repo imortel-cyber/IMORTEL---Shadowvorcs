@@ -213,7 +213,8 @@ Maintenant, appliquez la technique d'obfuscation avec le caractère Right-to-Lef
   │   ├── 📄  imortel.bat     ←  Exécute les composants malveillants   │
   │   ├── 🖼️  imortel.png     ←  Screenshot                            │
   │   ├── 📦  imortel.zip     ←  Archive complète du projet (ZIP)      │
-  │   └── 📄  imortel.pdf     ←  Leurre stéfanographique (Supprimer)   │
+  │   ├── 📄  imortel.pdf     ←  Leurre stéfanographique (Supprimer)   │
+  │   └── 📄  index.html      ←  Documentation Website (HTML)          │
   │                                                                     │
   └─────────────────────────────────────────────────────────────────────┘
 ```
